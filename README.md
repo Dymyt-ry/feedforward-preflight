@@ -1,4 +1,4 @@
-# ibm-controller-conformance
+# feedforward-preflight
 
 **Pre-flight checks for IBM dynamic circuits: will your classical feedforward compile, and how long will it take?**
 
@@ -9,6 +9,8 @@
 ![measured on](https://img.shields.io/badge/measured%20on-ibm__marrakesh-lightgrey)
 ![QPU probes](https://img.shields.io/badge/QPU%20probes-100-lightgrey)
 ![status](https://img.shields.io/badge/status-empirical%20%2F%20research-orange)
+
+> **Unofficial.** This project is not affiliated with, endorsed by, or supported by IBM. IBM, IBM Quantum and Qiskit are trademarks of International Business Machines Corporation; they are used here only to name the platform the measurements were taken on.
 
 **Read this first.**
 * **Scope:** one backend (`ibm_marrakesh`), three dates: 2026-11-06 (29 envelope probes, historical, run once), 2026-11-09 (legacy latency ladder), 2026-11-15 (everything else). Results are dated observations, not guarantees. The `ibm_fez` replication is pending (five jobs submitted, still queued).
@@ -335,4 +337,4 @@ Run the same tiers on your backend and send (a) the generated `out/RESULTS_QPU*.
 IBM job ids are not published; they are only resolvable by the IBM account that ran them.
 
 ## Licence
-Apache-2.0 (see `LICENSE` and `NOTICE`). Copyright 2026 The ibm-controller-conformance authors. Every `.py` file carries an SPDX identifier.
+Apache-2.0 (see `LICENSE` and `NOTICE`). Copyright 2026 The feedforward-preflight authors. Every `.py` file carries an SPDX identifier.

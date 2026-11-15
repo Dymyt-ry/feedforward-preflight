@@ -15,6 +15,8 @@
   <img alt="Pipeline: circuit, self-transpile, resource vector, envelope plus IBM rules, verdict PASS / FAIL / UNCERTAIN with witness probe" src="docs/img/pipeline-light.svg">
 </picture></p>
 
+> **Results created using IBM Quantum.**
+
 > [!NOTE]
 > **Unofficial.** This project is not affiliated with, endorsed by, or supported by IBM. IBM, IBM Quantum and Qiskit are trademarks of International Business Machines Corporation; they are used here only to name the platform the measurements were taken on.
 
@@ -25,7 +27,7 @@
 > **Monotonicity is an assumption:** a PASS means "no more demanding than a probe that was accepted", which assumes that needing less of every measured resource cannot get a circuit rejected. The stored probes do not contradict it; it is unproven. **UNCERTAIN is common by design:** PASS needs the circuit to be dominated by an accepted probe in every dimension, so many circuits are UNCERTAIN rather than PASS or FAIL.
 
 ## What it does
-* **Explains error 6057.** IBM's error 6057 says the job "requires more classical registers than the control hardware provides" and gives no numbers, so you learn about it after queueing and a failed job. This repository measures where that limit sits for real programs on one backend (100 probe circuits, each submitted to the QPU), and the latency of an in-controller expression.
+* **Explains error 6057.** IBM's error 6057 says the job "requires more classical registers than the control hardware provides" and gives no numbers, so you learn about it after queueing and a failed job. This repository measures where that limit sits for real programs on one backend (100 probe circuits, each submitted to the QPU), and the observed decision latency of a classical expression, both as seen through the public job API (job acceptance and measured timing); nothing here inspects hardware.
 * **Predicts before you submit.** `dccheck.py` turns those measurements into a pre-flight verdict (PASS / FAIL / UNCERTAIN) that names the probe it rests on.
 * **Repacks a common failing pattern.** `--fix-pack` can rewrite many small measured registers into an equivalent packed circuit.
 
@@ -81,12 +83,12 @@ The PASS after packing is again a prediction from the envelope; three fix-pack v
   <img alt="Scatter of 100 probes: peak live registers versus left-to-right stack need, accepted and rejected" src="docs/img/map6057-light.svg">
 </picture></p>
 
-The real envelope has 26 dimensions; the second plot shows two of them. Details, evidence and caveats per finding:
+*Results created using IBM Quantum.* The real envelope has 26 dimensions; the second plot shows two of them. Details, evidence and caveats per finding:
 
 | Finding | Evidence | Caveat |
 |---|---|---|
-| In-controller expression latency grows roughly 25 to 30 ns per op; examples: 15 xor ops 743 +/- 59 ns, 27-op weighted vote 1055 +/- 67 ns, 63 random ops 2103 +/- 75 ns (increment over an `if` on one bit) | [Findings 1](docs/FINDINGS.md#1-latency-of-a-classical-expression-stopwatch-method), `data/rederive/`, `data/latency_reanalysis.json` | Descriptive range, not a law; fixed part (intercept 0 to 400 ns) not established; per-probe scatter far above shot noise; estimator choice changes the point estimate |
-| Error 6057 rejections track peak live registers and stack need (the envelope's failure dimensions); for example 12 read registers of 8 bits (`B_R12x8c`) is rejected while up to 10 read registers were accepted | [Findings 2](docs/FINDINGS.md#2-error-6057-more-classical-registers-than-the-control-hardware-provides), `data/probe_outcomes*.json` | No closed-form model survived out-of-sample; why the controller rejects is a hypothesis (register allocation), not a finding |
+| Observed decision latency of a classical expression grows roughly 25 to 30 ns per op; examples: 15 xor ops 743 +/- 59 ns, 27-op weighted vote 1055 +/- 67 ns, 63 random ops 2103 +/- 75 ns (increment over an `if` on one bit) | [Findings 1](docs/FINDINGS.md#1-latency-of-a-classical-expression-stopwatch-method), `data/rederive/`, `data/latency_reanalysis.json` | Descriptive range, not a law; fixed part (intercept 0 to 400 ns) not established; per-probe scatter far above shot noise; estimator choice changes the point estimate |
+| Error 6057 rejections track peak live registers and stack need (the envelope's failure dimensions); for example 12 read registers of 8 bits (`B_R12x8c`) is rejected while up to 10 read registers were accepted | [Findings 2](docs/FINDINGS.md#2-error-6057-more-classical-registers-than-the-control-hardware-provides), `data/probe_outcomes*.json` | No closed-form model survived out-of-sample; why jobs are rejected is not explained; a shared-budget model is a hypothesis about acceptance behaviour, not a finding |
 | An empirical monotone dominance envelope over 100 probes predicts PASS/FAIL with no wrong prediction in leave-one-out (unique vectors: 33 of 64 accepted PASS, 31 UNCERTAIN; 16 of 21 rejected FAIL, 5 UNCERTAIN) and in 6 of 6 frozen out-of-sample predictions | [Findings 2b](docs/FINDINGS.md#2b-empirical-envelope-instead-of-a-formula), `rules/envelope_ibm_heron_r2_2026-11-15.json`, `build_envelope.py` | Rests on monotonicity (assumed); sparse, so UNCERTAIN is common; one backend |
 | Packing many small measured registers into few wide ones (`--fix-pack` v2) was accepted by the QPU 3 of 3 circuits; fix-pack v1 (narrowing cast of a shifted register) was rejected with 6066 | [`--fix-pack`](docs/METHOD.md#--fix-pack-v2-remap-only), `data/fixpack_v2_executed/`, `data/RESULTS_QPU_fixpack_v*.md` | Three circuits only; the trigger of 6066 is not isolated |
 | Accepted probes were checked by prepared-input readback (output responds to operands) | [Findings 3](docs/FINDINGS.md#3-acceptance-readback-what-accepted-was-checked-with) | Sampling check, not an exhaustive truth table |

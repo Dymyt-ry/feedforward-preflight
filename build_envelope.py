@@ -107,7 +107,7 @@ def main(write=False):
                      "monotonicity is an assumption: the stored probes do not contradict it but %d rejected probes cannot prove it" % b["n_rej"],
                      "the failure dimensions and the leave-one-out were chosen/computed on ALL the data (descriptive, not out-of-sample); only data/v1, data/e1, data/e2 are frozen out-of-sample rounds",
                      "probes rejected with another code (6066, fix-pack) are excluded from this envelope",
-                     "a vector takes the elementwise MAX over the cones of all ifs and the circuit-wide peak of live registers; the controller may allocate differently",
+                     "a vector takes the elementwise MAX over the cones of all ifs and the circuit-wide peak of live registers; the backend may count differently",
                      "PASS needs domination in ALL dimensions, so many realistic circuits are UNCERTAIN; that is intended (conservative)"],
             probes=[dict(name=r["name"], class_=r["class_"], backend=r["backend"], measured_date=r["measured_date"], source=r["circuit_source"], circuit_shipped=r["qpy"], vector=r["vector"]) for r in b["rows"]])
         json.dump(out, open(RULES, "w"), indent=1)

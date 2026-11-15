@@ -2,7 +2,7 @@
 """Resource vector of a dynamic circuit, counted on the circuit that is passed in (pass the TRANSPILED circuit).
 
 One implementation shared by the conformance suite and the pre-flight checker. Every dimension is a non-negative number where MORE means MORE
-of a controller resource that could plausibly cause a rejection (error 6057 "more classical registers than the control hardware provides");
+of a resource that could plausibly matter for job acceptance (error 6057 "more classical registers than the control hardware provides");
 the envelope verdict (resources.envelope_verdict) assumes monotonicity: a circuit that uses no more of EVERY dimension than an accepted circuit is
 predicted to be accepted; a circuit that uses at least as much (in the failure-relevant dimensions) as a rejected one is predicted to be rejected.
 

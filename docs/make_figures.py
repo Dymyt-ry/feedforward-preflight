@@ -46,6 +46,7 @@ def style(c):
 
 
 def save(fig, name, theme):
+    fig.text(0.99, -0.07, "Results created using IBM Quantum.", ha="right", fontsize=7.5, color=THEMES[theme]["mute"])
     fig.savefig(os.path.join(IMG, f"{name}-{theme}.svg"), format="svg", metadata={"Date": None, "Creator": None}, bbox_inches="tight")
     fig.savefig(os.path.join(IMG, f"{name}-{theme}.png"), format="png", dpi=160, metadata={"Software": None}, bbox_inches="tight")
     plt.close(fig)

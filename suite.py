@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""IBM controller-ISA conformance suite for IBM's dynamic-circuit classical engine (design + local validation).
+"""Acceptance and latency conformance suite for IBM dynamic circuits with classical expressions (design + local validation).
 
 NO QPU submission is implemented here on purpose (quota ~4 min). Modes:
   --local   build every probe, check semantics EXHAUSTIVELY (vectorised independent evaluator vs a numpy

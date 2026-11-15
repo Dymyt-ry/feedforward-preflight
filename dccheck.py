@@ -2,8 +2,8 @@
 """dccheck: pre-flight checker for IBM dynamic circuits with classical expressions.
 
 Predicts, BEFORE submission, from empirical rules measured on a real backend (rules/*.json, data not code):
-  * whether the controller will reject the circuit (error 6057, plus a few documented rejection patterns);
-  * how long each in-controller decision takes after measurement end.
+  * whether the backend will reject the circuit (error 6057, plus a few documented rejection patterns);
+  * the observed decision latency after measurement end.
 Optionally rewrites the circuit (--fix-pack) so measurements into many small registers go into few wide registers.
 
 CLI    python dccheck.py CIRCUIT [--transpiled ISA_CIRCUIT | --no-transpile] [--rules FILE] [--backend NAME] [--json] [--max-age-days 60] [--fix-pack [-o OUT.qpy]]

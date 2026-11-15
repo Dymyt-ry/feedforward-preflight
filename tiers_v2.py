@@ -943,7 +943,7 @@ def predictions_text(tier):
          "Hypotheses (each fails iff its metric reaches a threshold; thresholds bracketed by earlier data):",
          "  H_cone: >= 12 distinct measured registers in the cone of the `if` (10 pass, 12 fail, 11 untested).",
          f"  H_peak_live: registers (measured + register-valued stores) simultaneously live >= theta; bracket: R10x8 peak {b['peak_pass']} pass, R12x2 peak {b['peak_fail']} fail (register allocation pressure).",
-         f"  H_alloc (hardware register allocation, the reading suggested by IBM's 6057 text): register pool = peak live registers (measured + register-valued stores) + temporaries needed "
+         f"  H_alloc (a model of acceptance behaviour: one shared budget of registers, the reading suggested by IBM's 6057 text): register pool = peak live registers (measured + register-valued stores) + temporaries needed "
          f"by the largest stored expression (Ershov/Sethi-Ullman number of its tree: chain 2, balanced tree ~log2 leaves); fails iff pool >= theta, bracket {b['pool_pass']} pass (R10x8) / {b['pool_fail']} fail (R12x2); "
          "plus a separate pool of stored BIT variables: <= 257 pass, >= 512 fail (old W256/W512 jobs). Unifies the cone rule (measured registers live) and size failures only if long expressions "
          "need many temporaries; it does NOT by itself explain the old 103-op Shannon failure (small Ershov number), which this tier tests directly.",
@@ -1063,7 +1063,7 @@ def analyse_acc(man, res, outdir):
     al = {k: o[k] for k in ("P1_alloc4", "P1_alloc8", "P1_alloc12") if k in o}
     if al:
         L.append(f"- allocation pressure (3 measured registers, k stored Uint16 intermediates): {al} -> "
-                 + ("all accepted: stored intermediates do not exhaust the allocator at 12 (peak live 15)" if all(al.values()) else
+                 + ("all accepted: stored intermediates do not exhaust the modelled budget at 12 (peak live 15)" if all(al.values()) else
                     "failures grow with k: register-allocation pressure (stored registers) matters even with only 3 measured registers" if not al.get("P1_alloc12", True) else "irregular, see table"))
     ir = {k: o[k] for k in ("P1_ir96", "P1_ir104", "P1_ir126", "P1_dag104") if k in o}
     if ir:

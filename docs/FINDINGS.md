@@ -4,7 +4,7 @@
 
 ## Scope and status
 Measurements of what IBM's real-time classical engine does with `store` / `if` expressions: how long an expression takes to evaluate between a mid-circuit
-measurement and the conditional gate, and which programs the controller refuses (error 6057). IBM names the error and publishes no numbers for registers, ops or latency. This folder is a test harness plus
+measurement and the conditional gate, and which programs the backend rejects at job submission (error 6057). IBM names the error and publishes no numbers for registers, ops or latency. This folder is a test harness plus
 the data from the first runs. Status: one backend (`ibm_marrakesh`), three dates: 2026-11-06 (29 envelope probes, historical, run once), 2026-11-09 (legacy latency ladder), 2026-11-15 (everything else); results are dated observations and not guarantees.
 
 **The one assumption to read first: monotonicity.** The checker's PASS verdict rests on an assumption, not a law: a circuit that uses no more of every measured resource (peak live registers, stack need, ops, ...) than some accepted probe is predicted to be accepted. Nothing guarantees that; the 27 rejected probes only show that the data do not contradict it. A PASS is a prediction from similarity to probes run once on one backend, never a guarantee, and many realistic circuits are UNCERTAIN.
@@ -38,7 +38,7 @@ up to about 440 ns (WVOTE27) and 300 ns (SOUP63, POP8 unclipped); read them as +
   design, and the marginal slopes between consecutive points are 17, 45 and 29 ns/op, so this is not a law and the intercept is not established. The CASE circuit also differs from the reference
   circuit by one `store` and one bit read, so a nonzero intercept exists by construction.
 * **Depth: no effect seen for an XOR chain vs a tree** (15 xor, depth 15 vs 4): +2 +/- 69 ns; a depth-driven law predicted +1372 ns. XOR is re-associable, so the controller may rebalance it;
-  non-reassociable ops have not been tested, and neither has whether the controller executes ops as written (algebraic folding).
+  non-reassociable ops have not been tested, and neither has whether the observed latency depends on how the expression is written (algebraic folding).
 * **Multiplication:** WVOTE27 - POP8 = +180 +/- 82 ns for 4 more ops (expected about +113 at 28 ns/op). No evidence that a multiply costs more than the average op; not a measurement of its cost.
 * **Pre-registration was local only** (predictions were written into the plan manifest before submission; nothing was hashed, signed or committed, and the predictions code has been edited since).
   The registered law (190 + 31.2 ns/op, from a 3-point fit on 2026-11-09 data) **failed its own falsification rule under the original estimator** (WVOTE27 835 vs 1033, -3.0 sigma; chi2 19.0 on 5 dof). Under the
@@ -56,7 +56,7 @@ up to about 440 ns (WVOTE27) and 300 ns (SOUP63, POP8 unclipped); read them as +
 ### 2. Error 6057 ("more classical registers than the control hardware provides")
 Every failure in every round returned error 6057 with the same message (full texts in `data/*/RESULTS_QPU_*.md`; no 6073 or 6116 was ever returned). IBM's registry (https://quantum.cloud.ibm.com/docs/en/errors, read 2026-11-15) words it
 "The job requires more classical registers than the control hardware provides. If possible, break the job into multiple separate jobs or reduce the number of classical variables and measurement results used in subsequent conditions".
-IBM's wording suggests (this is a hypothesis, not a finding; the closed-form versions of it were falsified, see below) **one resource: a pool of hardware registers shared by measured registers, stored registers and the temporaries needed to evaluate an expression**. The data are not explained by a count of measured registers in the
+IBM's wording suggests (this is a hypothesis, not a finding; the closed-form versions of it were falsified, see below) **one shared budget that measured registers, stored registers and the temporaries needed to evaluate an expression all draw on** (a model of which jobs are accepted, not a claim about how the backend is built). The data are not explained by a count of measured registers in the
 cone, a count of ops, or a count of total reads. Round 4 (`data/p1/`, 25 probes executed **twice** on `ibm_marrakesh`, 2026-11-15 ~15:15 UTC; the second execution was an accidental duplicate and is used as a replicate;
 mapping of the first run to its probes was verified: same circuits, outcomes and result keys for all 25) gives:
 
@@ -75,7 +75,7 @@ feature on the transpiled circuits. **No model separates all of them, and no clo
 - **M_w** (4 x peak live registers + 5 x stack need >= 59): fitted on 80 probes, **falsified** by the frozen `v1` round (V1_rc10_P3 and V1_rc12_P1 were accepted).
 - **M_u** (unweighted pool: *fail iff peak live registers + left-to-right stack need >= 14, or >= 513 live stored bit variables*): survived the frozen `v1` round 5 of 5 and was 5 of 5 on `e1` (computed afterwards from the stored vectors), then was **falsified** by the frozen `e2` round: wrong on E2_shan112 (a Shannon-form expression, pool 12, predicted accepted, rejected 6057) and on E2_rc5_P9
   (9 live registers, stack need 5, pool 14, predicted rejected, accepted). On all 93 probes it misclassifies 9 (R11x2 x3 at score 14 accepted; T1, LUT85 K=8, E2_shan112, T3, T3m rejected at scores 11-12; E2_rc5_P9 accepted at 14).
-- The controller's real accounting is not captured by any of these (V1_rc12_P1 with stack need 12 passes, the Shannon-form T1 with 11 is rejected).
+- None of these simple accountings captures the observed acceptance behaviour (V1_rc12_P1 with stack need 12 passes, the Shannon-form T1 with 11 is rejected).
 **The verdicts of the pre-flight tool come only from the empirical dominance envelope (Section 2b), the official hard rules quoted from IBM, and observed hazards (the 6066 packing hazard was observed on 2026-11-15; the 6327, 6060, 6062 and declared-Var rejections are recorded from earlier days and were not re-measured); none of the formulas above is used.**
 The construction differences between the rejected (ir104, ir126, dag104, C8bal) and accepted (bal104, chain104, C8chain) probes are only tree shape (same registers, widths, leaf counts, literals, casts, op classes).
 
@@ -85,7 +85,7 @@ What this retracts or changes from earlier rounds: "6057 fires when the cone has
 Older failures listed in earlier versions of this README are real and current, but their cause is still only partly modelled.
 
 ### 2b. Empirical envelope instead of a formula
-Since no formula fits every probe, `resources.py` computes a **resource vector** (26 dimensions, all "more = more of some controller resource": peak live registers, peak live bit variables, measured registers in the cone, stored count and bits, ops of the largest
+Since no formula fits every probe, `resources.py` computes a **resource vector** (26 dimensions, all "more = more demanding in some respect that could plausibly matter for acceptance": peak live registers, peak live bit variables, measured registers in the cone, stored count and bits, ops of the largest
 store and of the cone, depth, Ershov and left-to-right stack need, distinct leaf bits, unique nodes, NOT count, literals, number of ifs, shift/cast/compare/add/mul/index flags, and `unanalysed`, a count of constructs the analysis could not follow, which forces UNCERTAIN) from the **transpiled** circuit, and `rules/envelope_ibm_heron_r2_2026-11-15.json` stores the vectors of
 every probe with a known outcome (71 accepted incl. the packed fix-pack circuits, 27 rejected with 6057, `ibm_marrakesh`; 29 of them are historical 2026-11-06 probes (25 accepted, 4 rejected) that were run once and never repeated, labelled with their date in the rules file; two probes rejected with 6066 are excluded). Every probe's circuit is shipped (`data/envelope_probes/`) and `python build_envelope.py` regenerates the vectors, the consistency check and the leave-one-out. PASS is never issued for a circuit with `unanalysed > 0` or without an `if`. Verdicts assume monotonicity: **PASS** if the vector is <= that of some accepted probe in every dimension; **FAIL** if it is >= that of some rejected probe in the
 failure dimensions (cone_ops, lr_stack, peak_live_regs, unary_ops); otherwise **UNCERTAIN**. On the stored probes no accepted vector dominates a rejected one (so no dimension is missing for these data); the smallest dimension sets that remove every possible contradiction have 3 members, always peak_live_regs and

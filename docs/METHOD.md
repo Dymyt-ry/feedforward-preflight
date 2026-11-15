@@ -41,7 +41,7 @@ Latency jobs use 24 sources + 24 probe qubits + a flag qubit selected from live 
 
 ## Pre-flight checker (`dccheck.py`)
 
-Predicts, before you submit, whether the controller is likely to reject a dynamic circuit (error 6057 and a few other patterns) and roughly how long each in-controller decision takes. It follows every `store` into every `if_else` condition (including nested blocks) and compares the result with the **rules file** `rules/ibm_heron_r2_2026-11-15.json` (hazards, accepted constructs, IBM's documented limits, latency) and the **envelope** `rules/envelope_ibm_heron_r2_2026-11-15.json` (resource vectors of all probes run on the QPU). Nothing is hard-coded; every message it prints carries either a verbatim IBM quote with its URL or a measured probe (`test_dccheck.py` asserts this).
+Predicts, before you submit, whether the backend is likely to reject a dynamic circuit (error 6057 and a few other patterns) and roughly the observed decision latency. It follows every `store` into every `if_else` condition (including nested blocks) and compares the result with the **rules file** `rules/ibm_heron_r2_2026-11-15.json` (hazards, accepted constructs, IBM's documented limits, latency) and the **envelope** `rules/envelope_ibm_heron_r2_2026-11-15.json` (resource vectors of all probes run on the QPU). Nothing is hard-coded; every message it prints carries either a verbatim IBM quote with its URL or a measured probe (`test_dccheck.py` asserts this).
 
 ```
 python dccheck.py circuit.qpy                                 # a QPY file; the circuit is ALSO transpiled here and the verdict is the worst of both (several circuits = one job)

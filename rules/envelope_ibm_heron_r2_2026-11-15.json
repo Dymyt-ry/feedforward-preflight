@@ -138,7 +138,7 @@
   "monotonicity is an assumption: the stored probes do not contradict it but 27 rejected probes cannot prove it",
   "the failure dimensions and the leave-one-out were chosen/computed on ALL the data (descriptive, not out-of-sample); only data/v1, data/e1, data/e2 are frozen out-of-sample rounds",
   "probes rejected with another code (6066, fix-pack) are excluded from this envelope",
-  "a vector takes the elementwise MAX over the cones of all ifs and the circuit-wide peak of live registers; the controller may allocate differently",
+  "a vector takes the elementwise MAX over the cones of all ifs and the circuit-wide peak of live registers; the backend may count differently",
   "PASS needs domination in ALL dimensions, so many realistic circuits are UNCERTAIN; that is intended (conservative)"
  ],
  "probes": [

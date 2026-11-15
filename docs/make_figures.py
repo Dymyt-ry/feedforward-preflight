@@ -74,7 +74,7 @@ def fig_latency(theme):
     nudge = {"XORC15": -0.9, "XORT15": 0.9}
     for k, v in pts.items():
         ax.errorbar(ops[k] + nudge.get(k, 0), v["huber"], yerr=v["se"], fmt="o", color=c["acc"], ms=6, capsize=3, lw=1.4)
-        ax.annotate(k, (ops[k] + nudge.get(k, 0), v["huber"]), textcoords="offset points", xytext=(6, -12 if k == "XORT15" else 6), fontsize=8, color=c["fg"])
+        ax.annotate(k, (ops[k] + nudge.get(k, 0), v["huber"]), textcoords="offset points", xytext={"XORT15": (6, -12), "POP8": (-34, 7)}.get(k, (6, 6)), fontsize=8, color=c["fg"])
     ax.set_xlim(0, 70)
     ax.set_ylim(0, 2400)
     ax.set_xlabel("operations in the stored expression")
@@ -150,8 +150,8 @@ def fig_fixpack(theme):
         ax.text(x + 2.7, y + 3.25, f"G{i}", ha="center", va="center", fontsize=7.5)
     ax.text(19, 45.5, "12 registers of 8 bits", ha="center", fontsize=10)
     ax.text(19, 17, "FAIL: error 6057 (B_R12x8c)", ha="center", fontsize=9.5, color=c["rej"])
-    ax.add_patch(FancyArrowPatch((41, 36), (55, 36), arrowstyle="-|>", mutation_scale=16, color=c["fg"], lw=1.4))
-    ax.text(48, 39, "dccheck --fix-pack", ha="center", fontsize=8)
+    ax.add_patch(FancyArrowPatch((40, 36), (54, 36), arrowstyle="-|>", mutation_scale=16, color=c["fg"], lw=1.4))
+    ax.text(47.2, 39.2, "dccheck --fix-pack", ha="center", fontsize=7.5)
     for k in range(3):
         y = 38 - k * 10.5
         ax.add_patch(FancyBboxPatch((60, y - 3.5), 38, 7.4, boxstyle="round,pad=0.1,rounding_size=0.8", fc="none", ec=c["acc"], lw=1.5))

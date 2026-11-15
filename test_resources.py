@@ -257,7 +257,8 @@ def test_readme_dates_match_measured_dates():
     meta = json.load(open(os.path.join(HERE, "data", "run_metadata.json")))
     dates = {p["measured_date"] for p in d["probes"].values()} if isinstance(d.get("probes"), dict) else {p["measured_date"] for p in d["probes"]}
     for k, r in meta["rounds"].items():
-        dates |= set(re.findall(r"\d{4}-\d\d-\d\d", r.get("submitted_local", "")))
+        for ts in (r.get("window_utc") or []):                       # UTC dates (submitted_local can fall on the next local day)
+            dates |= set(re.findall(r"\d{4}-\d\d-\d\d", ts or ""))
         dates |= {m.replace("_", "-") for m in re.findall(r"\d{4}_\d\d_\d\d", k)}
     assert len(dates) == 3, dates
     main_readme = open(os.path.join(HERE, "README.md")).read()          # the front page itself must state the dates

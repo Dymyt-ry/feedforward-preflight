@@ -1000,6 +1000,56 @@
    "qpy": "p2__P2_place.qpy",
    "circuit_source": "executed-transpiled",
    "rerun_since": null
+  },
+  {
+   "name": "p3m:P3_R10x2",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "p3m",
+   "measured_date": "2026-11-15",
+   "qpy": "p3m__P3_R10x2.qpy",
+   "circuit_source": "executed-transpiled (replication of the p1 register probes on the same backend about 8 h later)",
+   "rerun_since": null
+  },
+  {
+   "name": "p3m:P3_R11x2",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "p3m",
+   "measured_date": "2026-11-15",
+   "qpy": "p3m__P3_R11x2.qpy",
+   "circuit_source": "executed-transpiled (replication of the p1 register probes on the same backend about 8 h later)",
+   "rerun_since": null
+  },
+  {
+   "name": "p3m:P3_R12x2",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "p3m",
+   "measured_date": "2026-11-15",
+   "qpy": "p3m__P3_R12x2.qpy",
+   "circuit_source": "executed-transpiled (replication of the p1 register probes on the same backend about 8 h later)",
+   "rerun_since": null
+  },
+  {
+   "name": "p3m:P3_split6",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "p3m",
+   "measured_date": "2026-11-15",
+   "qpy": "p3m__P3_split6.qpy",
+   "circuit_source": "executed-transpiled (replication of the p1 register probes on the same backend about 8 h later)",
+   "rerun_since": null
+  },
+  {
+   "name": "p3m:P3_overlapNF",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "p3m",
+   "measured_date": "2026-11-15",
+   "qpy": "p3m__P3_overlapNF.qpy",
+   "circuit_source": "executed-transpiled (replication of the p1 register probes on the same backend about 8 h later)",
+   "rerun_since": null
   }
  ]
 }

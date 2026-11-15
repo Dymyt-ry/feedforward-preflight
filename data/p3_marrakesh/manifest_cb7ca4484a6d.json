@@ -1,0 +1,468 @@
+{
+ "plan_hash": "cb7ca4484a6d",
+ "tier": "p3",
+ "backend": "ibm_marrakesh",
+ "layout": null,
+ "probe_info": {},
+ "n_z": 12,
+ "n_x": 12,
+ "lat_k": 16,
+ "shots": 0,
+ "ref_D": [
+  0,
+  500,
+  1000,
+  2000,
+  3000
+ ],
+ "est_total_s": 10.0,
+ "quota_remaining_s": 35.0,
+ "submitted_at": "2026-11-16 01:23:23",
+ "predictions": "Pre-registered predictions, tier p3 (written to the manifest before submission; no external timestamp). P pass / F fail / ? threshold-dependent / - n.a.\nOp definition: op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.\nHypotheses (each fails iff its metric reaches a threshold; thresholds bracketed by earlier data):\n  H_cone: >= 12 distinct measured registers in the cone of the `if` (10 pass, 12 fail, 11 untested).\n  H_peak_live: registers (measured + register-valued stores) simultaneously live >= theta; bracket: R10x8 peak 11 pass, R12x2 peak 13 fail (register allocation pressure).\n  H_alloc (a model of acceptance behaviour: one shared budget of registers, the reading suggested by IBM's 6057 text): register pool = peak live registers (measured + register-valued stores) + temporaries needed by the largest stored expression (Ershov/Sethi-Ullman number of its tree: chain 2, balanced tree ~log2 leaves); fails iff pool >= theta, bracket 13 pass (R10x8) / 15 fail (R12x2); plus a separate pool of stored BIT variables: <= 257 pass, >= 512 fail (old W256/W512 jobs). Unifies the cone rule (measured registers live) and size failures only if long expressions need many temporaries; it does NOT by itself explain the old 103-op Shannon failure (small Ershov number), which this tier tests directly.\n  H_pool_LR (POST HOC, fitted on the first 25 p1 probes after seeing results; only these predictions are not blind): pool = peak live registers + left-to-right expression-stack need; pass <= 13, fail >= 15, 14 unresolved (R11x2 passed at 14; alloc8/ir104/dag104 failed at 14); bit-variable pool 257/512 as above. Known exceptions: old T1 and LUT85 (pool 12, failed) and W512 (bit pool).\n  H_total_reads: sum of distinct registers read over all stores in the cone >= theta; bracket 10 pass / 12 fail.\n  H_cone+store_ops / +cone_ops / +unique_nodes / +depth: H_cone plus a second trigger on max ops of one store (theta in (96,103]), total ops in the cone (theta in (101,104]), unique (hash-consed) nodes (same bracket as store ops), or expression depth (known pass up to 96).\n  H_historic: the old failing shapes (2026-11-06/09) still fail today; only defined for same-day replications.\nKnown facts: R10x8 pass, R12x8/R12x2 fail, S_12split6/chain/24split3x8 fail, S_10overlap pass (foldable), A96 single store pass, cone of 6 small stores (101 ops) pass; old failures: 103-op Shannon (1 register), 6 Shannon stores, CONE (3 registers, 173-op cone), W512 live bits, LUT85 K=8.\nprobe            regs peak tmp reads stores maxst coneops  uniq depth |      cone peak_live     alloc   pool_LR total_reads cone+store_ops cone+cone_ops cone+unique_nodes cone+depth  historic\nP3_R10x2           10   11   2    10      1     9       9     9     9 |         P         P         P         P         P         P         P         P         P         -\nP3_R11x2           11   12   2    11      1    10      10    10    10 |         ?         ?         ?         ?         ?         ?         ?         ?         ?         -\nP3_R12x2           12   13   2    12      1    11      11    11    11 |         F         F         F         F         F         F         F         F         F         -\nP3_split6          12   13   2    14      3     5      11    11     5 |         F         F         F         F         F         F         F         F         F         -\nP3_overlapNF       10   11   2    14      3     5      11    11     5 |         P         P         P         P         F         P         P         P         P         -\nAllocation-model discriminators: P1_C8bal (8 measured registers + 63-op balanced tree) vs P1_C8chain (same registers and ops, left chain): H_cone and every op-limit rule predict BOTH pass; H_alloc predicts bal fails and chain passes. P1_bal104 vs P1_chain104 (104 ops, 4 registers; modelled pool 11 vs 6, both below the allocation bracket): an op-count limit predicts both fail, H_alloc predicts both pass, so this pair separates H_alloc from an op limit; if only the balanced tree fails, temporaries matter beyond the modelled pool. Key discriminators: staged vs split6 (liveness vs distinct count: H_peak_live predicts staged pass, H_cone predicts fail); overlapNF (total reads vs cone, non-foldable); alloc4/8/12 (3 measured registers with many stored intermediates: H_cone passes all, H_peak_live fails alloc12, H_total_reads fails all); ir96/104/126 vs dag104 (op-count trigger and expanded vs unique counting); legacy replications (H_historic F, H_cone P for T1/LUT85/CONE/W512); R11x2 x3 (theta 11 vs 12, plus determinism of the outcome).",
+ "backend_info": {
+  "name": "ibm_marrakesh",
+  "processor_type": {
+   "family": "Heron",
+   "revision": "2"
+  },
+  "backend_version": "1.0.21",
+  "status": "active",
+  "operational": true,
+  "pending_jobs": 0,
+  "properties_last_update": "2026-11-13 19:22:56+02:00",
+  "read_at_utc": "2026-11-15T23:23:23Z"
+ },
+ "jobs": [
+  {
+   "name": "P3_R10x2",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "Z": {
+      "expected": 0,
+      "informative": false
+     },
+     "A": {
+      "expected": 1,
+      "informative": true
+     },
+     "B": {
+      "expected": 0,
+      "informative": false
+     },
+     "C": {
+      "expected": 1,
+      "informative": true
+     },
+     "D": {
+      "expected": 1,
+      "informative": true
+     }
+    },
+    "note": "cross-backend: 10 registers (expect accept)",
+    "kind": "UProg"
+   },
+   "metrics": {
+    "cone_regs": 10,
+    "peak_live": 11,
+    "peak_live_bits": 0,
+    "total_reads": 10,
+    "stores_in_cone": 1,
+    "cone_ops": 9,
+    "max_store_ops": 9,
+    "depth": 9,
+    "unique_nodes": 9,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "P3_R10x2_Z",
+    "P3_R10x2_A",
+    "P3_R10x2_B",
+    "P3_R10x2_C",
+    "P3_R10x2_D"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_cb7ca4484a6d/P3_R10x2.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "P3_R11x2",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    143,
+    34,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "Z": {
+      "expected": 0,
+      "informative": false
+     },
+     "A": {
+      "expected": 1,
+      "informative": true
+     },
+     "B": {
+      "expected": 0,
+      "informative": false
+     },
+     "C": {
+      "expected": 1,
+      "informative": true
+     },
+     "D": {
+      "expected": 1,
+      "informative": true
+     }
+    },
+    "note": "cross-backend: 11 registers",
+    "kind": "UProg"
+   },
+   "metrics": {
+    "cone_regs": 11,
+    "peak_live": 12,
+    "peak_live_bits": 0,
+    "total_reads": 11,
+    "stores_in_cone": 1,
+    "cone_ops": 10,
+    "max_store_ops": 10,
+    "depth": 10,
+    "unique_nodes": 10,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "P3_R11x2_Z",
+    "P3_R11x2_A",
+    "P3_R11x2_B",
+    "P3_R11x2_C",
+    "P3_R11x2_D"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_cb7ca4484a6d/P3_R11x2.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "P3_R12x2",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    143,
+    34,
+    43,
+    80,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "Z": {
+      "expected": 0,
+      "informative": false
+     },
+     "A": {
+      "expected": 1,
+      "informative": true
+     },
+     "B": {
+      "expected": 0,
+      "informative": false
+     },
+     "C": {
+      "expected": 1,
+      "informative": true
+     },
+     "D": {
+      "expected": 1,
+      "informative": true
+     }
+    },
+    "note": "cross-backend: 12 registers (expect 6057)",
+    "kind": "UProg"
+   },
+   "metrics": {
+    "cone_regs": 12,
+    "peak_live": 13,
+    "peak_live_bits": 0,
+    "total_reads": 12,
+    "stores_in_cone": 1,
+    "cone_ops": 11,
+    "max_store_ops": 11,
+    "depth": 11,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "P3_R12x2_Z",
+    "P3_R12x2_A",
+    "P3_R12x2_B",
+    "P3_R12x2_C",
+    "P3_R12x2_D"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_cb7ca4484a6d/P3_R12x2.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "P3_split6",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    143,
+    34,
+    43,
+    80,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "Z": {
+      "expected": 0,
+      "informative": false
+     },
+     "A": {
+      "expected": 1,
+      "informative": true
+     },
+     "B": {
+      "expected": 0,
+      "informative": false
+     },
+     "C": {
+      "expected": 1,
+      "informative": true
+     },
+     "D": {
+      "expected": 1,
+      "informative": true
+     }
+    },
+    "note": "12 registers measured first",
+    "kind": "UProg"
+   },
+   "metrics": {
+    "cone_regs": 12,
+    "peak_live": 13,
+    "peak_live_bits": 0,
+    "total_reads": 14,
+    "stores_in_cone": 3,
+    "cone_ops": 11,
+    "max_store_ops": 5,
+    "depth": 5,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "P3_split6_Z",
+    "P3_split6_A",
+    "P3_split6_B",
+    "P3_split6_C",
+    "P3_split6_D"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_cb7ca4484a6d/P3_split6.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "P3_overlapNF",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "Z": {
+      "expected": 0,
+      "informative": false
+     },
+     "A": {
+      "expected": 1,
+      "informative": true
+     },
+     "B": {
+      "expected": 0,
+      "informative": false
+     },
+     "C": {
+      "expected": 1,
+      "informative": true
+     },
+     "D": {
+      "expected": 1,
+      "informative": true
+     },
+     "E": {
+      "expected": 1,
+      "informative": true
+     }
+    },
+    "note": "cone 10, total reads 14, no cancellation (xor vs add)",
+    "kind": "UProg"
+   },
+   "metrics": {
+    "cone_regs": 10,
+    "peak_live": 11,
+    "peak_live_bits": 0,
+    "total_reads": 14,
+    "stores_in_cone": 3,
+    "cone_ops": 11,
+    "max_store_ops": 5,
+    "depth": 5,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "P3_overlapNF_Z",
+    "P3_overlapNF_A",
+    "P3_overlapNF_B",
+    "P3_overlapNF_C",
+    "P3_overlapNF_D",
+    "P3_overlapNF_E"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_cb7ca4484a6d/P3_overlapNF.qpy.bin",
+   "job_id": null,
+   "error": null
+  }
+ ],
+ "scrubbed": "job ids removed (kept privately by the authors)"
+}

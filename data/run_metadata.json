@@ -1376,6 +1376,80 @@
     }
    ],
    "charged_qpu_seconds": 32
+  },
+  "round5_p3_marrakesh_replication": {
+   "plan_hash": "cb7ca4484a6d",
+   "backend": "ibm_marrakesh",
+   "tier": "p3",
+   "submitted_local": "2026-11-16 01:23:23 (local, UTC+2; the UTC date is 2026-11-15)",
+   "n_jobs": 5,
+   "window_utc": [
+    "2026-11-15T23:23:24.710125Z",
+    "2026-11-15T23:23:35.060578Z"
+   ],
+   "charged_qpu_seconds": 11,
+   "status_counts": {
+    "DONE": 3,
+    "ERROR": 2
+   },
+   "note": "replication of the five register-rule probes of the ibm_fez p3 plan on ibm_marrakesh, about 7.5 to 8 hours after the p1/e1/e2 runs (15:15 to 15:58 UTC); same UTC date; properties_last_update unchanged (2026-11-13 19:22:56+02:00), so there is no evidence of a recalibration in between",
+   "jobs": [
+    {
+     "probe": "P3_R10x2",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T23:23:24.710125Z",
+     "running_utc": "2026-11-15T23:23:25.961959Z",
+     "finished_utc": "2026-11-15T23:23:30.522792Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P3_R11x2",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T23:23:25.287304Z",
+     "running_utc": "2026-11-15T23:23:26.902294Z",
+     "finished_utc": "2026-11-15T23:23:31.744696Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P3_R12x2",
+     "circuits": 5,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T23:23:25.892475Z",
+     "running_utc": "2026-11-15T23:23:28.322135Z",
+     "finished_utc": "2026-11-15T23:23:30.207555Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P3_split6",
+     "circuits": 5,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T23:23:26.496598Z",
+     "running_utc": "2026-11-15T23:23:29.889327Z",
+     "finished_utc": "2026-11-15T23:23:31.489261Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P3_overlapNF",
+     "circuits": 6,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T23:23:27.119876Z",
+     "running_utc": "2026-11-15T23:23:30.677674Z",
+     "finished_utc": "2026-11-15T23:23:35.060578Z",
+     "qpu_charge_seconds": 3
+    }
+   ]
   }
  },
  "backend": {
@@ -1389,11 +1463,11 @@
   "properties_last_update": "2026-11-13 19:22:56+02:00",
   "firmware": "not exposed by the API"
  },
- "rounds_note": "Every QPU job of the suite's rounds (including the accidental duplicate p1 execution and the p3 jobs still queued on ibm_fez when this was written), with status as read at generation time. Jobs of the 2026-11-06 exploration are not listed (their ids are only partly recorded). Job ids are not published (they are only resolvable by the IBM account that ran them).",
+ "rounds_note": "Every QPU job of the suite's rounds (including the accidental duplicate p1 execution and the p3 jobs still queued on ibm_fez when this was written), with status as read at generation time. Jobs of the 2026-11-06 exploration are not listed (their ids are only partly recorded). Job ids are not published (they are only resolvable by the IBM account that ran them). The ibm_marrakesh replication of the p3 register probes (round5_p3_marrakesh_replication) was added afterwards.",
  "totals": {
-  "jobs": 105,
-  "charged_qpu_seconds_all_plans": 268,
-  "generated_utc": "2026-11-15T16:26:02Z"
+  "jobs": 110,
+  "charged_qpu_seconds_all_plans": 279,
+  "generated_utc": "2026-11-15T23:25:02Z"
  },
  "backend_versions_read_after_the_runs": {
   "note": "read-only API reads at the time of generation (2026-11-15, after all runs); backend_version is the backend's reported version string, processor_type family/revision as reported",
@@ -1510,6 +1584,16 @@
      "revision": "2"
     },
     "read_at_utc": "2026-11-15T15:15:32Z",
+    "properties_last_update": "2026-11-13 19:22:56+02:00"
+   },
+   "cb7ca4484a6d": {
+    "backend": "ibm_marrakesh",
+    "backend_version": "1.0.21",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "read_at_utc": "2026-11-15T23:23:23Z",
     "properties_last_update": "2026-11-13 19:22:56+02:00"
    }
   }

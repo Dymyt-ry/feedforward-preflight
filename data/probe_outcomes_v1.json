@@ -1,0 +1,39 @@
+{
+ "backend": "ibm_marrakesh",
+ "date": "2026-11-15",
+ "source_note": "Validation round v1 (plan d04c4f8c8d43): out-of-sample test of the fitted pool models; assembled from RESULTS_QPU_v1.md (status and error code only).",
+ "rounds": {
+  "round4_v1": [
+   {
+    "probe": "V1_rc10_P3",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "V1_lc10_P3",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "V1_rc4_P9",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "V1_rc4_P10",
+    "kind": "PRG",
+    "status": "ERROR",
+    "error_code": 6057
+   },
+   {
+    "probe": "V1_rc12_P1",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   }
+  ]
+ }
+}

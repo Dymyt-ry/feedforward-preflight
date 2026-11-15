@@ -1,0 +1,27 @@
+{
+ "backend": "ibm_marrakesh",
+ "date": "2026-11-15",
+ "source_note": "Fix-pack v2 QPU verification (plan da19f073ba27): bit-level remap only (no shifts, no casts). Circuits: data/fixpack_candidates/ (QPY, patterns last/mid/all). All three probes accepted and computed correctly (every pattern above chance); results in data/RESULTS_QPU_fixpack_v2.md.",
+ "rounds": {
+  "fixpack_v2": [
+   {
+    "probe": "FP2_R12x8",
+    "kind": "FIX",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "FP2_S24",
+    "kind": "FIX",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "FP2_R12x2",
+    "kind": "FIX",
+    "status": "DONE",
+    "error_code": null
+   }
+  ]
+ }
+}

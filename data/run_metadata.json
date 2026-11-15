@@ -1,0 +1,1523 @@
+{
+ "software": {
+  "qiskit": "2.6.2",
+  "qiskit_ibm_runtime": "0.51.0",
+  "submission_api": "qiskit_ibm_runtime.executor_sampler.Sampler (client-side Sampler, available since qiskit-ibm-runtime 0.50.0); job mode, no session/batch (Open plan)"
+ },
+ "ibm_error_registry": {
+  "source": "https://quantum.cloud.ibm.com/docs/en/errors (read 2026-11-15)",
+  "codes": {
+   "6057": "The job requires more classical registers than the control hardware provides. If possible, break the job into multiple separate jobs or reduce the number of classical variables and measurement results used in subsequent conditions.",
+   "6073": "exceeds the memory limits of the classical control hardware",
+   "6116": "Control system resources exceeded (amount of control flow)"
+  }
+ },
+ "transpile": {
+  "optimization_level": 1,
+  "seed_transpiler": 7,
+  "note": "layout fixed by initial_layout; latency plans use pick_layout, register plans use best-readout qubits"
+ },
+ "rounds": {
+  "round1_minimal": {
+   "plan_hash": "c4189b3af6be",
+   "backend": "ibm_marrakesh",
+   "tier": "minimal",
+   "submitted_local": "2026-11-15 16:07:58",
+   "n_jobs": 12,
+   "window_utc": [
+    "2026-11-15T14:07:59.103186Z",
+    "2026-11-15T14:08:50.968781Z"
+   ],
+   "charged_qpu_seconds": 54,
+   "status_counts": {
+    "DONE": 11,
+    "ERROR": 1
+   },
+   "jobs": [
+    {
+     "probe": "XORC15",
+     "circuits": 6,
+     "shots": 3000,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:07:59.103186Z",
+     "running_utc": "2026-11-15T14:08:00.960118Z",
+     "finished_utc": "2026-11-15T14:08:12.106382Z",
+     "qpu_charge_seconds": 8
+    },
+    {
+     "probe": "XORT15",
+     "circuits": 6,
+     "shots": 3000,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:08:00.106224Z",
+     "running_utc": "2026-11-15T14:08:02.362857Z",
+     "finished_utc": "2026-11-15T14:08:19.604041Z",
+     "qpu_charge_seconds": 8
+    },
+    {
+     "probe": "SOUP63",
+     "circuits": 6,
+     "shots": 3000,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:08:00.825194Z",
+     "running_utc": "2026-11-15T14:08:03.247021Z",
+     "finished_utc": "2026-11-15T14:08:27.310824Z",
+     "qpu_charge_seconds": 8
+    },
+    {
+     "probe": "POP8",
+     "circuits": 6,
+     "shots": 3000,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:08:01.61522Z",
+     "running_utc": "2026-11-15T14:08:04.121544Z",
+     "finished_utc": "2026-11-15T14:08:34.746627Z",
+     "qpu_charge_seconds": 8
+    },
+    {
+     "probe": "WVOTE27",
+     "circuits": 6,
+     "shots": 3000,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:08:02.368986Z",
+     "running_utc": "2026-11-15T14:08:05.148597Z",
+     "finished_utc": "2026-11-15T14:08:42.212339Z",
+     "qpu_charge_seconds": 8
+    },
+    {
+     "probe": "A84t_K1",
+     "circuits": 1,
+     "shots": 64,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:08:03.109217Z",
+     "running_utc": "2026-11-15T14:08:14.944589Z",
+     "finished_utc": "2026-11-15T14:08:43.665557Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "A84t_K8",
+     "circuits": 1,
+     "shots": 64,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:08:03.811917Z",
+     "running_utc": "2026-11-15T14:08:23.981137Z",
+     "finished_utc": "2026-11-15T14:08:44.406385Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "A96t_K1",
+     "circuits": 1,
+     "shots": 64,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:08:04.443838Z",
+     "running_utc": "2026-11-15T14:08:30.220514Z",
+     "finished_utc": "2026-11-15T14:08:45.494547Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "A96c_K1",
+     "circuits": 1,
+     "shots": 64,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:08:05.029519Z",
+     "running_utc": "2026-11-15T14:08:37.943818Z",
+     "finished_utc": "2026-11-15T14:08:46.587998Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "C3x30",
+     "circuits": 1,
+     "shots": 64,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:08:05.751046Z",
+     "running_utc": "2026-11-15T14:08:45.260224Z",
+     "finished_utc": "2026-11-15T14:08:49.478294Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "C6x16",
+     "circuits": 1,
+     "shots": 64,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:08:06.507589Z",
+     "running_utc": "2026-11-15T14:08:46.916626Z",
+     "finished_utc": "2026-11-15T14:08:50.968781Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "R12x8",
+     "circuits": 1,
+     "shots": 64,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T14:08:07.163425Z",
+     "running_utc": "2026-11-15T14:08:47.966875Z",
+     "finished_utc": "2026-11-15T14:08:49.375327Z",
+     "qpu_charge_seconds": 2
+    }
+   ]
+  },
+  "round2_regbisect": {
+   "plan_hash": "ef2d74ac0e55",
+   "backend": "ibm_marrakesh",
+   "tier": "regbisect",
+   "submitted_local": "2026-11-15 16:14:44",
+   "n_jobs": 9,
+   "window_utc": [
+    "2026-11-15T14:14:45.454836Z",
+    "2026-11-15T14:15:01.733742Z"
+   ],
+   "charged_qpu_seconds": 18,
+   "status_counts": {
+    "DONE": 7,
+    "ERROR": 2
+   },
+   "jobs": [
+    {
+     "probe": "B_R4x8",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:14:45.454836Z",
+     "running_utc": "2026-11-15T14:14:47.40508Z",
+     "finished_utc": "2026-11-15T14:14:52.191596Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "B_R6x8",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:14:46.079735Z",
+     "running_utc": "2026-11-15T14:14:48.693263Z",
+     "finished_utc": "2026-11-15T14:14:52.886768Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "B_R8x8",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:14:46.909339Z",
+     "running_utc": "2026-11-15T14:14:49.516944Z",
+     "finished_utc": "2026-11-15T14:14:54.143414Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "B_R10x8",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:14:47.6507Z",
+     "running_utc": "2026-11-15T14:14:50.436402Z",
+     "finished_utc": "2026-11-15T14:14:55.018749Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "B_R12x8c",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T14:14:48.350619Z",
+     "running_utc": "2026-11-15T14:14:50.972929Z",
+     "finished_utc": "2026-11-15T14:14:52.677657Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "B_R6x16",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:14:49.033773Z",
+     "running_utc": "2026-11-15T14:14:55.022028Z",
+     "finished_utc": "2026-11-15T14:14:59.124114Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "B_R3x32",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:14:49.780336Z",
+     "running_utc": "2026-11-15T14:14:55.713146Z",
+     "finished_utc": "2026-11-15T14:15:00.418799Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "B_R12x2",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T14:14:50.444814Z",
+     "running_utc": "2026-11-15T14:14:56.477341Z",
+     "finished_utc": "2026-11-15T14:14:58.503748Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "B_R12x8u",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:14:51.046441Z",
+     "running_utc": "2026-11-15T14:14:57.443875Z",
+     "finished_utc": "2026-11-15T14:15:01.733742Z",
+     "qpu_charge_seconds": 2
+    }
+   ]
+  },
+  "round3_split": {
+   "plan_hash": "138f38fc85af",
+   "backend": "ibm_marrakesh",
+   "tier": "split",
+   "submitted_local": "2026-11-15 16:28:50",
+   "n_jobs": 5,
+   "window_utc": [
+    "2026-11-15T14:28:50.997742Z",
+    "2026-11-15T14:28:59.652294Z"
+   ],
+   "charged_qpu_seconds": 10,
+   "status_counts": {
+    "DONE": 1,
+    "ERROR": 4
+   },
+   "jobs": [
+    {
+     "probe": "S_12split6",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T14:28:50.997742Z",
+     "running_utc": "2026-11-15T14:28:52.794895Z",
+     "finished_utc": "2026-11-15T14:28:54.28507Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "S_24split3x8",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T14:28:51.723202Z",
+     "running_utc": "2026-11-15T14:28:53.583526Z",
+     "finished_utc": "2026-11-15T14:28:55.137702Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "S_12chain",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T14:28:52.371042Z",
+     "running_utc": "2026-11-15T14:28:54.44034Z",
+     "finished_utc": "2026-11-15T14:28:55.85244Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "S_10overlap",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T14:28:53.066212Z",
+     "running_utc": "2026-11-15T14:28:55.21992Z",
+     "finished_utc": "2026-11-15T14:28:59.652294Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "S_R12x2c",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T14:28:53.769204Z",
+     "running_utc": "2026-11-15T14:28:55.942816Z",
+     "finished_utc": "2026-11-15T14:28:57.477487Z",
+     "qpu_charge_seconds": 2
+    }
+   ]
+  },
+  "round4_p1_runA_accidental_duplicate": {
+   "plan_hash": "287baa4d87af",
+   "backend": "ibm_marrakesh",
+   "tier": "p1",
+   "submitted_local": "2026-11-15 17:14:59 local (run A, recovered from job list)",
+   "n_jobs": 25,
+   "window_utc": [
+    "2026-11-15T15:14:59.839634Z",
+    "2026-11-15T15:15:41.598499Z"
+   ],
+   "charged_qpu_seconds": 52,
+   "status_counts": {
+    "DONE": 12,
+    "ERROR": 13
+   },
+   "jobs": [
+    {
+     "probe": "P1_R11x2_a",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:14:59.839634Z",
+     "running_utc": "2026-11-15T15:15:01.242033Z",
+     "finished_utc": "2026-11-15T15:15:07.437686Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R11x2_b",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:00.647908Z",
+     "running_utc": "2026-11-15T15:15:02.577113Z",
+     "finished_utc": "2026-11-15T15:15:08.33945Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R11x2_c",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:01.331298Z",
+     "running_utc": "2026-11-15T15:15:04.752078Z",
+     "finished_utc": "2026-11-15T15:15:09.453069Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R10x8_a",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:02.306747Z",
+     "running_utc": "2026-11-15T15:15:05.514678Z",
+     "finished_utc": "2026-11-15T15:15:10.832695Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R12x2_a",
+     "circuits": 5,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:03.073653Z",
+     "running_utc": "2026-11-15T15:15:06.31787Z",
+     "finished_utc": "2026-11-15T15:15:07.849811Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R10x8_b",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:03.852037Z",
+     "running_utc": "2026-11-15T15:15:10.7377Z",
+     "finished_utc": "2026-11-15T15:15:14.999579Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R12x2_b",
+     "circuits": 5,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:04.445614Z",
+     "running_utc": "2026-11-15T15:15:12.549459Z",
+     "finished_utc": "2026-11-15T15:15:14.373278Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_overlapNF",
+     "circuits": 6,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:05.041692Z",
+     "running_utc": "2026-11-15T15:15:13.623104Z",
+     "finished_utc": "2026-11-15T15:15:24.891171Z",
+     "qpu_charge_seconds": 3
+    },
+    {
+     "probe": "P1_split6",
+     "circuits": 5,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:05.702795Z",
+     "running_utc": "2026-11-15T15:15:14.28699Z",
+     "finished_utc": "2026-11-15T15:15:16.032876Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_staged",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:06.310755Z",
+     "running_utc": "2026-11-15T15:15:17.128706Z",
+     "finished_utc": "2026-11-15T15:15:26.337788Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_alloc4",
+     "circuits": 6,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:06.940661Z",
+     "running_utc": "2026-11-15T15:15:18.102043Z",
+     "finished_utc": "2026-11-15T15:15:27.77175Z",
+     "qpu_charge_seconds": 3
+    },
+    {
+     "probe": "P1_alloc8",
+     "circuits": 6,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:07.546381Z",
+     "running_utc": "2026-11-15T15:15:19.06461Z",
+     "finished_utc": "2026-11-15T15:15:21.010569Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_alloc12",
+     "circuits": 6,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:08.298235Z",
+     "running_utc": "2026-11-15T15:15:23.745263Z",
+     "finished_utc": "2026-11-15T15:15:25.526989Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_ir96",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:08.874647Z",
+     "running_utc": "2026-11-15T15:15:27.162903Z",
+     "finished_utc": "2026-11-15T15:15:31.310137Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_ir104",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:09.461095Z",
+     "running_utc": "2026-11-15T15:15:27.956829Z",
+     "finished_utc": "2026-11-15T15:15:29.573319Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_ir126",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:10.08184Z",
+     "running_utc": "2026-11-15T15:15:29.272536Z",
+     "finished_utc": "2026-11-15T15:15:30.944816Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_dag104",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:10.702267Z",
+     "running_utc": "2026-11-15T15:15:30.058794Z",
+     "finished_utc": "2026-11-15T15:15:31.742177Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_bal104",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:11.484854Z",
+     "running_utc": "2026-11-15T15:15:31.012967Z",
+     "finished_utc": "2026-11-15T15:15:35.169281Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_chain104",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:12.061379Z",
+     "running_utc": "2026-11-15T15:15:32.171621Z",
+     "finished_utc": "2026-11-15T15:15:36.201903Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_C8bal",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:12.629019Z",
+     "running_utc": "2026-11-15T15:15:33.750348Z",
+     "finished_utc": "2026-11-15T15:15:35.390297Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_C8chain",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:13.295373Z",
+     "running_utc": "2026-11-15T15:15:34.454651Z",
+     "finished_utc": "2026-11-15T15:15:38.579641Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_old_T1",
+     "circuits": 1,
+     "shots": 100,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:13.85262Z",
+     "running_utc": "2026-11-15T15:15:35.212899Z",
+     "finished_utc": "2026-11-15T15:15:36.738254Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_old_CONE",
+     "circuits": 1,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:14.39848Z",
+     "running_utc": "2026-11-15T15:15:38.528537Z",
+     "finished_utc": "2026-11-15T15:15:40.162781Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_old_LUT85K8",
+     "circuits": 5,
+     "shots": 100,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:15.043544Z",
+     "running_utc": "2026-11-15T15:15:39.286354Z",
+     "finished_utc": "2026-11-15T15:15:41.185993Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_old_W512",
+     "circuits": 1,
+     "shots": 100,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:15.696704Z",
+     "running_utc": "2026-11-15T15:15:40.059963Z",
+     "finished_utc": "2026-11-15T15:15:41.598499Z",
+     "qpu_charge_seconds": 2
+    }
+   ]
+  },
+  "round4_p1_runB": {
+   "plan_hash": "287baa4d87af",
+   "backend": "ibm_marrakesh",
+   "tier": "p1",
+   "submitted_local": "2026-11-15 17:15:31",
+   "n_jobs": 25,
+   "window_utc": [
+    "2026-11-15T15:15:32.912034Z",
+    "2026-11-15T15:16:12.198941Z"
+   ],
+   "charged_qpu_seconds": 52,
+   "status_counts": {
+    "DONE": 12,
+    "ERROR": 13
+   },
+   "jobs": [
+    {
+     "probe": "P1_R11x2_a",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:32.912034Z",
+     "running_utc": "2026-11-15T15:15:40.732151Z",
+     "finished_utc": "2026-11-15T15:15:44.93297Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R11x2_b",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:33.514105Z",
+     "running_utc": "2026-11-15T15:15:41.753166Z",
+     "finished_utc": "2026-11-15T15:15:46.132158Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R11x2_c",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:34.143773Z",
+     "running_utc": "2026-11-15T15:15:42.920313Z",
+     "finished_utc": "2026-11-15T15:15:47.42944Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R10x8_a",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:34.817081Z",
+     "running_utc": "2026-11-15T15:15:44.014154Z",
+     "finished_utc": "2026-11-15T15:15:48.801452Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R12x2_a",
+     "circuits": 5,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:35.802597Z",
+     "running_utc": "2026-11-15T15:15:44.720959Z",
+     "finished_utc": "2026-11-15T15:15:46.379964Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R10x8_b",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:36.494036Z",
+     "running_utc": "2026-11-15T15:15:47.535203Z",
+     "finished_utc": "2026-11-15T15:15:51.872804Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_R12x2_b",
+     "circuits": 5,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:37.115612Z",
+     "running_utc": "2026-11-15T15:15:48.981004Z",
+     "finished_utc": "2026-11-15T15:15:50.712076Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_overlapNF",
+     "circuits": 6,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:37.750114Z",
+     "running_utc": "2026-11-15T15:15:49.784635Z",
+     "finished_utc": "2026-11-15T15:15:54.185373Z",
+     "qpu_charge_seconds": 3
+    },
+    {
+     "probe": "P1_split6",
+     "circuits": 5,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:38.391133Z",
+     "running_utc": "2026-11-15T15:15:50.582576Z",
+     "finished_utc": "2026-11-15T15:15:52.177216Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_staged",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:39.003506Z",
+     "running_utc": "2026-11-15T15:15:51.587479Z",
+     "finished_utc": "2026-11-15T15:15:56.236365Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_alloc4",
+     "circuits": 6,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:39.727736Z",
+     "running_utc": "2026-11-15T15:15:53.394345Z",
+     "finished_utc": "2026-11-15T15:15:57.743912Z",
+     "qpu_charge_seconds": 3
+    },
+    {
+     "probe": "P1_alloc8",
+     "circuits": 6,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:40.378014Z",
+     "running_utc": "2026-11-15T15:15:54.952541Z",
+     "finished_utc": "2026-11-15T15:15:56.812283Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_alloc12",
+     "circuits": 6,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:40.979081Z",
+     "running_utc": "2026-11-15T15:15:55.780301Z",
+     "finished_utc": "2026-11-15T15:15:57.578055Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_ir96",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:41.601199Z",
+     "running_utc": "2026-11-15T15:15:56.957234Z",
+     "finished_utc": "2026-11-15T15:16:01.055898Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_ir104",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:42.145904Z",
+     "running_utc": "2026-11-15T15:15:59.024228Z",
+     "finished_utc": "2026-11-15T15:16:00.715767Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_ir126",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:42.720529Z",
+     "running_utc": "2026-11-15T15:15:59.873491Z",
+     "finished_utc": "2026-11-15T15:16:01.34544Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_dag104",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:43.324824Z",
+     "running_utc": "2026-11-15T15:16:00.671035Z",
+     "finished_utc": "2026-11-15T15:16:02.203124Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_bal104",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:43.869305Z",
+     "running_utc": "2026-11-15T15:16:01.798905Z",
+     "finished_utc": "2026-11-15T15:16:06.088623Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_chain104",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:44.471688Z",
+     "running_utc": "2026-11-15T15:16:03.732205Z",
+     "finished_utc": "2026-11-15T15:16:08.18362Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_C8bal",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:45.064341Z",
+     "running_utc": "2026-11-15T15:16:04.510567Z",
+     "finished_utc": "2026-11-15T15:16:05.932255Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_C8chain",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:15:45.651222Z",
+     "running_utc": "2026-11-15T15:16:05.265365Z",
+     "finished_utc": "2026-11-15T15:16:09.436063Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_old_T1",
+     "circuits": 1,
+     "shots": 100,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:46.199464Z",
+     "running_utc": "2026-11-15T15:16:06.040648Z",
+     "finished_utc": "2026-11-15T15:16:07.433015Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_old_CONE",
+     "circuits": 1,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:46.735935Z",
+     "running_utc": "2026-11-15T15:16:08.853518Z",
+     "finished_utc": "2026-11-15T15:16:10.455486Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_old_LUT85K8",
+     "circuits": 5,
+     "shots": 100,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:47.298169Z",
+     "running_utc": "2026-11-15T15:16:09.88932Z",
+     "finished_utc": "2026-11-15T15:16:11.758747Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P1_old_W512",
+     "circuits": 1,
+     "shots": 100,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:15:48.093994Z",
+     "running_utc": "2026-11-15T15:16:10.610551Z",
+     "finished_utc": "2026-11-15T15:16:12.198941Z",
+     "qpu_charge_seconds": 2
+    }
+   ]
+  },
+  "round4_p2": {
+   "plan_hash": "cfa6f9d61ba5",
+   "backend": "ibm_marrakesh",
+   "tier": "p2",
+   "submitted_local": "2026-11-15 17:31:56",
+   "n_jobs": 1,
+   "window_utc": [
+    "2026-11-15T15:31:58.28761Z",
+    "2026-11-15T15:32:57.327256Z"
+   ],
+   "charged_qpu_seconds": 12,
+   "status_counts": {
+    "DONE": 1
+   },
+   "jobs": [
+    {
+     "probe": "P2_place",
+     "circuits": 10,
+     "shots": 3000,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:31:58.28761Z",
+     "running_utc": "2026-11-15T15:31:59.495279Z",
+     "finished_utc": "2026-11-15T15:32:57.327256Z",
+     "qpu_charge_seconds": 12
+    }
+   ]
+  },
+  "round4_p3_ibm_fez": {
+   "plan_hash": "faf87bdc3fa6",
+   "backend": "ibm_fez",
+   "tier": "p3",
+   "submitted_local": "2026-11-15 17:31:45",
+   "n_jobs": 5,
+   "window_utc": [
+    "2026-11-15T15:31:46.339651Z",
+    null
+   ],
+   "charged_qpu_seconds": 0,
+   "status_counts": {
+    "QUEUED": 5
+   },
+   "jobs": [
+    {
+     "probe": "P3_R10x2",
+     "circuits": 5,
+     "shots": 200,
+     "status": "QUEUED",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:31:46.339651Z",
+     "running_utc": null,
+     "finished_utc": null,
+     "qpu_charge_seconds": null
+    },
+    {
+     "probe": "P3_R11x2",
+     "circuits": 5,
+     "shots": 200,
+     "status": "QUEUED",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:31:46.905095Z",
+     "running_utc": null,
+     "finished_utc": null,
+     "qpu_charge_seconds": null
+    },
+    {
+     "probe": "P3_R12x2",
+     "circuits": 5,
+     "shots": 200,
+     "status": "QUEUED",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:31:47.510206Z",
+     "running_utc": null,
+     "finished_utc": null,
+     "qpu_charge_seconds": null
+    },
+    {
+     "probe": "P3_split6",
+     "circuits": 5,
+     "shots": 200,
+     "status": "QUEUED",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:31:48.152679Z",
+     "running_utc": null,
+     "finished_utc": null,
+     "qpu_charge_seconds": null
+    },
+    {
+     "probe": "P3_overlapNF",
+     "circuits": 6,
+     "shots": 200,
+     "status": "QUEUED",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:31:48.851102Z",
+     "running_utc": null,
+     "finished_utc": null,
+     "qpu_charge_seconds": null
+    }
+   ]
+  },
+  "round4_v1": {
+   "plan_hash": "d04c4f8c8d43",
+   "backend": "ibm_marrakesh",
+   "tier": "v1",
+   "submitted_local": "2026-11-15 17:38:17",
+   "n_jobs": 5,
+   "window_utc": [
+    "2026-11-15T15:38:18.065534Z",
+    "2026-11-15T15:39:13.397002Z"
+   ],
+   "charged_qpu_seconds": 10,
+   "status_counts": {
+    "DONE": 4,
+    "ERROR": 1
+   },
+   "jobs": [
+    {
+     "probe": "V1_rc10_P3",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:38:18.065534Z",
+     "running_utc": "2026-11-15T15:38:19.535632Z",
+     "finished_utc": "2026-11-15T15:39:04.103587Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "V1_lc10_P3",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:38:18.640788Z",
+     "running_utc": "2026-11-15T15:38:20.597676Z",
+     "finished_utc": "2026-11-15T15:39:05.342984Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "V1_rc4_P9",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:38:19.777438Z",
+     "running_utc": "2026-11-15T15:38:21.611397Z",
+     "finished_utc": "2026-11-15T15:39:06.564558Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "V1_rc4_P10",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:38:20.452201Z",
+     "running_utc": "2026-11-15T15:39:07.857309Z",
+     "finished_utc": "2026-11-15T15:39:09.283996Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "V1_rc12_P1",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:38:21.064164Z",
+     "running_utc": "2026-11-15T15:39:09.135114Z",
+     "finished_utc": "2026-11-15T15:39:13.397002Z",
+     "qpu_charge_seconds": 2
+    }
+   ]
+  },
+  "round4_e1": {
+   "plan_hash": "7b05c7152abf",
+   "backend": "ibm_marrakesh",
+   "tier": "e1",
+   "submitted_local": "2026-11-15 17:48:38",
+   "n_jobs": 5,
+   "window_utc": [
+    "2026-11-15T15:48:39.876181Z",
+    "2026-11-15T15:51:55.665234Z"
+   ],
+   "charged_qpu_seconds": 14,
+   "status_counts": {
+    "DONE": 4,
+    "ERROR": 1
+   },
+   "jobs": [
+    {
+     "probe": "E1_wvote7",
+     "circuits": 7,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:48:39.876181Z",
+     "running_utc": "2026-11-15T15:48:57.286755Z",
+     "finished_utc": "2026-11-15T15:51:36.305789Z",
+     "qpu_charge_seconds": 3
+    },
+    {
+     "probe": "E1_syndrome6",
+     "circuits": 7,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:48:40.55449Z",
+     "running_utc": "2026-11-15T15:49:00.674639Z",
+     "finished_utc": "2026-11-15T15:51:38.136388Z",
+     "qpu_charge_seconds": 3
+    },
+    {
+     "probe": "E1_tele14",
+     "circuits": 7,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:48:41.248711Z",
+     "running_utc": "2026-11-15T15:49:01.977874Z",
+     "finished_utc": "2026-11-15T15:51:39.598769Z",
+     "qpu_charge_seconds": 3
+    },
+    {
+     "probe": "E1_twoif",
+     "circuits": 7,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:48:41.806092Z",
+     "running_utc": "2026-11-15T15:51:42.753958Z",
+     "finished_utc": "2026-11-15T15:51:48.320915Z",
+     "qpu_charge_seconds": 3
+    },
+    {
+     "probe": "E1_decode9",
+     "circuits": 7,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:48:42.434063Z",
+     "running_utc": "2026-11-15T15:51:53.523265Z",
+     "finished_utc": "2026-11-15T15:51:55.665234Z",
+     "qpu_charge_seconds": 2
+    }
+   ]
+  },
+  "round4_e2": {
+   "plan_hash": "33f8b03c64d9",
+   "backend": "ibm_marrakesh",
+   "tier": "e2",
+   "submitted_local": "2026-11-15 17:57:25",
+   "n_jobs": 3,
+   "window_utc": [
+    "2026-11-15T15:57:26.747175Z",
+    "2026-11-15T15:57:34.630938Z"
+   ],
+   "charged_qpu_seconds": 6,
+   "status_counts": {
+    "DONE": 2,
+    "ERROR": 1
+   },
+   "jobs": [
+    {
+     "probe": "E2_shan112",
+     "circuits": 2,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-15T15:57:26.747175Z",
+     "running_utc": "2026-11-15T15:57:28.270983Z",
+     "finished_utc": "2026-11-15T15:57:29.754715Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "E2_rc5_P9",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:57:27.364473Z",
+     "running_utc": "2026-11-15T15:57:29.369414Z",
+     "finished_utc": "2026-11-15T15:57:33.309698Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "E2_rc8_P5",
+     "circuits": 2,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:57:28.196447Z",
+     "running_utc": "2026-11-15T15:57:30.518275Z",
+     "finished_utc": "2026-11-15T15:57:34.630938Z",
+     "qpu_charge_seconds": 2
+    }
+   ]
+  },
+  "fixpack_v1": {
+   "plan_hash": "03b3cd042826",
+   "backend": "ibm_marrakesh",
+   "tier": "fixpack",
+   "submitted_local": "2026-11-15 17:24:18",
+   "n_jobs": 3,
+   "window_utc": [
+    "2026-11-15T15:24:19.411998Z",
+    "2026-11-15T15:25:16.100665Z"
+   ],
+   "charged_qpu_seconds": 2,
+   "status_counts": {
+    "DONE": 1,
+    "ERROR": 2
+   },
+   "jobs": [
+    {
+     "probe": "FP_R12x8",
+     "circuits": 3,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6066,
+     "created_utc": "2026-11-15T15:24:19.411998Z",
+     "running_utc": "2026-11-15T15:24:20.541823Z",
+     "finished_utc": "2026-11-15T15:24:22.553641Z",
+     "qpu_charge_seconds": 0
+    },
+    {
+     "probe": "FP_S24",
+     "circuits": 3,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6066,
+     "created_utc": "2026-11-15T15:24:20.032901Z",
+     "running_utc": "2026-11-15T15:24:21.94312Z",
+     "finished_utc": "2026-11-15T15:24:23.664565Z",
+     "qpu_charge_seconds": 0
+    },
+    {
+     "probe": "FP_B14x3",
+     "circuits": 3,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T15:24:20.623671Z",
+     "running_utc": "2026-11-15T15:24:25.564976Z",
+     "finished_utc": "2026-11-15T15:25:16.100665Z",
+     "qpu_charge_seconds": 2
+    }
+   ]
+  },
+  "fixpack_v2": {
+   "plan_hash": "da19f073ba27",
+   "backend": "ibm_marrakesh",
+   "tier": "fixpack",
+   "submitted_local": "2026-11-15 18:12:31",
+   "n_jobs": 3,
+   "window_utc": [
+    "2026-11-15T16:12:32.098951Z",
+    "2026-11-15T16:12:40.198605Z"
+   ],
+   "charged_qpu_seconds": 6,
+   "status_counts": {
+    "DONE": 3
+   },
+   "jobs": [
+    {
+     "probe": "FP2_R12x8",
+     "circuits": 3,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T16:12:32.098951Z",
+     "running_utc": "2026-11-15T16:12:33.664717Z",
+     "finished_utc": "2026-11-15T16:12:38.250112Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "FP2_S24",
+     "circuits": 3,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T16:12:32.719097Z",
+     "running_utc": "2026-11-15T16:12:34.463769Z",
+     "finished_utc": "2026-11-15T16:12:38.918351Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "FP2_R12x2",
+     "circuits": 3,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-15T16:12:33.356854Z",
+     "running_utc": "2026-11-15T16:12:35.297062Z",
+     "finished_utc": "2026-11-15T16:12:40.198605Z",
+     "qpu_charge_seconds": 2
+    }
+   ]
+  },
+  "legacy_stopwatch_2026_11_09": {
+   "backend": "ibm_marrakesh",
+   "n_jobs": 4,
+   "jobs": [
+    {
+     "probe": "NOIF",
+     "status": "DONE",
+     "created_utc": "2026-11-09T07:30:36.603033Z",
+     "finished_utc": "2026-11-09T07:31:41.985226Z",
+     "qpu_charge_seconds": 8
+    },
+    {
+     "probe": "SPARSE2",
+     "status": "DONE",
+     "created_utc": "2026-11-09T07:59:10.451632Z",
+     "finished_utc": "2026-11-09T07:59:27.935492Z",
+     "qpu_charge_seconds": 8
+    },
+    {
+     "probe": "SPARSE5",
+     "status": "DONE",
+     "created_utc": "2026-11-09T07:59:11.187151Z",
+     "finished_utc": "2026-11-09T07:59:56.911126Z",
+     "qpu_charge_seconds": 8
+    },
+    {
+     "probe": "WVOTE",
+     "status": "DONE",
+     "created_utc": "2026-11-09T07:30:36.804763Z",
+     "finished_utc": "2026-11-09T07:31:48.889812Z",
+     "qpu_charge_seconds": 8
+    }
+   ],
+   "charged_qpu_seconds": 32
+  }
+ },
+ "backend": {
+  "name": "ibm_marrakesh",
+  "processor_type": {
+   "family": "Heron",
+   "revision": "2"
+  },
+  "backend_version": "1.0.21",
+  "num_qubits": 156,
+  "properties_last_update": "2026-11-13 19:22:56+02:00",
+  "firmware": "not exposed by the API"
+ },
+ "rounds_note": "Every QPU job of the suite's rounds (including the accidental duplicate p1 execution and the p3 jobs still queued on ibm_fez when this was written), with status as read at generation time. Jobs of the 2026-11-06 exploration are not listed (their ids are only partly recorded). Job ids are not published (they are only resolvable by the IBM account that ran them).",
+ "totals": {
+  "jobs": 105,
+  "charged_qpu_seconds_all_plans": 268,
+  "generated_utc": "2026-11-15T16:26:02Z"
+ },
+ "backend_versions_read_after_the_runs": {
+  "note": "read-only API reads at the time of generation (2026-11-15, after all runs); backend_version is the backend's reported version string, processor_type family/revision as reported",
+  "backends": {
+   "ibm_marrakesh": {
+    "name": "ibm_marrakesh",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "backend_version": "1.0.21",
+    "status": "active",
+    "operational": true,
+    "pending_jobs": 1,
+    "properties_last_update": "2026-11-13 19:22:56+02:00",
+    "read_at_utc": "2026-11-15T17:36:48Z"
+   },
+   "ibm_fez": {
+    "name": "ibm_fez",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "backend_version": "1.3.37",
+    "status": "maintenance",
+    "operational": true,
+    "pending_jobs": 91,
+    "properties_last_update": "2026-11-13 18:27:59+02:00",
+    "read_at_utc": "2026-11-15T17:36:50Z"
+   },
+   "ibm_kingston": {
+    "name": "ibm_kingston",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "backend_version": "1.0.0",
+    "status": "active",
+    "operational": true,
+    "pending_jobs": 277,
+    "properties_last_update": "2026-11-13 16:57:10+02:00",
+    "read_at_utc": "2026-11-15T17:36:53Z"
+   }
+  }
+ },
+ "backend_versions_recorded_at_submission": {
+  "note": "round 4 manifests (p1, v1, e1, e2, p2, p3) stored the backend info read just before submission; rounds 1-3 and the fix-pack runs did not",
+  "plans": {
+   "33f8b03c64d9": {
+    "backend": "ibm_marrakesh",
+    "backend_version": "1.0.21",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "read_at_utc": "2026-11-15T15:57:26Z",
+    "properties_last_update": "2026-11-13 19:22:56+02:00"
+   },
+   "cfa6f9d61ba5": {
+    "backend": "ibm_marrakesh",
+    "backend_version": "1.0.21",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "read_at_utc": "2026-11-15T15:31:57Z",
+    "properties_last_update": "2026-11-13 19:22:56+02:00"
+   },
+   "7b05c7152abf": {
+    "backend": "ibm_marrakesh",
+    "backend_version": "1.0.21",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "read_at_utc": "2026-11-15T15:48:39Z",
+    "properties_last_update": "2026-11-13 19:22:56+02:00"
+   },
+   "d04c4f8c8d43": {
+    "backend": "ibm_marrakesh",
+    "backend_version": "1.0.21",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "read_at_utc": "2026-11-15T15:38:17Z",
+    "properties_last_update": "2026-11-13 19:22:56+02:00"
+   },
+   "287baa4d87af": {
+    "backend": "ibm_marrakesh",
+    "backend_version": "1.0.21",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "read_at_utc": "2026-11-15T15:15:32Z",
+    "properties_last_update": "2026-11-13 19:22:56+02:00"
+   },
+   "faf87bdc3fa6": {
+    "backend": "ibm_fez",
+    "backend_version": "1.3.37",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "read_at_utc": "2026-11-15T15:31:45Z",
+    "properties_last_update": "2026-11-13 18:27:59+02:00"
+   },
+   "287baa4d87af_runA": {
+    "backend": "ibm_marrakesh",
+    "backend_version": "1.0.21",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "read_at_utc": "2026-11-15T15:15:32Z",
+    "properties_last_update": "2026-11-13 19:22:56+02:00"
+   }
+  }
+ },
+ "not_recorded": [
+  "controller firmware (not exposed by the API)",
+  "the calibration snapshot in force when each job ran (only the properties timestamp read at submission for round 4, and at generation otherwise)",
+  "the backend_version at job time for rounds 1-3 and the fix-pack runs (the same-day version read afterwards is shown above)",
+  "qiskit-ibm-runtime server-side compiler version"
+ ]
+}

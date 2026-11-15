@@ -1,0 +1,11 @@
+Pre-registered predictions for split tier. Known: pass up to 10 registers read by one store (R10x8), fail at 12; theta in (10, 12].
+H_store: 6057 iff some single store reads >= theta distinct registers (fan-in).
+H_cone: iff the dependency cone of the `if` reaches >= theta distinct MEASURED registers (stores flattened).
+H_store_cone: iff the SUM of distinct registers read over all stores >= theta (every read counts, incl. stores reading stores).
+probe         stores fanin_max  cone total_reads |  H_store  H_cone H_store_cone
+S_12split6         3         6    12          14 |        P       F            F
+S_24split3x8       4         8    24          27 |        P       F            F
+S_12chain          2         7    12          13 |        P       F            F
+S_10overlap        3         6    10          14 |        P       P            F
+S_R12x2c           1        12    12          12 |        F       F            F
+Decisive: S_12split6 / S_12chain / S_24split3x8 accepted => limit is per store (bypass works, scales to 24 registers); S_10overlap F with split6 accepted would point to total reads; S_10overlap P + split6 F => cone. S_R12x2c is the control (must fail 6057).

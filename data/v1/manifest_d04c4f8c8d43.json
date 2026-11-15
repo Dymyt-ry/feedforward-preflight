@@ -1,0 +1,446 @@
+{
+ "plan_hash": "d04c4f8c8d43",
+ "tier": "v1",
+ "backend": "ibm_marrakesh",
+ "layout": null,
+ "probe_info": {},
+ "n_z": 12,
+ "n_x": 12,
+ "lat_k": 16,
+ "shots": 0,
+ "ref_D": [
+  0,
+  500,
+  1000,
+  2000,
+  3000
+ ],
+ "est_total_s": 10.0,
+ "quota_remaining_s": 71.0,
+ "submitted_at": "2026-11-15 17:38:17",
+ "predictions": "Validation round v1: OUT-OF-SAMPLE test of resource models fitted on 80 probes (rounds 1-4 + reconstructable 2026-11-06 jobs; fit data sha256 prefix 3a50f30f1a538049, modelfit.py).\nRegistered before submission (no external timestamp). Outcome = accepted (P) or error 6057 (F). Counts are taken from the transpiled circuits (asserted equal to the builder).\nFrozen models:\n  M_w (weighted pool): fail iff 4*peak_live_registers + 5*left_to_right_stack_need >= 59  (fitted on 80 probes, 2 errors; pass max 58, fail min 59)\n  M_u (unweighted pool): fail iff peak_live + stack need >= 14 (best unweighted threshold, 9 errors)\n  M_peak (peak live registers): fail iff peak live registers >= 13 (13 errors)\n  M_cone (measured registers in cone): fail iff distinct measured registers in the cone >= 12 (15 errors, falsified by staged)\n  M_SU (Sethi-Ullman pool): fail iff peak live + Ershov number >= 15 (12 errors)\n  M_ops (op limit): fail iff a store has >= 103 ops or the cone >= 104 ops (falsified by bal104/chain104)\n  Known misfits of M_w: old 2026-11-06 T3 (6 stored BDD expressions in bit variables) and T3m predicted pass, observed fail; W512 handled by a separate bit-variable pool (>= 513 live stored bits).\nprobe          P   L  4P+5L  ops |     M_w     M_u  M_peak  M_cone    M_SU   M_ops\nV1_rc10_P3     3  10     62   11 |       F       P       P       P       P       P\nV1_lc10_P3     3   2     22   11 |       P       P       P       P       P       P\nV1_rc4_P9      9   4     56   11 |       P       P       P       P       P       P\nV1_rc4_P10    10   4     60   12 |       F       F       P       P       P       P\nV1_rc12_P1     1  12     64   12 |       F       P       P       P       P       P\nDecisive: V1_rc10_P3 and V1_rc12_P1 (only M_w predicts F; op, depth, cone, peak and Sethi-Ullman models predict pass); V1_lc10_P3 is the control with identical leaves and ops (all P); V1_rc4_P9 (score 56, predicted safe) and V1_rc4_P10 (score 60, predicted fail, margin 1) probe the boundary. A model is validated only if it predicts all 5; M_w's one-unit margin makes V1_rc4_P10 the weakest prediction.",
+ "backend_info": {
+  "name": "ibm_marrakesh",
+  "processor_type": {
+   "family": "Heron",
+   "revision": "2"
+  },
+  "backend_version": "1.0.21",
+  "status": "active",
+  "operational": true,
+  "pending_jobs": 0,
+  "properties_last_update": "2026-11-13 19:22:56+02:00",
+  "read_at_utc": "2026-11-15T15:38:17Z"
+ },
+ "jobs": [
+  {
+   "name": "V1_rc10_P3",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    143,
+    34,
+    43,
+    80,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "A": {
+      "expected": 1,
+      "informative": true,
+      "stability": 1.0
+     },
+     "B": {
+      "expected": 0,
+      "informative": true,
+      "stability": 0.75
+     }
+    },
+    "note": "3 measured registers x 8 bits, naive left-to-right stack need 10 (right-nested tail)",
+    "kind": "BProg"
+   },
+   "metrics": {
+    "cone_regs": 3,
+    "peak_live": 3,
+    "peak_live_bits": 1,
+    "total_reads": 3,
+    "stores_in_cone": 1,
+    "cone_ops": 11,
+    "max_store_ops": 11,
+    "depth": 9,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 3,
+    "temps_lr": 10
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "V1_rc10_P3_A",
+    "V1_rc10_P3_B"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_d04c4f8c8d43/V1_rc10_P3.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "V1_lc10_P3",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    143,
+    34,
+    43,
+    80,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "A": {
+      "expected": 1,
+      "informative": true,
+      "stability": 1.0
+     },
+     "B": {
+      "expected": 0,
+      "informative": true,
+      "stability": 0.833
+     }
+    },
+    "note": "3 measured registers x 8 bits, naive left-to-right stack need 2 (left comb control)",
+    "kind": "BProg"
+   },
+   "metrics": {
+    "cone_regs": 3,
+    "peak_live": 3,
+    "peak_live_bits": 1,
+    "total_reads": 3,
+    "stores_in_cone": 1,
+    "cone_ops": 11,
+    "max_store_ops": 11,
+    "depth": 11,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "V1_lc10_P3_A",
+    "V1_lc10_P3_B"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_d04c4f8c8d43/V1_lc10_P3.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "V1_rc4_P9",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    143,
+    34,
+    43,
+    80,
+    38,
+    70,
+    154,
+    46,
+    52,
+    104,
+    124,
+    152,
+    21,
+    45,
+    73,
+    129,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "A": {
+      "expected": 1,
+      "informative": true,
+      "stability": 1.0
+     },
+     "B": {
+      "expected": 0,
+      "informative": true,
+      "stability": 0.917
+     }
+    },
+    "note": "9 measured registers x 4 bits, naive left-to-right stack need 4 (right-nested tail)",
+    "kind": "BProg"
+   },
+   "metrics": {
+    "cone_regs": 9,
+    "peak_live": 9,
+    "peak_live_bits": 1,
+    "total_reads": 9,
+    "stores_in_cone": 1,
+    "cone_ops": 11,
+    "max_store_ops": 11,
+    "depth": 9,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 3,
+    "temps_lr": 4
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "V1_rc4_P9_A",
+    "V1_rc4_P9_B"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_d04c4f8c8d43/V1_rc4_P9.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "V1_rc4_P10",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    143,
+    34,
+    43,
+    80,
+    38,
+    70,
+    154,
+    46,
+    52,
+    104,
+    124,
+    152,
+    21,
+    45,
+    73,
+    129,
+    139,
+    92,
+    98,
+    149,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "A": {
+      "expected": 1,
+      "informative": true,
+      "stability": 1.0
+     },
+     "B": {
+      "expected": 0,
+      "informative": true,
+      "stability": 1.0
+     }
+    },
+    "note": "10 measured registers x 4 bits, naive left-to-right stack need 4 (right-nested tail)",
+    "kind": "BProg"
+   },
+   "metrics": {
+    "cone_regs": 10,
+    "peak_live": 10,
+    "peak_live_bits": 1,
+    "total_reads": 10,
+    "stores_in_cone": 1,
+    "cone_ops": 12,
+    "max_store_ops": 12,
+    "depth": 10,
+    "unique_nodes": 12,
+    "cond_reads": 1,
+    "temps": 3,
+    "temps_lr": 4
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "V1_rc4_P10_A",
+    "V1_rc4_P10_B"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_d04c4f8c8d43/V1_rc4_P10.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "V1_rc12_P1",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    143,
+    34,
+    43,
+    80,
+    38,
+    70,
+    154,
+    46,
+    52,
+    104,
+    124,
+    152,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "A": {
+      "expected": 1,
+      "informative": true,
+      "stability": 0.846
+     },
+     "B": {
+      "expected": 0,
+      "informative": true,
+      "stability": 1.0
+     }
+    },
+    "note": "1 measured registers x 32 bits, naive left-to-right stack need 12 (right-nested tail)",
+    "kind": "BProg"
+   },
+   "metrics": {
+    "cone_regs": 1,
+    "peak_live": 1,
+    "peak_live_bits": 1,
+    "total_reads": 1,
+    "stores_in_cone": 1,
+    "cone_ops": 12,
+    "max_store_ops": 12,
+    "depth": 11,
+    "unique_nodes": 12,
+    "cond_reads": 1,
+    "temps": 3,
+    "temps_lr": 12
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "V1_rc12_P1_A",
+    "V1_rc12_P1_B"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_d04c4f8c8d43/V1_rc12_P1.qpy.bin",
+   "job_id": null,
+   "error": null
+  }
+ ],
+ "envelope_data_counts_when_frozen": null,
+ "envelope_hash_when_frozen": "not recorded at the time (no hash was taken); counts above are from the registered predictions text",
+ "scrubbed": "job ids removed (not published)"
+}

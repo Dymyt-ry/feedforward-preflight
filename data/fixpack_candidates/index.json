@@ -1,0 +1,951 @@
+{
+ "note": "Fix-pack v2 packed circuits (bit-level remap only: no shifts, no casts) written by fixpack_qpu.py --local (logical, before transpilation; prepared inputs, measure_2). expected_out is the value of the `out` register. Originals are the suite probes B_R12x8c / S_24split3x8 / B_R12x2 with prepared inputs. The rejected v1 circuits (shift/cast reads) are in data/fixpack_candidates_v1/.",
+ "rules_id": "ibm_heron_r2_2026-11-15",
+ "candidates": [
+  {
+   "file": "FP2_R12x8_last_packed.qpy",
+   "probe": "FP2_R12x8",
+   "pattern": "last",
+   "expected_out": 1,
+   "note": "packed B_R12x8c, v2: 12 x 8-bit whole-register XOR expanded to a bit-level store of lane 0 -> 3 x 32-bit registers (rejected 6057 before packing)",
+   "groups": [
+    {
+     "name": "pk0",
+     "width": 32,
+     "members": [
+      {
+       "register": "G0",
+       "offset": 0,
+       "width": 8
+      },
+      {
+       "register": "G1",
+       "offset": 8,
+       "width": 8
+      },
+      {
+       "register": "G2",
+       "offset": 16,
+       "width": 8
+      },
+      {
+       "register": "G3",
+       "offset": 24,
+       "width": 8
+      }
+     ]
+    },
+    {
+     "name": "pk1",
+     "width": 32,
+     "members": [
+      {
+       "register": "G4",
+       "offset": 0,
+       "width": 8
+      },
+      {
+       "register": "G5",
+       "offset": 8,
+       "width": 8
+      },
+      {
+       "register": "G6",
+       "offset": 16,
+       "width": 8
+      },
+      {
+       "register": "G7",
+       "offset": 24,
+       "width": 8
+      }
+     ]
+    },
+    {
+     "name": "pk2",
+     "width": 32,
+     "members": [
+      {
+       "register": "G8",
+       "offset": 0,
+       "width": 8
+      },
+      {
+       "register": "G9",
+       "offset": 8,
+       "width": 8
+      },
+      {
+       "register": "G10",
+       "offset": 16,
+       "width": 8
+      },
+      {
+       "register": "G11",
+       "offset": 24,
+       "width": 8
+      }
+     ]
+    }
+   ],
+   "before": "FAIL",
+   "after": "PASS",
+   "cone_registers_after": 3,
+   "max_register_bits": 32
+  },
+  {
+   "file": "FP2_R12x8_mid_packed.qpy",
+   "probe": "FP2_R12x8",
+   "pattern": "mid",
+   "expected_out": 1,
+   "note": "packed B_R12x8c, v2: 12 x 8-bit whole-register XOR expanded to a bit-level store of lane 0 -> 3 x 32-bit registers (rejected 6057 before packing)",
+   "groups": [
+    {
+     "name": "pk0",
+     "width": 32,
+     "members": [
+      {
+       "register": "G0",
+       "offset": 0,
+       "width": 8
+      },
+      {
+       "register": "G1",
+       "offset": 8,
+       "width": 8
+      },
+      {
+       "register": "G2",
+       "offset": 16,
+       "width": 8
+      },
+      {
+       "register": "G3",
+       "offset": 24,
+       "width": 8
+      }
+     ]
+    },
+    {
+     "name": "pk1",
+     "width": 32,
+     "members": [
+      {
+       "register": "G4",
+       "offset": 0,
+       "width": 8
+      },
+      {
+       "register": "G5",
+       "offset": 8,
+       "width": 8
+      },
+      {
+       "register": "G6",
+       "offset": 16,
+       "width": 8
+      },
+      {
+       "register": "G7",
+       "offset": 24,
+       "width": 8
+      }
+     ]
+    },
+    {
+     "name": "pk2",
+     "width": 32,
+     "members": [
+      {
+       "register": "G8",
+       "offset": 0,
+       "width": 8
+      },
+      {
+       "register": "G9",
+       "offset": 8,
+       "width": 8
+      },
+      {
+       "register": "G10",
+       "offset": 16,
+       "width": 8
+      },
+      {
+       "register": "G11",
+       "offset": 24,
+       "width": 8
+      }
+     ]
+    }
+   ],
+   "before": "FAIL",
+   "after": "PASS",
+   "cone_registers_after": 3,
+   "max_register_bits": 32
+  },
+  {
+   "file": "FP2_R12x8_all_packed.qpy",
+   "probe": "FP2_R12x8",
+   "pattern": "all",
+   "expected_out": 0,
+   "note": "packed B_R12x8c, v2: 12 x 8-bit whole-register XOR expanded to a bit-level store of lane 0 -> 3 x 32-bit registers (rejected 6057 before packing)",
+   "groups": [
+    {
+     "name": "pk0",
+     "width": 32,
+     "members": [
+      {
+       "register": "G0",
+       "offset": 0,
+       "width": 8
+      },
+      {
+       "register": "G1",
+       "offset": 8,
+       "width": 8
+      },
+      {
+       "register": "G2",
+       "offset": 16,
+       "width": 8
+      },
+      {
+       "register": "G3",
+       "offset": 24,
+       "width": 8
+      }
+     ]
+    },
+    {
+     "name": "pk1",
+     "width": 32,
+     "members": [
+      {
+       "register": "G4",
+       "offset": 0,
+       "width": 8
+      },
+      {
+       "register": "G5",
+       "offset": 8,
+       "width": 8
+      },
+      {
+       "register": "G6",
+       "offset": 16,
+       "width": 8
+      },
+      {
+       "register": "G7",
+       "offset": 24,
+       "width": 8
+      }
+     ]
+    },
+    {
+     "name": "pk2",
+     "width": 32,
+     "members": [
+      {
+       "register": "G8",
+       "offset": 0,
+       "width": 8
+      },
+      {
+       "register": "G9",
+       "offset": 8,
+       "width": 8
+      },
+      {
+       "register": "G10",
+       "offset": 16,
+       "width": 8
+      },
+      {
+       "register": "G11",
+       "offset": 24,
+       "width": 8
+      }
+     ]
+    }
+   ],
+   "before": "FAIL",
+   "after": "PASS",
+   "cone_registers_after": 3,
+   "max_register_bits": 32
+  },
+  {
+   "file": "FP2_S24_last_packed.qpy",
+   "probe": "FP2_S24",
+   "pattern": "last",
+   "expected_out": 1,
+   "note": "packed S_24split3x8, v2: 24 x 2-bit registers, 3 stores + final, expanded to bit-level stores of lane 0 -> 2 registers (rejected 6057 before packing)",
+   "groups": [
+    {
+     "name": "pk0",
+     "width": 32,
+     "members": [
+      {
+       "register": "G0",
+       "offset": 0,
+       "width": 2
+      },
+      {
+       "register": "G1",
+       "offset": 2,
+       "width": 2
+      },
+      {
+       "register": "G2",
+       "offset": 4,
+       "width": 2
+      },
+      {
+       "register": "G3",
+       "offset": 6,
+       "width": 2
+      },
+      {
+       "register": "G4",
+       "offset": 8,
+       "width": 2
+      },
+      {
+       "register": "G5",
+       "offset": 10,
+       "width": 2
+      },
+      {
+       "register": "G6",
+       "offset": 12,
+       "width": 2
+      },
+      {
+       "register": "G7",
+       "offset": 14,
+       "width": 2
+      },
+      {
+       "register": "G8",
+       "offset": 16,
+       "width": 2
+      },
+      {
+       "register": "G9",
+       "offset": 18,
+       "width": 2
+      },
+      {
+       "register": "G10",
+       "offset": 20,
+       "width": 2
+      },
+      {
+       "register": "G11",
+       "offset": 22,
+       "width": 2
+      },
+      {
+       "register": "G12",
+       "offset": 24,
+       "width": 2
+      },
+      {
+       "register": "G13",
+       "offset": 26,
+       "width": 2
+      },
+      {
+       "register": "G14",
+       "offset": 28,
+       "width": 2
+      },
+      {
+       "register": "G15",
+       "offset": 30,
+       "width": 2
+      }
+     ]
+    },
+    {
+     "name": "pk1",
+     "width": 16,
+     "members": [
+      {
+       "register": "G16",
+       "offset": 0,
+       "width": 2
+      },
+      {
+       "register": "G17",
+       "offset": 2,
+       "width": 2
+      },
+      {
+       "register": "G18",
+       "offset": 4,
+       "width": 2
+      },
+      {
+       "register": "G19",
+       "offset": 6,
+       "width": 2
+      },
+      {
+       "register": "G20",
+       "offset": 8,
+       "width": 2
+      },
+      {
+       "register": "G21",
+       "offset": 10,
+       "width": 2
+      },
+      {
+       "register": "G22",
+       "offset": 12,
+       "width": 2
+      },
+      {
+       "register": "G23",
+       "offset": 14,
+       "width": 2
+      }
+     ]
+    }
+   ],
+   "before": "FAIL",
+   "after": "UNCERTAIN",
+   "cone_registers_after": 2,
+   "max_register_bits": 32
+  },
+  {
+   "file": "FP2_S24_mid_packed.qpy",
+   "probe": "FP2_S24",
+   "pattern": "mid",
+   "expected_out": 1,
+   "note": "packed S_24split3x8, v2: 24 x 2-bit registers, 3 stores + final, expanded to bit-level stores of lane 0 -> 2 registers (rejected 6057 before packing)",
+   "groups": [
+    {
+     "name": "pk0",
+     "width": 32,
+     "members": [
+      {
+       "register": "G0",
+       "offset": 0,
+       "width": 2
+      },
+      {
+       "register": "G1",
+       "offset": 2,
+       "width": 2
+      },
+      {
+       "register": "G2",
+       "offset": 4,
+       "width": 2
+      },
+      {
+       "register": "G3",
+       "offset": 6,
+       "width": 2
+      },
+      {
+       "register": "G4",
+       "offset": 8,
+       "width": 2
+      },
+      {
+       "register": "G5",
+       "offset": 10,
+       "width": 2
+      },
+      {
+       "register": "G6",
+       "offset": 12,
+       "width": 2
+      },
+      {
+       "register": "G7",
+       "offset": 14,
+       "width": 2
+      },
+      {
+       "register": "G8",
+       "offset": 16,
+       "width": 2
+      },
+      {
+       "register": "G9",
+       "offset": 18,
+       "width": 2
+      },
+      {
+       "register": "G10",
+       "offset": 20,
+       "width": 2
+      },
+      {
+       "register": "G11",
+       "offset": 22,
+       "width": 2
+      },
+      {
+       "register": "G12",
+       "offset": 24,
+       "width": 2
+      },
+      {
+       "register": "G13",
+       "offset": 26,
+       "width": 2
+      },
+      {
+       "register": "G14",
+       "offset": 28,
+       "width": 2
+      },
+      {
+       "register": "G15",
+       "offset": 30,
+       "width": 2
+      }
+     ]
+    },
+    {
+     "name": "pk1",
+     "width": 16,
+     "members": [
+      {
+       "register": "G16",
+       "offset": 0,
+       "width": 2
+      },
+      {
+       "register": "G17",
+       "offset": 2,
+       "width": 2
+      },
+      {
+       "register": "G18",
+       "offset": 4,
+       "width": 2
+      },
+      {
+       "register": "G19",
+       "offset": 6,
+       "width": 2
+      },
+      {
+       "register": "G20",
+       "offset": 8,
+       "width": 2
+      },
+      {
+       "register": "G21",
+       "offset": 10,
+       "width": 2
+      },
+      {
+       "register": "G22",
+       "offset": 12,
+       "width": 2
+      },
+      {
+       "register": "G23",
+       "offset": 14,
+       "width": 2
+      }
+     ]
+    }
+   ],
+   "before": "FAIL",
+   "after": "UNCERTAIN",
+   "cone_registers_after": 2,
+   "max_register_bits": 32
+  },
+  {
+   "file": "FP2_S24_all_packed.qpy",
+   "probe": "FP2_S24",
+   "pattern": "all",
+   "expected_out": 0,
+   "note": "packed S_24split3x8, v2: 24 x 2-bit registers, 3 stores + final, expanded to bit-level stores of lane 0 -> 2 registers (rejected 6057 before packing)",
+   "groups": [
+    {
+     "name": "pk0",
+     "width": 32,
+     "members": [
+      {
+       "register": "G0",
+       "offset": 0,
+       "width": 2
+      },
+      {
+       "register": "G1",
+       "offset": 2,
+       "width": 2
+      },
+      {
+       "register": "G2",
+       "offset": 4,
+       "width": 2
+      },
+      {
+       "register": "G3",
+       "offset": 6,
+       "width": 2
+      },
+      {
+       "register": "G4",
+       "offset": 8,
+       "width": 2
+      },
+      {
+       "register": "G5",
+       "offset": 10,
+       "width": 2
+      },
+      {
+       "register": "G6",
+       "offset": 12,
+       "width": 2
+      },
+      {
+       "register": "G7",
+       "offset": 14,
+       "width": 2
+      },
+      {
+       "register": "G8",
+       "offset": 16,
+       "width": 2
+      },
+      {
+       "register": "G9",
+       "offset": 18,
+       "width": 2
+      },
+      {
+       "register": "G10",
+       "offset": 20,
+       "width": 2
+      },
+      {
+       "register": "G11",
+       "offset": 22,
+       "width": 2
+      },
+      {
+       "register": "G12",
+       "offset": 24,
+       "width": 2
+      },
+      {
+       "register": "G13",
+       "offset": 26,
+       "width": 2
+      },
+      {
+       "register": "G14",
+       "offset": 28,
+       "width": 2
+      },
+      {
+       "register": "G15",
+       "offset": 30,
+       "width": 2
+      }
+     ]
+    },
+    {
+     "name": "pk1",
+     "width": 16,
+     "members": [
+      {
+       "register": "G16",
+       "offset": 0,
+       "width": 2
+      },
+      {
+       "register": "G17",
+       "offset": 2,
+       "width": 2
+      },
+      {
+       "register": "G18",
+       "offset": 4,
+       "width": 2
+      },
+      {
+       "register": "G19",
+       "offset": 6,
+       "width": 2
+      },
+      {
+       "register": "G20",
+       "offset": 8,
+       "width": 2
+      },
+      {
+       "register": "G21",
+       "offset": 10,
+       "width": 2
+      },
+      {
+       "register": "G22",
+       "offset": 12,
+       "width": 2
+      },
+      {
+       "register": "G23",
+       "offset": 14,
+       "width": 2
+      }
+     ]
+    }
+   ],
+   "before": "FAIL",
+   "after": "UNCERTAIN",
+   "cone_registers_after": 2,
+   "max_register_bits": 32
+  },
+  {
+   "file": "FP2_R12x2_last_packed.qpy",
+   "probe": "FP2_R12x2",
+   "pattern": "last",
+   "expected_out": 1,
+   "note": "packed B_R12x2, v2: 12 x 2-bit whole-register XOR -> 1 register of 24 bits (rejected 6057 before packing)",
+   "groups": [
+    {
+     "name": "pk0",
+     "width": 24,
+     "members": [
+      {
+       "register": "G0",
+       "offset": 0,
+       "width": 2
+      },
+      {
+       "register": "G1",
+       "offset": 2,
+       "width": 2
+      },
+      {
+       "register": "G2",
+       "offset": 4,
+       "width": 2
+      },
+      {
+       "register": "G3",
+       "offset": 6,
+       "width": 2
+      },
+      {
+       "register": "G4",
+       "offset": 8,
+       "width": 2
+      },
+      {
+       "register": "G5",
+       "offset": 10,
+       "width": 2
+      },
+      {
+       "register": "G6",
+       "offset": 12,
+       "width": 2
+      },
+      {
+       "register": "G7",
+       "offset": 14,
+       "width": 2
+      },
+      {
+       "register": "G8",
+       "offset": 16,
+       "width": 2
+      },
+      {
+       "register": "G9",
+       "offset": 18,
+       "width": 2
+      },
+      {
+       "register": "G10",
+       "offset": 20,
+       "width": 2
+      },
+      {
+       "register": "G11",
+       "offset": 22,
+       "width": 2
+      }
+     ]
+    }
+   ],
+   "before": "FAIL",
+   "after": "PASS",
+   "cone_registers_after": 1,
+   "max_register_bits": 24
+  },
+  {
+   "file": "FP2_R12x2_mid_packed.qpy",
+   "probe": "FP2_R12x2",
+   "pattern": "mid",
+   "expected_out": 1,
+   "note": "packed B_R12x2, v2: 12 x 2-bit whole-register XOR -> 1 register of 24 bits (rejected 6057 before packing)",
+   "groups": [
+    {
+     "name": "pk0",
+     "width": 24,
+     "members": [
+      {
+       "register": "G0",
+       "offset": 0,
+       "width": 2
+      },
+      {
+       "register": "G1",
+       "offset": 2,
+       "width": 2
+      },
+      {
+       "register": "G2",
+       "offset": 4,
+       "width": 2
+      },
+      {
+       "register": "G3",
+       "offset": 6,
+       "width": 2
+      },
+      {
+       "register": "G4",
+       "offset": 8,
+       "width": 2
+      },
+      {
+       "register": "G5",
+       "offset": 10,
+       "width": 2
+      },
+      {
+       "register": "G6",
+       "offset": 12,
+       "width": 2
+      },
+      {
+       "register": "G7",
+       "offset": 14,
+       "width": 2
+      },
+      {
+       "register": "G8",
+       "offset": 16,
+       "width": 2
+      },
+      {
+       "register": "G9",
+       "offset": 18,
+       "width": 2
+      },
+      {
+       "register": "G10",
+       "offset": 20,
+       "width": 2
+      },
+      {
+       "register": "G11",
+       "offset": 22,
+       "width": 2
+      }
+     ]
+    }
+   ],
+   "before": "FAIL",
+   "after": "PASS",
+   "cone_registers_after": 1,
+   "max_register_bits": 24
+  },
+  {
+   "file": "FP2_R12x2_all_packed.qpy",
+   "probe": "FP2_R12x2",
+   "pattern": "all",
+   "expected_out": 0,
+   "note": "packed B_R12x2, v2: 12 x 2-bit whole-register XOR -> 1 register of 24 bits (rejected 6057 before packing)",
+   "groups": [
+    {
+     "name": "pk0",
+     "width": 24,
+     "members": [
+      {
+       "register": "G0",
+       "offset": 0,
+       "width": 2
+      },
+      {
+       "register": "G1",
+       "offset": 2,
+       "width": 2
+      },
+      {
+       "register": "G2",
+       "offset": 4,
+       "width": 2
+      },
+      {
+       "register": "G3",
+       "offset": 6,
+       "width": 2
+      },
+      {
+       "register": "G4",
+       "offset": 8,
+       "width": 2
+      },
+      {
+       "register": "G5",
+       "offset": 10,
+       "width": 2
+      },
+      {
+       "register": "G6",
+       "offset": 12,
+       "width": 2
+      },
+      {
+       "register": "G7",
+       "offset": 14,
+       "width": 2
+      },
+      {
+       "register": "G8",
+       "offset": 16,
+       "width": 2
+      },
+      {
+       "register": "G9",
+       "offset": 18,
+       "width": 2
+      },
+      {
+       "register": "G10",
+       "offset": 20,
+       "width": 2
+      },
+      {
+       "register": "G11",
+       "offset": 22,
+       "width": 2
+      }
+     ]
+    }
+   ],
+   "before": "FAIL",
+   "after": "PASS",
+   "cone_registers_after": 1,
+   "max_register_bits": 24
+  }
+ ]
+}

@@ -1,0 +1,1205 @@
+{
+ "plan_hash": "287baa4d87af",
+ "note": "two executions (A, B) of the same plan on ibm_marrakesh, pooled; metrics counted on transpiled circuits",
+ "probes": [
+  {
+   "probe": "P1_R11x2_a",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 11,
+    "peak_live": 12,
+    "peak_live_bits": 0,
+    "total_reads": 11,
+    "stores_in_cone": 1,
+    "cone_ops": 10,
+    "max_store_ops": 10,
+    "depth": 10,
+    "unique_nodes": 10,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 14,
+   "pooled_readback": {
+    "Z": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.925,
+     "ci95": [
+      0.895,
+      0.947
+     ],
+     "n": 400
+    },
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.88,
+     "ci95": [
+      0.844,
+      0.908
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.922,
+     "ci95": [
+      0.892,
+      0.945
+     ],
+     "n": 400
+    },
+    "C": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.775,
+     "ci95": [
+      0.732,
+      0.813
+     ],
+     "n": 400
+    },
+    "D": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.915,
+     "ci95": [
+      0.884,
+      0.939
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_R11x2_b",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 11,
+    "peak_live": 12,
+    "peak_live_bits": 0,
+    "total_reads": 11,
+    "stores_in_cone": 1,
+    "cone_ops": 10,
+    "max_store_ops": 10,
+    "depth": 10,
+    "unique_nodes": 10,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 14,
+   "pooled_readback": {
+    "Z": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.93,
+     "ci95": [
+      0.901,
+      0.951
+     ],
+     "n": 400
+    },
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.887,
+     "ci95": [
+      0.853,
+      0.915
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.882,
+     "ci95": [
+      0.847,
+      0.91
+     ],
+     "n": 400
+    },
+    "C": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.815,
+     "ci95": [
+      0.774,
+      0.85
+     ],
+     "n": 400
+    },
+    "D": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.917,
+     "ci95": [
+      0.886,
+      0.941
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_R11x2_c",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 11,
+    "peak_live": 12,
+    "peak_live_bits": 0,
+    "total_reads": 11,
+    "stores_in_cone": 1,
+    "cone_ops": 10,
+    "max_store_ops": 10,
+    "depth": 10,
+    "unique_nodes": 10,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 14,
+   "pooled_readback": {
+    "Z": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.912,
+     "ci95": [
+      0.881,
+      0.936
+     ],
+     "n": 400
+    },
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.89,
+     "ci95": [
+      0.856,
+      0.917
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.912,
+     "ci95": [
+      0.881,
+      0.936
+     ],
+     "n": 400
+    },
+    "C": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.777,
+     "ci95": [
+      0.734,
+      0.816
+     ],
+     "n": 400
+    },
+    "D": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.925,
+     "ci95": [
+      0.895,
+      0.947
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_R10x8_a",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 10,
+    "peak_live": 11,
+    "peak_live_bits": 0,
+    "total_reads": 10,
+    "stores_in_cone": 1,
+    "cone_ops": 9,
+    "max_store_ops": 9,
+    "depth": 9,
+    "unique_nodes": 9,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 13,
+   "pooled_readback": {
+    "Z": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.725,
+     "ci95": [
+      0.679,
+      0.766
+     ],
+     "n": 400
+    },
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.73,
+     "ci95": [
+      0.684,
+      0.771
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.675,
+     "ci95": [
+      0.628,
+      0.719
+     ],
+     "n": 400
+    },
+    "C": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.733,
+     "ci95": [
+      0.687,
+      0.774
+     ],
+     "n": 400
+    },
+    "D": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.738,
+     "ci95": [
+      0.692,
+      0.778
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_R12x2_a",
+   "kind": "PRG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 12,
+    "peak_live": 13,
+    "peak_live_bits": 0,
+    "total_reads": 12,
+    "stores_in_cone": 1,
+    "cone_ops": 11,
+    "max_store_ops": 11,
+    "depth": 11,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 15
+  },
+  {
+   "probe": "P1_R10x8_b",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 10,
+    "peak_live": 11,
+    "peak_live_bits": 0,
+    "total_reads": 10,
+    "stores_in_cone": 1,
+    "cone_ops": 9,
+    "max_store_ops": 9,
+    "depth": 9,
+    "unique_nodes": 9,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 13,
+   "pooled_readback": {
+    "Z": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.735,
+     "ci95": [
+      0.69,
+      0.776
+     ],
+     "n": 400
+    },
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.728,
+     "ci95": [
+      0.682,
+      0.769
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.725,
+     "ci95": [
+      0.679,
+      0.766
+     ],
+     "n": 400
+    },
+    "C": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.755,
+     "ci95": [
+      0.711,
+      0.795
+     ],
+     "n": 400
+    },
+    "D": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.682,
+     "ci95": [
+      0.635,
+      0.726
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_R12x2_b",
+   "kind": "PRG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 12,
+    "peak_live": 13,
+    "peak_live_bits": 0,
+    "total_reads": 12,
+    "stores_in_cone": 1,
+    "cone_ops": 11,
+    "max_store_ops": 11,
+    "depth": 11,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 15
+  },
+  {
+   "probe": "P1_overlapNF",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 10,
+    "peak_live": 11,
+    "peak_live_bits": 0,
+    "total_reads": 14,
+    "stores_in_cone": 3,
+    "cone_ops": 11,
+    "max_store_ops": 5,
+    "depth": 5,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 13,
+   "pooled_readback": {
+    "Z": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.973,
+     "ci95": [
+      0.951,
+      0.985
+     ],
+     "n": 400
+    },
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.948,
+     "ci95": [
+      0.921,
+      0.965
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.935,
+     "ci95": [
+      0.906,
+      0.955
+     ],
+     "n": 400
+    },
+    "C": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.953,
+     "ci95": [
+      0.927,
+      0.969
+     ],
+     "n": 400
+    },
+    "D": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.948,
+     "ci95": [
+      0.921,
+      0.965
+     ],
+     "n": 400
+    },
+    "E": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.963,
+     "ci95": [
+      0.939,
+      0.977
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_split6",
+   "kind": "PRG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 12,
+    "peak_live": 13,
+    "peak_live_bits": 0,
+    "total_reads": 14,
+    "stores_in_cone": 3,
+    "cone_ops": 11,
+    "max_store_ops": 5,
+    "depth": 5,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 15
+  },
+  {
+   "probe": "P1_staged",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 12,
+    "peak_live": 8,
+    "peak_live_bits": 0,
+    "total_reads": 14,
+    "stores_in_cone": 3,
+    "cone_ops": 11,
+    "max_store_ops": 5,
+    "depth": 5,
+    "unique_nodes": 11,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 10,
+   "pooled_readback": {
+    "Z": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.9,
+     "ci95": [
+      0.867,
+      0.926
+     ],
+     "n": 400
+    },
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.89,
+     "ci95": [
+      0.856,
+      0.917
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.902,
+     "ci95": [
+      0.869,
+      0.928
+     ],
+     "n": 400
+    },
+    "C": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.915,
+     "ci95": [
+      0.884,
+      0.939
+     ],
+     "n": 400
+    },
+    "D": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.917,
+     "ci95": [
+      0.886,
+      0.941
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_alloc4",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 3,
+    "peak_live": 7,
+    "peak_live_bits": 0,
+    "total_reads": 16,
+    "stores_in_cone": 5,
+    "cone_ops": 27,
+    "max_store_ops": 6,
+    "depth": 3,
+    "unique_nodes": 28,
+    "cond_reads": 1,
+    "temps": 3,
+    "temps_lr": 3
+   },
+   "pool_peak_plus_lr_stack": 10,
+   "pooled_readback": {
+    "Z": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.82,
+     "ci95": [
+      0.779,
+      0.855
+     ],
+     "n": 400
+    },
+    "A": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.892,
+     "ci95": [
+      0.858,
+      0.919
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.938,
+     "ci95": [
+      0.909,
+      0.957
+     ],
+     "n": 400
+    },
+    "C": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.925,
+     "ci95": [
+      0.895,
+      0.947
+     ],
+     "n": 400
+    },
+    "D": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.848,
+     "ci95": [
+      0.809,
+      0.879
+     ],
+     "n": 400
+    },
+    "E": {
+     "expected": 0,
+     "informative": false,
+     "correct": 0.787,
+     "ci95": [
+      0.745,
+      0.825
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_alloc8",
+   "kind": "PRG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 3,
+    "peak_live": 11,
+    "peak_live_bits": 0,
+    "total_reads": 32,
+    "stores_in_cone": 9,
+    "cone_ops": 55,
+    "max_store_ops": 7,
+    "depth": 7,
+    "unique_nodes": 56,
+    "cond_reads": 1,
+    "temps": 3,
+    "temps_lr": 3
+   },
+   "pool_peak_plus_lr_stack": 14
+  },
+  {
+   "probe": "P1_alloc12",
+   "kind": "PRG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 3,
+    "peak_live": 15,
+    "peak_live_bits": 0,
+    "total_reads": 48,
+    "stores_in_cone": 13,
+    "cone_ops": 83,
+    "max_store_ops": 11,
+    "depth": 11,
+    "unique_nodes": 84,
+    "cond_reads": 1,
+    "temps": 3,
+    "temps_lr": 3
+   },
+   "pool_peak_plus_lr_stack": 18
+  },
+  {
+   "probe": "P1_ir96",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 4,
+    "peak_live": 4,
+    "peak_live_bits": 1,
+    "total_reads": 4,
+    "stores_in_cone": 1,
+    "cone_ops": 96,
+    "max_store_ops": 96,
+    "depth": 10,
+    "unique_nodes": 96,
+    "cond_reads": 1,
+    "temps": 5,
+    "temps_lr": 8
+   },
+   "pool_peak_plus_lr_stack": 12,
+   "pooled_readback": {
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.98,
+     "ci95": [
+      0.961,
+      0.99
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": true,
+     "correct": 0.988,
+     "ci95": [
+      0.971,
+      0.995
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_ir104",
+   "kind": "PRG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 4,
+    "peak_live": 4,
+    "peak_live_bits": 1,
+    "total_reads": 4,
+    "stores_in_cone": 1,
+    "cone_ops": 104,
+    "max_store_ops": 104,
+    "depth": 13,
+    "unique_nodes": 104,
+    "cond_reads": 1,
+    "temps": 6,
+    "temps_lr": 10
+   },
+   "pool_peak_plus_lr_stack": 14
+  },
+  {
+   "probe": "P1_ir126",
+   "kind": "PRG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 4,
+    "peak_live": 4,
+    "peak_live_bits": 1,
+    "total_reads": 4,
+    "stores_in_cone": 1,
+    "cone_ops": 126,
+    "max_store_ops": 126,
+    "depth": 14,
+    "unique_nodes": 126,
+    "cond_reads": 1,
+    "temps": 5,
+    "temps_lr": 11
+   },
+   "pool_peak_plus_lr_stack": 15
+  },
+  {
+   "probe": "P1_dag104",
+   "kind": "PRG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 4,
+    "peak_live": 4,
+    "peak_live_bits": 1,
+    "total_reads": 4,
+    "stores_in_cone": 1,
+    "cone_ops": 104,
+    "max_store_ops": 104,
+    "depth": 13,
+    "unique_nodes": 56,
+    "cond_reads": 1,
+    "temps": 6,
+    "temps_lr": 10
+   },
+   "pool_peak_plus_lr_stack": 14
+  },
+  {
+   "probe": "P1_bal104",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 4,
+    "peak_live": 4,
+    "peak_live_bits": 1,
+    "total_reads": 4,
+    "stores_in_cone": 1,
+    "cone_ops": 104,
+    "max_store_ops": 104,
+    "depth": 7,
+    "unique_nodes": 104,
+    "cond_reads": 1,
+    "temps": 7,
+    "temps_lr": 7
+   },
+   "pool_peak_plus_lr_stack": 11,
+   "pooled_readback": {
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.78,
+     "ci95": [
+      0.737,
+      0.818
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": true,
+     "correct": 0.995,
+     "ci95": [
+      0.982,
+      0.999
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_chain104",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 4,
+    "peak_live": 4,
+    "peak_live_bits": 1,
+    "total_reads": 4,
+    "stores_in_cone": 1,
+    "cone_ops": 104,
+    "max_store_ops": 104,
+    "depth": 104,
+    "unique_nodes": 104,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 6,
+   "pooled_readback": {
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.993,
+     "ci95": [
+      0.978,
+      0.997
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": true,
+     "correct": 0.995,
+     "ci95": [
+      0.982,
+      0.999
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_C8bal",
+   "kind": "PRG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 8,
+    "peak_live": 8,
+    "peak_live_bits": 1,
+    "total_reads": 8,
+    "stores_in_cone": 1,
+    "cone_ops": 63,
+    "max_store_ops": 63,
+    "depth": 6,
+    "unique_nodes": 63,
+    "cond_reads": 1,
+    "temps": 7,
+    "temps_lr": 7
+   },
+   "pool_peak_plus_lr_stack": 15
+  },
+  {
+   "probe": "P1_C8chain",
+   "kind": "PRG",
+   "run_A": {
+    "status": "DONE",
+    "code": null
+   },
+   "run_B": {
+    "status": "DONE",
+    "code": null
+   },
+   "metrics": {
+    "cone_regs": 8,
+    "peak_live": 8,
+    "peak_live_bits": 1,
+    "total_reads": 8,
+    "stores_in_cone": 1,
+    "cone_ops": 63,
+    "max_store_ops": 63,
+    "depth": 63,
+    "unique_nodes": 63,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 10,
+   "pooled_readback": {
+    "A": {
+     "expected": 1,
+     "informative": true,
+     "correct": 0.988,
+     "ci95": [
+      0.971,
+      0.995
+     ],
+     "n": 400
+    },
+    "B": {
+     "expected": 0,
+     "informative": true,
+     "correct": 0.993,
+     "ci95": [
+      0.978,
+      0.997
+     ],
+     "n": 400
+    }
+   }
+  },
+  {
+   "probe": "P1_old_T1",
+   "kind": "LEG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 1,
+    "peak_live": 1,
+    "peak_live_bits": 2,
+    "total_reads": 3,
+    "stores_in_cone": 2,
+    "cone_ops": 104,
+    "max_store_ops": 103,
+    "depth": 11,
+    "unique_nodes": 59,
+    "cond_reads": 1,
+    "temps": 5,
+    "temps_lr": 11
+   },
+   "pool_peak_plus_lr_stack": 12
+  },
+  {
+   "probe": "P1_old_CONE",
+   "kind": "LEG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 3,
+    "peak_live": 9,
+    "peak_live_bits": 0,
+    "total_reads": 24,
+    "stores_in_cone": 7,
+    "cone_ops": 173,
+    "max_store_ops": 28,
+    "depth": 7,
+    "unique_nodes": 134,
+    "cond_reads": 1,
+    "temps": 5,
+    "temps_lr": 7
+   },
+   "pool_peak_plus_lr_stack": 16
+  },
+  {
+   "probe": "P1_old_LUT85K8",
+   "kind": "LEG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 1,
+    "peak_live": 1,
+    "peak_live_bits": 1,
+    "total_reads": 1,
+    "stores_in_cone": 1,
+    "cone_ops": 84,
+    "max_store_ops": 84,
+    "depth": 11,
+    "unique_nodes": 49,
+    "cond_reads": 1,
+    "temps": 5,
+    "temps_lr": 11
+   },
+   "pool_peak_plus_lr_stack": 12
+  },
+  {
+   "probe": "P1_old_W512",
+   "kind": "LEG",
+   "run_A": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "run_B": {
+    "status": "ERROR",
+    "code": 6057
+   },
+   "metrics": {
+    "cone_regs": 1,
+    "peak_live": 1,
+    "peak_live_bits": 513,
+    "total_reads": 1534,
+    "stores_in_cone": 1023,
+    "cone_ops": 1194,
+    "max_store_ops": 2,
+    "depth": 2,
+    "unique_nodes": 514,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "pool_peak_plus_lr_stack": 3
+  }
+ ]
+}

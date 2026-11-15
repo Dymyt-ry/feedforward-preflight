@@ -1,0 +1,579 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "IBM dynamic-circuit controller rules file (dccheck)",
+ "description": "Empirical, dated, versioned rules for one backend family. Validated by dcrules.validate_rules (a small subset validator, no external dependency) plus semantic checks.",
+ "type": "object",
+ "required": [
+  "schema_version",
+  "rules_id",
+  "backends",
+  "measured_date",
+  "provenance",
+  "latency",
+  "official_texts",
+  "official_rules",
+  "uncertain"
+ ],
+ "properties": {
+  "schema_version": {
+   "type": "integer",
+   "enum": [
+    1
+   ]
+  },
+  "rules_id": {
+   "type": "string"
+  },
+  "backend_family": {
+   "type": "string"
+  },
+  "backends": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "measured_date": {
+   "type": "string"
+  },
+  "provenance": {
+   "type": "string"
+  },
+  "software": {
+   "type": "object"
+  },
+  "generated_by": {
+   "type": "object"
+  },
+  "rules": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "metric",
+     "error_code",
+     "confirmed",
+     "pass_max",
+     "fail_min",
+     "uncertain",
+     "evidence",
+     "provenance"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "title": {
+      "type": "string"
+     },
+     "metric": {
+      "type": "string"
+     },
+     "error_code": {
+      "type": "integer"
+     },
+     "confirmed": {
+      "type": "boolean"
+     },
+     "consistent": {
+      "type": "boolean"
+     },
+     "pass_max": {
+      "type": [
+       "integer",
+       "null"
+      ]
+     },
+     "fail_min": {
+      "type": [
+       "integer",
+       "null"
+      ]
+     },
+     "threshold_interval": {
+      "type": [
+       "array",
+       "null"
+      ],
+      "items": {
+       "type": "integer"
+      }
+     },
+     "ci": {
+      "type": "object"
+     },
+     "uncertain": {
+      "type": [
+       "object",
+       "null"
+      ],
+      "required": [
+       "from",
+       "to",
+       "reason"
+      ],
+      "properties": {
+       "from": {
+        "type": "integer"
+       },
+       "to": {
+        "type": "integer"
+       },
+       "reason": {
+        "type": "string"
+       }
+      }
+     },
+     "evidence": {
+      "type": "object",
+      "required": [
+       "pass",
+       "fail"
+      ],
+      "properties": {
+       "pass": {
+        "type": "array",
+        "items": {
+         "type": "object",
+         "required": [
+          "probe",
+          "value"
+         ]
+        }
+       },
+       "fail": {
+        "type": "array",
+        "items": {
+         "type": "object",
+         "required": [
+          "probe",
+          "value"
+         ]
+        }
+       },
+       "explained_elsewhere": {
+        "type": "array",
+        "items": {
+         "type": "object",
+         "required": [
+          "probe",
+          "value"
+         ]
+        }
+       }
+      }
+     },
+     "provenance": {
+      "type": "string"
+     },
+     "notes": {
+      "type": "string"
+     },
+     "official": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "role": {
+      "type": "string",
+      "enum": [
+       "verdict",
+       "diagnostic"
+      ]
+     }
+    }
+   }
+  },
+  "static_hazards": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "detector",
+     "verdict"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "detector": {
+      "type": "string"
+     },
+     "error_code": {
+      "type": [
+       "integer",
+       "null"
+      ]
+     },
+     "verdict": {
+      "type": "string",
+      "enum": [
+       "FAIL",
+       "UNCERTAIN"
+      ]
+     },
+     "description": {
+      "type": "string"
+     },
+     "provenance": {
+      "type": "string"
+     },
+     "official": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "reference": {
+      "type": "string"
+     },
+     "evidence": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "observed": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "latency": {
+   "type": "object",
+   "required": [
+    "model",
+    "intercept_ns",
+    "slope_ns_per_op",
+    "scatter_ns",
+    "provenance"
+   ],
+   "properties": {
+    "model": {
+     "type": "string",
+     "enum": [
+      "linear_ops"
+     ]
+    },
+    "intercept_ns": {
+     "type": "number"
+    },
+    "intercept_se_ns": {
+     "type": "number"
+    },
+    "slope_ns_per_op": {
+     "type": "number"
+    },
+    "slope_se_ns": {
+     "type": "number"
+    },
+    "cov_ns2": {
+     "type": "number"
+    },
+    "scatter_ns": {
+     "type": "number",
+     "minimum": 0
+    },
+    "fit_range_ops": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     }
+    },
+    "chi2": {
+     "type": "number"
+    },
+    "dof": {
+     "type": "integer"
+    },
+    "points": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "probe",
+       "ops",
+       "latency_ns",
+       "sigma_ns"
+      ]
+     }
+    },
+    "by_class": {
+     "type": "object"
+    },
+    "excludes": {
+     "type": "string"
+    },
+    "provenance": {
+     "type": "string"
+    },
+    "ranges": {
+     "type": "object",
+     "required": [
+      "intercept_ns",
+      "slope_ns_per_op",
+      "point_error_ns"
+     ],
+     "properties": {
+      "intercept_ns": {
+       "type": "array",
+       "items": {
+        "type": "number"
+       }
+      },
+      "slope_ns_per_op": {
+       "type": "array",
+       "items": {
+        "type": "number"
+       }
+      },
+      "point_error_ns": {
+       "type": "array",
+       "items": {
+        "type": "number"
+       }
+      },
+      "fit_range_ops": {
+       "type": "array",
+       "items": {
+        "type": "integer"
+       }
+      },
+      "reason": {
+       "type": "string"
+      }
+     }
+    }
+   }
+  },
+  "official_texts": {
+   "type": "object"
+  },
+  "official_rules": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "detector",
+     "verdict",
+     "official"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "detector": {
+      "type": "string"
+     },
+     "verdict": {
+      "type": "string",
+      "enum": [
+       "FAIL"
+      ]
+     },
+     "official": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "description": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "uncertain": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "detector",
+     "params",
+     "description",
+     "evidence"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "detector": {
+      "type": "string"
+     },
+     "params": {
+      "type": "object"
+     },
+     "official": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "description": {
+      "type": "string"
+     },
+     "evidence": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "probe",
+        "reference"
+       ]
+      }
+     }
+    }
+   }
+  },
+  "info_notes": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "detector",
+     "official"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "detector": {
+      "type": "string"
+     },
+     "official": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "text": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "known_unmodeled": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "models": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "kind",
+     "metrics",
+     "points"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "kind": {
+      "type": "string"
+     },
+     "metrics": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "fail_verdict": {
+      "type": "string",
+      "enum": [
+       "FAIL",
+       "UNCERTAIN"
+      ]
+     },
+     "official": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "provenance": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     },
+     "points": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "probe",
+        "outcome",
+        "vector"
+       ]
+      }
+     }
+    }
+   }
+  },
+  "envelope_file": {
+   "type": "string"
+  },
+  "accepted_constructs": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "signature",
+     "evidence"
+    ],
+    "properties": {
+     "signature": {
+      "type": "string"
+     },
+     "evidence": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    }
+   }
+  },
+  "model_estimates": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "dims",
+     "fail_at"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "dims": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "fail_at": {
+      "type": "integer"
+     },
+     "description": {
+      "type": "string"
+     },
+     "provenance": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ }
+}

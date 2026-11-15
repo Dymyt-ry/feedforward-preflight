@@ -1,0 +1,669 @@
+{
+ "backend": "ibm_marrakesh",
+ "date": "2026-11-15",
+ "rounds": {
+  "round1_minimal": [
+   {
+    "probe": "XORC15",
+    "kind": "LAT",
+    "status": "DONE",
+    "error_code": null,
+    "latency_ns": 742.9,
+    "se_ns": 58.8,
+    "estimator": "Huber location over usable probes, leave-one-probe-out jackknife SE",
+    "median_ns": 772.5,
+    "weighted_unclipped_ns": 655.7,
+    "published_style_clipped_ns": [
+     737.4,
+     45.4
+    ],
+    "probe_chi2_per_dof": 8.8,
+    "usable_probes": 23,
+    "clip_kept": "21/23",
+    "median_Z_probes_ns": 722.6,
+    "median_X_probes_ns": 772.5,
+    "store_ops": 15,
+    "store_depth": 15,
+    "inputs": 16
+   },
+   {
+    "probe": "XORT15",
+    "kind": "LAT",
+    "status": "DONE",
+    "error_code": null,
+    "latency_ns": 741.2,
+    "se_ns": 36.5,
+    "estimator": "Huber location over usable probes, leave-one-probe-out jackknife SE",
+    "median_ns": 732.9,
+    "weighted_unclipped_ns": 651.4,
+    "published_style_clipped_ns": [
+     742.9,
+     40.4
+    ],
+    "probe_chi2_per_dof": 8.8,
+    "usable_probes": 24,
+    "clip_kept": "23/24",
+    "median_Z_probes_ns": 685.2,
+    "median_X_probes_ns": 783.5,
+    "store_ops": 15,
+    "store_depth": 4,
+    "inputs": 16
+   },
+   {
+    "probe": "SOUP63",
+    "kind": "LAT",
+    "status": "DONE",
+    "error_code": null,
+    "latency_ns": 2103.1,
+    "se_ns": 75.5,
+    "estimator": "Huber location over usable probes, leave-one-probe-out jackknife SE",
+    "median_ns": 2128.4,
+    "weighted_unclipped_ns": 1799.0,
+    "published_style_clipped_ns": [
+     2077.3,
+     75.2
+    ],
+    "probe_chi2_per_dof": 18.2,
+    "usable_probes": 24,
+    "clip_kept": "23/24",
+    "median_Z_probes_ns": 2174.7,
+    "median_X_probes_ns": 2111.8,
+    "store_ops": 63,
+    "store_depth": 6,
+    "inputs": 16
+   },
+   {
+    "probe": "POP8",
+    "kind": "LAT",
+    "status": "DONE",
+    "error_code": null,
+    "latency_ns": 875.2,
+    "se_ns": 47.2,
+    "estimator": "Huber location over usable probes, leave-one-probe-out jackknife SE",
+    "median_ns": 870.6,
+    "weighted_unclipped_ns": 607.2,
+    "published_style_clipped_ns": [
+     845.1,
+     52.7
+    ],
+    "probe_chi2_per_dof": 26.6,
+    "usable_probes": 24,
+    "clip_kept": "22/24",
+    "median_Z_probes_ns": 848.9,
+    "median_X_probes_ns": 896.8,
+    "store_ops": 23,
+    "store_depth": 9,
+    "inputs": 8
+   },
+   {
+    "probe": "WVOTE27",
+    "kind": "LAT",
+    "status": "DONE",
+    "error_code": null,
+    "latency_ns": 1055.0,
+    "se_ns": 67.5,
+    "estimator": "Huber location over usable probes, leave-one-probe-out jackknife SE",
+    "median_ns": 998.7,
+    "weighted_unclipped_ns": 396.5,
+    "published_style_clipped_ns": [
+     835.3,
+     65.3
+    ],
+    "probe_chi2_per_dof": 58.2,
+    "usable_probes": 24,
+    "clip_kept": "9/24",
+    "median_Z_probes_ns": 871.8,
+    "median_X_probes_ns": 1258.4,
+    "store_ops": 27,
+    "store_depth": 9,
+    "inputs": 7
+   },
+   {
+    "probe": "A84t_K1",
+    "kind": "ACC",
+    "status": "DONE",
+    "error_code": null,
+    "shots": 64,
+    "P_out1_obs": 0.562,
+    "P_out1_expected": 0.484
+   },
+   {
+    "probe": "A84t_K8",
+    "kind": "ACC",
+    "status": "DONE",
+    "error_code": null,
+    "shots": 64,
+    "P_out1_obs": 0.578,
+    "P_out1_expected": 0.5
+   },
+   {
+    "probe": "A96t_K1",
+    "kind": "ACC",
+    "status": "DONE",
+    "error_code": null,
+    "shots": 64,
+    "P_out1_obs": 0.453,
+    "P_out1_expected": 0.52
+   },
+   {
+    "probe": "A96c_K1",
+    "kind": "ACC",
+    "status": "DONE",
+    "error_code": null,
+    "shots": 64,
+    "P_out1_obs": 0.234,
+    "P_out1_expected": 0.25
+   },
+   {
+    "probe": "C3x30",
+    "kind": "ACC",
+    "status": "DONE",
+    "error_code": null,
+    "shots": 64,
+    "P_out1_obs": 0.516,
+    "P_out1_expected": 0.523
+   },
+   {
+    "probe": "C6x16",
+    "kind": "ACC",
+    "status": "DONE",
+    "error_code": null,
+    "shots": 64,
+    "P_out1_obs": 0.375,
+    "P_out1_expected": 0.438
+   },
+   {
+    "probe": "R12x8",
+    "kind": "ACC",
+    "status": "ERROR",
+    "error_code": 6057
+   }
+  ],
+  "round2_regbisect": [
+   {
+    "probe": "B_R4x8",
+    "kind": "REG",
+    "status": "DONE",
+    "error_code": null,
+    "shots_per_pattern": 200,
+    "A_correct": 0.95,
+    "B_correct": 0.915,
+    "A_ci95": [
+     0.91,
+     0.973
+    ],
+    "B_ci95": [
+     0.868,
+     0.946
+    ],
+    "read_regs": 4,
+    "read_bits": 32,
+    "declared_regs": 7,
+    "total_bits": 42,
+    "measured_bits": 32,
+    "measured_regs": 4
+   },
+   {
+    "probe": "B_R6x8",
+    "kind": "REG",
+    "status": "DONE",
+    "error_code": null,
+    "shots_per_pattern": 200,
+    "A_correct": 0.905,
+    "B_correct": 0.93,
+    "A_ci95": [
+     0.856,
+     0.938
+    ],
+    "B_ci95": [
+     0.886,
+     0.958
+    ],
+    "read_regs": 6,
+    "read_bits": 48,
+    "declared_regs": 9,
+    "total_bits": 58,
+    "measured_bits": 48,
+    "measured_regs": 6
+   },
+   {
+    "probe": "B_R8x8",
+    "kind": "REG",
+    "status": "DONE",
+    "error_code": null,
+    "shots_per_pattern": 200,
+    "A_correct": 0.89,
+    "B_correct": 0.87,
+    "A_ci95": [
+     0.839,
+     0.926
+    ],
+    "B_ci95": [
+     0.816,
+     0.91
+    ],
+    "read_regs": 8,
+    "read_bits": 64,
+    "declared_regs": 11,
+    "total_bits": 74,
+    "measured_bits": 64,
+    "measured_regs": 8
+   },
+   {
+    "probe": "B_R10x8",
+    "kind": "REG",
+    "status": "DONE",
+    "error_code": null,
+    "shots_per_pattern": 200,
+    "A_correct": 0.75,
+    "B_correct": 0.78,
+    "A_ci95": [
+     0.686,
+     0.805
+    ],
+    "B_ci95": [
+     0.718,
+     0.832
+    ],
+    "read_regs": 10,
+    "read_bits": 80,
+    "declared_regs": 13,
+    "total_bits": 90,
+    "measured_bits": 80,
+    "measured_regs": 10
+   },
+   {
+    "probe": "B_R12x8c",
+    "kind": "REG",
+    "status": "ERROR",
+    "error_code": 6057,
+    "read_regs": 12,
+    "read_bits": 96,
+    "declared_regs": 15,
+    "total_bits": 106,
+    "measured_bits": 96,
+    "measured_regs": 12
+   },
+   {
+    "probe": "B_R6x16",
+    "kind": "REG",
+    "status": "DONE",
+    "error_code": null,
+    "shots_per_pattern": 200,
+    "A_correct": 0.775,
+    "B_correct": 0.78,
+    "A_ci95": [
+     0.712,
+     0.827
+    ],
+    "B_ci95": [
+     0.718,
+     0.832
+    ],
+    "read_regs": 6,
+    "read_bits": 96,
+    "declared_regs": 9,
+    "total_bits": 114,
+    "measured_bits": 96,
+    "measured_regs": 6
+   },
+   {
+    "probe": "B_R3x32",
+    "kind": "REG",
+    "status": "DONE",
+    "error_code": null,
+    "shots_per_pattern": 200,
+    "A_correct": 0.925,
+    "B_correct": 0.805,
+    "A_ci95": [
+     0.88,
+     0.954
+    ],
+    "B_ci95": [
+     0.745,
+     0.854
+    ],
+    "read_regs": 3,
+    "read_bits": 96,
+    "declared_regs": 6,
+    "total_bits": 130,
+    "measured_bits": 96,
+    "measured_regs": 3
+   },
+   {
+    "probe": "B_R12x2",
+    "kind": "REG",
+    "status": "ERROR",
+    "error_code": 6057,
+    "read_regs": 12,
+    "read_bits": 24,
+    "declared_regs": 15,
+    "total_bits": 28,
+    "measured_bits": 24,
+    "measured_regs": 12
+   },
+   {
+    "probe": "B_R12x8u",
+    "kind": "REG",
+    "status": "DONE",
+    "error_code": null,
+    "shots_per_pattern": 200,
+    "A_correct": 0.99,
+    "B_correct": 0.96,
+    "A_ci95": [
+     0.964,
+     0.997
+    ],
+    "B_ci95": [
+     0.923,
+     0.98
+    ],
+    "read_regs": 2,
+    "read_bits": 16,
+    "declared_regs": 15,
+    "total_bits": 106,
+    "measured_bits": 96,
+    "measured_regs": 12
+   }
+  ],
+  "round3_split": [
+   {
+    "probe": "S_12split6",
+    "kind": "SPL",
+    "status": "ERROR",
+    "error_code": 6057,
+    "fanin_max": 6,
+    "cone": 12,
+    "total_reads": 14,
+    "n_stores": 3,
+    "ops": 11,
+    "measured_regs": 12,
+    "total_bits": 32,
+    "store_report_transpiled": [
+     [
+      "S1",
+      6,
+      5
+     ],
+     [
+      "S2",
+      6,
+      5
+     ],
+     [
+      "S",
+      2,
+      1
+     ]
+    ]
+   },
+   {
+    "probe": "S_24split3x8",
+    "kind": "SPL",
+    "status": "ERROR",
+    "error_code": 6057,
+    "fanin_max": 8,
+    "cone": 24,
+    "total_reads": 27,
+    "n_stores": 4,
+    "ops": 23,
+    "measured_regs": 24,
+    "total_bits": 58,
+    "store_report_transpiled": [
+     [
+      "S1",
+      8,
+      7
+     ],
+     [
+      "S2",
+      8,
+      7
+     ],
+     [
+      "S3",
+      8,
+      7
+     ],
+     [
+      "S",
+      3,
+      2
+     ]
+    ]
+   },
+   {
+    "probe": "S_12chain",
+    "kind": "SPL",
+    "status": "ERROR",
+    "error_code": 6057,
+    "fanin_max": 7,
+    "cone": 12,
+    "total_reads": 13,
+    "n_stores": 2,
+    "ops": 11,
+    "measured_regs": 12,
+    "total_bits": 30,
+    "store_report_transpiled": [
+     [
+      "S1",
+      6,
+      5
+     ],
+     [
+      "S",
+      7,
+      6
+     ]
+    ]
+   },
+   {
+    "probe": "S_10overlap",
+    "kind": "SPL",
+    "status": "DONE",
+    "error_code": null,
+    "shots_per_pattern": 200,
+    "A_correct": 0.91,
+    "B_correct": 0.91,
+    "A_ci95": [
+     0.862,
+     0.942
+    ],
+    "B_ci95": [
+     0.862,
+     0.942
+    ],
+    "fanin_max": 6,
+    "cone": 10,
+    "total_reads": 14,
+    "n_stores": 3,
+    "ops": 11,
+    "measured_regs": 10,
+    "total_bits": 28,
+    "store_report_transpiled": [
+     [
+      "S1",
+      6,
+      5
+     ],
+     [
+      "S2",
+      6,
+      5
+     ],
+     [
+      "S",
+      2,
+      1
+     ]
+    ]
+   },
+   {
+    "probe": "S_R12x2c",
+    "kind": "SPL",
+    "status": "ERROR",
+    "error_code": 6057,
+    "fanin_max": 12,
+    "cone": 12,
+    "total_reads": 12,
+    "n_stores": 1,
+    "ops": 11,
+    "measured_regs": 12,
+    "total_bits": 28,
+    "store_report_transpiled": [
+     [
+      "S",
+      12,
+      11
+     ]
+    ]
+   }
+  ]
+ },
+ "latency_fit": {
+  "points": {
+   "XORC15": {
+    "huber": 742.9,
+    "se": 58.8,
+    "median": 772.5,
+    "wmean_unclipped": 655.7,
+    "published": [
+     737.4,
+     45.4
+    ]
+   },
+   "XORT15": {
+    "huber": 741.2,
+    "se": 36.5,
+    "median": 732.9,
+    "wmean_unclipped": 651.4,
+    "published": [
+     742.9,
+     40.4
+    ]
+   },
+   "SOUP63": {
+    "huber": 2103.1,
+    "se": 75.5,
+    "median": 2128.4,
+    "wmean_unclipped": 1799.0,
+    "published": [
+     2077.3,
+     75.2
+    ]
+   },
+   "POP8": {
+    "huber": 875.2,
+    "se": 47.2,
+    "median": 870.6,
+    "wmean_unclipped": 607.2,
+    "published": [
+     845.1,
+     52.7
+    ]
+   },
+   "WVOTE27": {
+    "huber": 1055.0,
+    "se": 67.5,
+    "median": 998.7,
+    "wmean_unclipped": 396.5,
+    "published": [
+     835.3,
+     65.3
+    ]
+   }
+  },
+  "prereg": {
+   "deviation_sigma": {
+    "XORC15": 1.43,
+    "XORT15": 2.25,
+    "SOUP63": -0.69,
+    "POP8": -0.69,
+    "WVOTE27": 0.33
+   },
+   "chi2": 8.2,
+   "dof": 5,
+   "note": "prediction band (slope 31.3 +/- 6.3 from a 3-point fit) not included: at 63 ops the prediction itself had ~ +/-400 ns"
+  },
+  "fits": [
+   {
+    "model": "ops",
+    "coef": [
+     293.07,
+     28.27
+    ],
+    "se_scaled": [
+     44.82,
+     1.69
+    ],
+    "chi2": 2.85,
+    "dof": 3,
+    "residuals": {
+     "XORC15": 26.0,
+     "XORT15": 24.0,
+     "SOUP63": 29.0,
+     "POP8": -68.0,
+     "WVOTE27": -1.0
+    }
+   },
+   {
+    "model": "ops+inputs",
+    "coef": [
+     180.48,
+     28.48,
+     8.25
+    ],
+    "se_scaled": [
+     90.82,
+     1.69,
+     5.79
+    ],
+    "chi2": 0.82,
+    "dof": 2,
+    "residuals": {
+     "XORC15": 3.0,
+     "XORT15": 1.0,
+     "SOUP63": -4.0,
+     "POP8": -26.0,
+     "WVOTE27": 48.0
+    }
+   },
+   {
+    "model": "ops+depth",
+    "coef": [
+     311.04,
+     28.23,
+     -2.24
+    ],
+    "se_scaled": [
+     76.93,
+     1.97,
+     7.06
+    ],
+    "chi2": 2.71,
+    "dof": 2,
+    "residuals": {
+     "XORC15": 42.0,
+     "XORT15": 16.0,
+     "SOUP63": 27.0,
+     "POP8": -65.0,
+     "WVOTE27": 2.0
+    }
+   }
+  ],
+  "marginal_ns_per_op": {
+   "XORT15->POP8": 16.8,
+   "POP8->WVOTE27": 44.9,
+   "WVOTE27->SOUP63": 29.1
+  },
+  "chain_minus_tree": {
+   "ns": 1.7,
+   "se": 69.2
+  },
+  "wvote_minus_pop8": {
+   "ns": 179.8,
+   "se": 82.4,
+   "note": "WVOTE27 has 4 more ops (8 mul instead of 8 shifts... see structure), expected +4 ops * slope"
+  }
+ }
+}

@@ -1,0 +1,7 @@
+Pre-registered predictions (assumed sigma 50 ns/case), ns over a 1-bit if:
+probe     ops inp dep |  H_ops H_inputs H_depth
+XORC15     15  16  15 |    659     2155    1781
+XORT15     15  16   4 |    659     2155     409
+SOUP63     63  16   6 |   2155     2155     659
+POP8       24   8  10 |    908     1158    1033
+WVOTE27    28   7  10 |   1033     1033    1033

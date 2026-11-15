@@ -1,0 +1,1005 @@
+{
+ "note": "Every probe behind the dominance envelope: class_ accept / reject6057 / other6066, backend, date, one circuit as QPY. Rebuild vectors and the rules file with `python build_envelope.py`.",
+ "probes": [
+  {
+   "name": "r1:XORC15",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__XORC15.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:XORT15",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__XORT15.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:SOUP63",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__SOUP63.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:POP8",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__POP8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:WVOTE27",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__WVOTE27.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:A84t_K1",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__A84t_K1.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:A84t_K8",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__A84t_K8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:A96t_K1",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__A96t_K1.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:A96c_K1",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__A96c_K1.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:C3x30",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__C3x30.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:C6x16",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__C6x16.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r1:R12x8",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r1",
+   "measured_date": "2026-11-15",
+   "qpy": "r1__R12x8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r2:B_R4x8",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r2",
+   "measured_date": "2026-11-15",
+   "qpy": "r2__B_R4x8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r2:B_R6x8",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r2",
+   "measured_date": "2026-11-15",
+   "qpy": "r2__B_R6x8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r2:B_R8x8",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r2",
+   "measured_date": "2026-11-15",
+   "qpy": "r2__B_R8x8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r2:B_R10x8",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r2",
+   "measured_date": "2026-11-15",
+   "qpy": "r2__B_R10x8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r2:B_R12x8c",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r2",
+   "measured_date": "2026-11-15",
+   "qpy": "r2__B_R12x8c.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r2:B_R6x16",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r2",
+   "measured_date": "2026-11-15",
+   "qpy": "r2__B_R6x16.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r2:B_R3x32",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r2",
+   "measured_date": "2026-11-15",
+   "qpy": "r2__B_R3x32.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r2:B_R12x2",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r2",
+   "measured_date": "2026-11-15",
+   "qpy": "r2__B_R12x2.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r2:B_R12x8u",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r2",
+   "measured_date": "2026-11-15",
+   "qpy": "r2__B_R12x8u.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r3:S_12split6",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r3",
+   "measured_date": "2026-11-15",
+   "qpy": "r3__S_12split6.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r3:S_24split3x8",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r3",
+   "measured_date": "2026-11-15",
+   "qpy": "r3__S_24split3x8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r3:S_12chain",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r3",
+   "measured_date": "2026-11-15",
+   "qpy": "r3__S_12chain.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r3:S_10overlap",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r3",
+   "measured_date": "2026-11-15",
+   "qpy": "r3__S_10overlap.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r3:S_R12x2c",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r3",
+   "measured_date": "2026-11-15",
+   "qpy": "r3__S_R12x2c.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_R11x2_a",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_R11x2_a.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_R11x2_b",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_R11x2_b.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_R11x2_c",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_R11x2_c.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_R10x8_a",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_R10x8_a.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_R12x2_a",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_R12x2_a.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_R10x8_b",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_R10x8_b.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_R12x2_b",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_R12x2_b.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_overlapNF",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_overlapNF.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_split6",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_split6.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_staged",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_staged.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_alloc4",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_alloc4.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_alloc8",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_alloc8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_alloc12",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_alloc12.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_ir96",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_ir96.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_ir104",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_ir104.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_ir126",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_ir126.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_dag104",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_dag104.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_bal104",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_bal104.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_chain104",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_chain104.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_C8bal",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_C8bal.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_C8chain",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_C8chain.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_old_T1",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_old_T1.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_old_CONE",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_old_CONE.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_old_LUT85K8",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_old_LUT85K8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "r4:P1_old_W512",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "r4",
+   "measured_date": "2026-11-15",
+   "qpy": "r4__P1_old_W512.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "v1:V1_rc10_P3",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "v1",
+   "measured_date": "2026-11-15",
+   "qpy": "v1__V1_rc10_P3.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "v1:V1_lc10_P3",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "v1",
+   "measured_date": "2026-11-15",
+   "qpy": "v1__V1_lc10_P3.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "v1:V1_rc4_P9",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "v1",
+   "measured_date": "2026-11-15",
+   "qpy": "v1__V1_rc4_P9.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "v1:V1_rc4_P10",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "v1",
+   "measured_date": "2026-11-15",
+   "qpy": "v1__V1_rc4_P10.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "v1:V1_rc12_P1",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "v1",
+   "measured_date": "2026-11-15",
+   "qpy": "v1__V1_rc12_P1.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "e1:E1_wvote7",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "e1",
+   "measured_date": "2026-11-15",
+   "qpy": "e1__E1_wvote7.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "e1:E1_syndrome6",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "e1",
+   "measured_date": "2026-11-15",
+   "qpy": "e1__E1_syndrome6.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "e1:E1_tele14",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "e1",
+   "measured_date": "2026-11-15",
+   "qpy": "e1__E1_tele14.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "e1:E1_twoif",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "e1",
+   "measured_date": "2026-11-15",
+   "qpy": "e1__E1_twoif.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "e1:E1_decode9",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "e1",
+   "measured_date": "2026-11-15",
+   "qpy": "e1__E1_decode9.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "e2:E2_shan112",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "e2",
+   "measured_date": "2026-11-15",
+   "qpy": "e2__E2_shan112.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "e2:E2_rc5_P9",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "e2",
+   "measured_date": "2026-11-15",
+   "qpy": "e2__E2_rc5_P9.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "e2:E2_rc8_P5",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "e2",
+   "measured_date": "2026-11-15",
+   "qpy": "e2__E2_rc8_P5.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "old:C_ifconst",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__C_ifconst.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:D_manyifs",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__D_manyifs.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:F1_regs150",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__F1_regs150.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:F2_longexpr",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__F2_longexpr.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:H1_mux_stored_sel",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__H1_mux_stored_sel.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:H2_mux_meas_sel",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__H2_mux_meas_sel.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:K64",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__K64.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:K256",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__K256.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:K1024",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__K1024.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:K256r32",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__K256r32.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:LIT",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__LIT.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:N18",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__N18.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:N20",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__N20.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:N24",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__N24.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:N32",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__N32.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:T1_big_read_once",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__T1_big_read_once.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:T1u_bool_uninit",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__T1u_bool_uninit.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:W32",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__W32.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:W64",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__W64.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:W128",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__W128.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:W256",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__W256.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:G_notbin",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__G_notbin.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:G_true",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__G_true.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:G_orn",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__G_orn.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:G_rest",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__G_rest.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:W512",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__W512.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:T3_six_big_xor",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__T3_six_big_xor.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:T3m_materialized",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__T3m_materialized.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "old:T3u_bool_uninit",
+   "class_": "reject6057",
+   "backend": "ibm_marrakesh",
+   "round": "old",
+   "measured_date": "2026-11-06",
+   "qpy": "old__T3u_bool_uninit.qpy",
+   "circuit_source": "rebuilt from the original 2026-11-06 probe builder (not the transpiled executed circuit); run once, never repeated",
+   "rerun_since": false
+  },
+  {
+   "name": "fp:FP_R12x8",
+   "class_": "other6066",
+   "backend": "ibm_marrakesh",
+   "round": "fp",
+   "measured_date": "2026-11-15",
+   "qpy": "fp__FP_R12x8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "fp:FP_S24",
+   "class_": "other6066",
+   "backend": "ibm_marrakesh",
+   "round": "fp",
+   "measured_date": "2026-11-15",
+   "qpy": "fp__FP_S24.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "fp:FP_B14x3",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "fp",
+   "measured_date": "2026-11-15",
+   "qpy": "fp__FP_B14x3.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "fp2:FP2_R12x8",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "fp2",
+   "measured_date": "2026-11-15",
+   "qpy": "fp2__FP2_R12x8.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "fp2:FP2_S24",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "fp2",
+   "measured_date": "2026-11-15",
+   "qpy": "fp2__FP2_S24.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "fp2:FP2_R12x2",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "fp2",
+   "measured_date": "2026-11-15",
+   "qpy": "fp2__FP2_R12x2.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  },
+  {
+   "name": "p2:P2_place",
+   "class_": "accept",
+   "backend": "ibm_marrakesh",
+   "round": "p2",
+   "measured_date": "2026-11-15",
+   "qpy": "p2__P2_place.qpy",
+   "circuit_source": "executed-transpiled",
+   "rerun_since": null
+  }
+ ]
+}

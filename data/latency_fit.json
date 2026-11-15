@@ -1,0 +1,146 @@
+{
+ "points": {
+  "XORC15": {
+   "huber": 742.9,
+   "se": 58.8,
+   "median": 772.5,
+   "wmean_unclipped": 655.7,
+   "published": [
+    737.4,
+    45.4
+   ]
+  },
+  "XORT15": {
+   "huber": 741.2,
+   "se": 36.5,
+   "median": 732.9,
+   "wmean_unclipped": 651.4,
+   "published": [
+    742.9,
+    40.4
+   ]
+  },
+  "SOUP63": {
+   "huber": 2103.1,
+   "se": 75.5,
+   "median": 2128.4,
+   "wmean_unclipped": 1799.0,
+   "published": [
+    2077.3,
+    75.2
+   ]
+  },
+  "POP8": {
+   "huber": 875.2,
+   "se": 47.2,
+   "median": 870.6,
+   "wmean_unclipped": 607.2,
+   "published": [
+    845.1,
+    52.7
+   ]
+  },
+  "WVOTE27": {
+   "huber": 1055.0,
+   "se": 67.5,
+   "median": 998.7,
+   "wmean_unclipped": 396.5,
+   "published": [
+    835.3,
+    65.3
+   ]
+  }
+ },
+ "prereg": {
+  "deviation_sigma": {
+   "XORC15": 1.43,
+   "XORT15": 2.25,
+   "SOUP63": -0.69,
+   "POP8": -0.69,
+   "WVOTE27": 0.33
+  },
+  "chi2": 8.2,
+  "dof": 5,
+  "note": "prediction band (slope 31.3 +/- 6.3 from a 3-point fit) not included: at 63 ops the prediction itself had ~ +/-400 ns"
+ },
+ "fits": [
+  {
+   "model": "ops",
+   "coef": [
+    293.07,
+    28.27
+   ],
+   "se_scaled": [
+    44.82,
+    1.69
+   ],
+   "chi2": 2.85,
+   "dof": 3,
+   "residuals": {
+    "XORC15": 26.0,
+    "XORT15": 24.0,
+    "SOUP63": 29.0,
+    "POP8": -68.0,
+    "WVOTE27": -1.0
+   }
+  },
+  {
+   "model": "ops+inputs",
+   "coef": [
+    180.48,
+    28.48,
+    8.25
+   ],
+   "se_scaled": [
+    90.82,
+    1.69,
+    5.79
+   ],
+   "chi2": 0.82,
+   "dof": 2,
+   "residuals": {
+    "XORC15": 3.0,
+    "XORT15": 1.0,
+    "SOUP63": -4.0,
+    "POP8": -26.0,
+    "WVOTE27": 48.0
+   }
+  },
+  {
+   "model": "ops+depth",
+   "coef": [
+    311.04,
+    28.23,
+    -2.24
+   ],
+   "se_scaled": [
+    76.93,
+    1.97,
+    7.06
+   ],
+   "chi2": 2.71,
+   "dof": 2,
+   "residuals": {
+    "XORC15": 42.0,
+    "XORT15": 16.0,
+    "SOUP63": 27.0,
+    "POP8": -65.0,
+    "WVOTE27": 2.0
+   }
+  }
+ ],
+ "marginal_ns_per_op": {
+  "XORT15->POP8": 16.8,
+  "POP8->WVOTE27": 44.9,
+  "WVOTE27->SOUP63": 29.1
+ },
+ "chain_minus_tree": {
+  "ns": 1.7,
+  "se": 69.2
+ },
+ "wvote_minus_pop8": {
+  "ns": 179.8,
+  "se": 82.4,
+  "note": "WVOTE27 has 4 more ops (8 mul instead of 8 shifts... see structure), expected +4 ops * slope"
+ }
+}

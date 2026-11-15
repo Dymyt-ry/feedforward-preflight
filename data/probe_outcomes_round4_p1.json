@@ -1,0 +1,135 @@
+{
+ "backend": "ibm_marrakesh",
+ "date": "2026-11-15",
+ "source_note": "Round 4 tier p1 (plan 287baa4d87af), assembled from the two replicate result tables RESULTS_QPU_p1_runA.md / runB.md (identical outcomes for all 21 rebuildable probes). Status/error code only; the four legacy shapes (old T1, CONE, LUT85K8, W512; all rejected 6057 again on 2026-11-15) are entered in rules/curation_*.json with their reported metrics because their builders are outside this folder.",
+ "rounds": {
+  "round4_p1": [
+   {
+    "probe": "P1_R11x2_a",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_R11x2_b",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_R11x2_c",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_R10x8_a",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_R12x2_a",
+    "kind": "PRG",
+    "status": "ERROR",
+    "error_code": 6057
+   },
+   {
+    "probe": "P1_R10x8_b",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_R12x2_b",
+    "kind": "PRG",
+    "status": "ERROR",
+    "error_code": 6057
+   },
+   {
+    "probe": "P1_overlapNF",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_split6",
+    "kind": "PRG",
+    "status": "ERROR",
+    "error_code": 6057
+   },
+   {
+    "probe": "P1_staged",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_alloc4",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_alloc8",
+    "kind": "PRG",
+    "status": "ERROR",
+    "error_code": 6057
+   },
+   {
+    "probe": "P1_alloc12",
+    "kind": "PRG",
+    "status": "ERROR",
+    "error_code": 6057
+   },
+   {
+    "probe": "P1_ir96",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_ir104",
+    "kind": "PRG",
+    "status": "ERROR",
+    "error_code": 6057
+   },
+   {
+    "probe": "P1_ir126",
+    "kind": "PRG",
+    "status": "ERROR",
+    "error_code": 6057
+   },
+   {
+    "probe": "P1_dag104",
+    "kind": "PRG",
+    "status": "ERROR",
+    "error_code": 6057
+   },
+   {
+    "probe": "P1_bal104",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_chain104",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   },
+   {
+    "probe": "P1_C8bal",
+    "kind": "PRG",
+    "status": "ERROR",
+    "error_code": 6057
+   },
+   {
+    "probe": "P1_C8chain",
+    "kind": "PRG",
+    "status": "DONE",
+    "error_code": null
+   }
+  ]
+ }
+}

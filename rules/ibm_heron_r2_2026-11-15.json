@@ -1,0 +1,578 @@
+{
+ "schema_version": 1,
+ "rules_id": "ibm_heron_r2_2026-11-15",
+ "backend_family": "ibm_heron_r2",
+ "backends": [
+  "ibm_marrakesh"
+ ],
+ "measured_date": "2026-11-15",
+ "provenance": "measured on ibm_marrakesh 2026-11-15",
+ "software": {
+  "qiskit": "2.6.2",
+  "qiskit-ibm-runtime": "0.51.0",
+  "executor": "Sampler",
+  "plan": "Open",
+  "firmware": "unknown (not exposed)"
+ },
+ "envelope_file": "envelope_ibm_heron_r2_2026-11-15.json",
+ "generated_by": {
+  "tool": "export_rules.py",
+  "inputs": [
+   "probe_outcomes.json",
+   "probe_outcomes_round4_p1.json",
+   "probe_outcomes_v1.json",
+   "probe_outcomes_fixpack_v1.json",
+   "probe_outcomes_fixpack_v2.json",
+   "curation_ibm_heron_r2.json"
+  ],
+  "n_probes": 58,
+  "skipped_probes": [],
+  "excluded_probes": []
+ },
+ "rules": [],
+ "accepted_constructs": [
+  {
+   "signature": "Binary:ADD:Uint(16)",
+   "evidence": [
+    "P1_alloc4"
+   ]
+  },
+  {
+   "signature": "Binary:ADD:Uint(2)",
+   "evidence": [
+    "P1_overlapNF"
+   ]
+  },
+  {
+   "signature": "Binary:ADD:Uint(8)",
+   "evidence": [
+    "POP8",
+    "WVOTE27"
+   ]
+  },
+  {
+   "signature": "Binary:BIT_AND:Bool()",
+   "evidence": [
+    "SOUP63",
+    "A84t_K1",
+    "A84t_K8",
+    "V1_rc4_P9",
+    "V1_rc12_P1"
+   ]
+  },
+  {
+   "signature": "Binary:BIT_AND:Uint(16)",
+   "evidence": [
+    "P1_alloc4"
+   ]
+  },
+  {
+   "signature": "Binary:BIT_AND:Uint(8)",
+   "evidence": [
+    "POP8",
+    "WVOTE27"
+   ]
+  },
+  {
+   "signature": "Binary:BIT_OR:Bool()",
+   "evidence": [
+    "SOUP63",
+    "A84t_K1",
+    "A84t_K8",
+    "V1_rc4_P9",
+    "V1_rc12_P1"
+   ]
+  },
+  {
+   "signature": "Binary:BIT_OR:Uint(16)",
+   "evidence": [
+    "P1_alloc4"
+   ]
+  },
+  {
+   "signature": "Binary:BIT_XOR:Bool()",
+   "evidence": [
+    "XORC15",
+    "XORT15",
+    "SOUP63",
+    "FP2_S24",
+    "FP2_R12x2"
+   ]
+  },
+  {
+   "signature": "Binary:BIT_XOR:Uint(16)",
+   "evidence": [
+    "B_R6x16",
+    "P1_alloc4"
+   ]
+  },
+  {
+   "signature": "Binary:BIT_XOR:Uint(2)",
+   "evidence": [
+    "S_10overlap",
+    "P1_R11x2_a",
+    "P1_R11x2_b",
+    "P1_overlapNF",
+    "P1_staged"
+   ]
+  },
+  {
+   "signature": "Binary:BIT_XOR:Uint(32)",
+   "evidence": [
+    "B_R3x32"
+   ]
+  },
+  {
+   "signature": "Binary:BIT_XOR:Uint(8)",
+   "evidence": [
+    "B_R4x8",
+    "B_R6x8",
+    "B_R8x8",
+    "P1_R10x8_a",
+    "P1_R10x8_b"
+   ]
+  },
+  {
+   "signature": "Binary:GREATER:Uint(16)",
+   "evidence": [
+    "P1_alloc4"
+   ]
+  },
+  {
+   "signature": "Binary:GREATER:Uint(8)",
+   "evidence": [
+    "POP8",
+    "WVOTE27"
+   ]
+  },
+  {
+   "signature": "Binary:MUL:Uint(8)",
+   "evidence": [
+    "WVOTE27"
+   ]
+  },
+  {
+   "signature": "Binary:SHIFT_RIGHT:Uint(8)",
+   "evidence": [
+    "POP8",
+    "WVOTE27"
+   ]
+  },
+  {
+   "signature": "store:Bool()",
+   "evidence": [
+    "XORC15",
+    "XORT15",
+    "SOUP63",
+    "FP2_S24",
+    "FP2_R12x2"
+   ]
+  },
+  {
+   "signature": "store:Uint(16)",
+   "evidence": [
+    "B_R6x16",
+    "P1_alloc4"
+   ]
+  },
+  {
+   "signature": "store:Uint(2)",
+   "evidence": [
+    "S_10overlap",
+    "P1_R11x2_a",
+    "P1_R11x2_b",
+    "P1_overlapNF",
+    "P1_staged"
+   ]
+  },
+  {
+   "signature": "store:Uint(32)",
+   "evidence": [
+    "B_R3x32"
+   ]
+  },
+  {
+   "signature": "store:Uint(8)",
+   "evidence": [
+    "POP8",
+    "WVOTE27",
+    "B_R4x8",
+    "P1_R10x8_a",
+    "P1_R10x8_b"
+   ]
+  }
+ ],
+ "model_estimates": [],
+ "static_hazards": [
+  {
+   "id": "overlapping_registers",
+   "detector": "overlapping_registers",
+   "error_code": 6327,
+   "verdict": "FAIL",
+   "official": [
+    "aliased"
+   ],
+   "description": "two ClassicalRegisters share a classical bit (error 6327 is not in IBM's public error registry)",
+   "reference": "earlier-day IBM rejection (suite.py guards()); raw job not in data/"
+  },
+  {
+   "id": "declared_var_literal",
+   "detector": "declared_var",
+   "error_code": 6066,
+   "verdict": "FAIL",
+   "official": [
+    "internal_error"
+   ],
+   "description": "a declared Var with a literal initialiser",
+   "reference": "earlier-day IBM rejection (suite.py guards()); raw job not in data/"
+  },
+  {
+   "id": "register_shift_amount",
+   "detector": "register_shift_amount",
+   "error_code": 6060,
+   "verdict": "FAIL",
+   "official": [
+    "internal_error"
+   ],
+   "description": "shift by a non-literal amount",
+   "reference": "earlier-day IBM rejection (suite.py guards()); raw job not in data/"
+  },
+  {
+   "id": "copy_store",
+   "detector": "copy_store",
+   "error_code": 6062,
+   "verdict": "FAIL",
+   "official": [
+    "internal_error"
+   ],
+   "description": "a store whose right-hand side is a bare bit, register or Var (a copy)",
+   "reference": "earlier-day IBM rejection (suite.py guards()); raw job not in data/"
+  },
+  {
+   "id": "dynamic_bit_index",
+   "detector": "dynamic_bit_index",
+   "error_code": null,
+   "verdict": "FAIL",
+   "official": [],
+   "description": "bit index that is not a literal (rejected by the parser)",
+   "reference": "earlier-day parser rejection (suite.py guards()); raw job not in data/"
+  },
+  {
+   "id": "uint_literal_u32",
+   "detector": "uint_literal_u32",
+   "error_code": null,
+   "verdict": "FAIL",
+   "official": [],
+   "description": "Uint literal of 2^32 or more (rejected by the parser)",
+   "reference": "earlier-day parser rejection (suite.py guards()); raw job not in data/"
+  },
+  {
+   "id": "shift_cast_in_store_6066",
+   "detector": "narrowing_cast_of_shift",
+   "error_code": 6066,
+   "verdict": "FAIL",
+   "official": [
+    "internal_error"
+   ],
+   "description": "a store whose right-hand side narrows a Uint with a Cast over a shifted wide register (shift by literal + Cast Uint(32)->Uint(8)/Uint(2)); present in both rejected fix-pack v1 circuits and absent from the accepted one (clbit-level reads only)",
+   "evidence": [
+    "FP_R12x8",
+    "FP_S24"
+   ],
+   "observed": "ibm_marrakesh 2026-11-15",
+   "reference": ""
+  }
+ ],
+ "latency": {
+  "model": "linear_ops",
+  "intercept_ns": 293.07,
+  "intercept_se_ns": 44.83,
+  "slope_ns_per_op": 28.265,
+  "slope_se_ns": 1.689,
+  "cov_ns2": -64.95,
+  "scatter_ns": 138.9,
+  "residual_rms_ns": 36.7,
+  "estimator_half_range_ns": 134.0,
+  "fit_range_ops": [
+   15,
+   63
+  ],
+  "chi2": 2.86,
+  "dof": 3,
+  "points": [
+   {
+    "probe": "XORC15",
+    "ops": 15,
+    "latency_ns": 742.9,
+    "sigma_ns": 58.8,
+    "klass": "bool",
+    "residual_ns": 25.9,
+    "alt_estimates_ns": [
+     772.5,
+     655.7,
+     737.4
+    ]
+   },
+   {
+    "probe": "XORT15",
+    "ops": 15,
+    "latency_ns": 741.2,
+    "sigma_ns": 36.5,
+    "klass": "bool",
+    "residual_ns": 24.2,
+    "alt_estimates_ns": [
+     732.9,
+     651.4,
+     742.9
+    ]
+   },
+   {
+    "probe": "SOUP63",
+    "ops": 63,
+    "latency_ns": 2103.1,
+    "sigma_ns": 75.5,
+    "klass": "bool",
+    "residual_ns": 29.4,
+    "alt_estimates_ns": [
+     2128.4,
+     1799.0,
+     2077.3
+    ]
+   },
+   {
+    "probe": "POP8",
+    "ops": 23,
+    "latency_ns": 875.2,
+    "sigma_ns": 47.2,
+    "klass": "uint",
+    "residual_ns": -68.0,
+    "alt_estimates_ns": [
+     870.6,
+     607.2,
+     845.1
+    ]
+   },
+   {
+    "probe": "WVOTE27",
+    "ops": 27,
+    "latency_ns": 1055.0,
+    "sigma_ns": 67.5,
+    "klass": "uint",
+    "residual_ns": -1.2,
+    "alt_estimates_ns": [
+     998.7,
+     396.5,
+     835.3
+    ]
+   }
+  ],
+  "by_class": {
+   "bool": {
+    "intercept_ns": 316.2,
+    "slope_ns_per_op": 28.36,
+    "n_points": 3,
+    "chi2": 0.0
+   },
+   "uint": {
+    "n_points": 2,
+    "note": "too few points for a separate fit"
+   }
+  },
+  "provenance": "measured on ibm_marrakesh 2026-11-15 (stopwatch method, 5 probes)",
+  "ranges": {
+   "intercept_ns": [
+    0,
+    400
+   ],
+   "slope_ns_per_op": [
+    25,
+    30
+   ],
+   "point_error_ns": [
+    90,
+    230
+   ],
+   "fit_range_ops": [
+    15,
+    63
+   ],
+   "reason": "independent review 2026-11-15: stated errors were shot noise only; scatter-inflated per-point errors are 90 to 230 ns, the intercept is unresolved (0 to 400 ns covers the Bool/Uint split and the ops+inputs alternative), slope about 25 to 30 ns per op between 15 and 63 ops; not a law"
+  },
+  "excludes": "measurement duration (measure_2 is about 1.88 us scheduled) and any wait shared with a bare 1-bit if; ops counted as in the fit points"
+ },
+ "official_texts": {
+  "err6057": {
+   "quote": "The job requires more classical registers than the control hardware provides. If possible, break the job into multiple separate jobs or reduce the number of classical variables and measurement results used in subsequent conditions. Contact support if required.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/errors",
+   "label": "IBM error 6057"
+  },
+  "internal_error": {
+   "quote": "Internal Compiler Error. Contact support or try again.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/errors",
+   "label": "IBM errors 6060, 6062, 6066 (no public detail)"
+  },
+  "nested": {
+   "quote": "Nested conditionals are not allowed.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/ibm-quantum-compute/execute-dynamic-circuits",
+   "label": "IBM docs, Execute dynamic circuits"
+  },
+  "meas_in_cond": {
+   "quote": "Having reset or measurements inside conditionals is not supported.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/ibm-quantum-compute/execute-dynamic-circuits",
+   "label": "IBM docs, Execute dynamic circuits"
+  },
+  "operand32": {
+   "quote": "The operand used in an if_test statement must be 32 or fewer bits.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/ibm-quantum-compute/execute-dynamic-circuits",
+   "label": "IBM docs, Execute dynamic circuits"
+  },
+  "arith_unsupported": {
+   "quote": "Arithmetic operations are not supported.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/ibm-quantum-compute/execute-dynamic-circuits",
+   "label": "IBM docs, Execute dynamic circuits"
+  },
+  "arith_partial": {
+   "quote": "\"arithmetic expressions\": partial on IBM Compute Service (the OpenQASM 3 feature table also marks integer, uint, comparisons and bit operations as supported). Paraphrase of table cells, not a verbatim sentence.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/qiskit/qasm-feature-table",
+   "label": "IBM OpenQASM 3 feature table"
+  },
+  "flow_only_if": {
+   "quote": "The for, while, and switch instructions are not supported.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/ibm-quantum-compute/execute-dynamic-circuits",
+   "label": "IBM docs, Execute dynamic circuits"
+  },
+  "flow_guide": {
+   "quote": "The Classical feedforward and control flow guide documents switch, for and while with working examples, and the OpenQASM 3 feature table marks \"for loops\" and \"while loops\" as not supported on the service. Paraphrase of page content, not a verbatim sentence.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/guides/classical-feedforward-and-control-flow",
+   "label": "IBM docs contradict each other on switch/for/while"
+  },
+  "aliased": {
+   "quote": "aliased classical registers are not supported for execution on hardware.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/qiskit/qasm-feature-table",
+   "label": "IBM docs (page attribution as recorded in the 2026-11-15 official-limits report)"
+  },
+  "broadcast": {
+   "quote": "Currently, if you broadcast 60 bits each time, then the job can have approximately 300 broadcasts. If you broadcast just one bit each time, however, then the job can have 2400 broadcasts.",
+   "url": "https://quantum.cloud.ibm.com/docs/en/ibm-quantum-compute/execute-dynamic-circuits",
+   "label": "IBM docs, Execute dynamic circuits (limit is per job, not per circuit)"
+  }
+ },
+ "official_rules": [
+  {
+   "id": "nested_conditionals",
+   "detector": "nested_conditionals",
+   "verdict": "FAIL",
+   "official": [
+    "nested"
+   ],
+   "description": "an if_else inside the body of another if_else"
+  },
+  {
+   "id": "measure_in_conditional",
+   "detector": "measure_in_conditional",
+   "verdict": "FAIL",
+   "official": [
+    "meas_in_cond"
+   ],
+   "description": "a measurement or reset inside the body of an if_else"
+  },
+  {
+   "id": "operand_over_32_bits",
+   "detector": "operand_over_32_bits",
+   "verdict": "FAIL",
+   "official": [
+    "operand32"
+   ],
+   "description": "an if_else whose condition operand (register or Uint expression) is wider than 32 bits"
+  }
+ ],
+ "uncertain": [
+  {
+   "id": "wide_literals",
+   "detector": "wide_literals",
+   "params": {
+    "min_width": 16
+   },
+   "official": [],
+   "description": "Uint literals 16 bits wide or more in the cone: the earlier failing LUT/SIMD/alloc probes carried many wide literals (not part of the envelope metrics); P1_alloc4 (16-bit literals) was accepted, alloc8/alloc12 rejected",
+   "evidence": [
+    {
+     "probe": "P1_alloc4",
+     "reference": "data/probe_outcomes_round4_p1.json (accepted)"
+    },
+    {
+     "probe": "P1_alloc8",
+     "reference": "data/probe_outcomes_round4_p1.json (rejected 6057)"
+    }
+   ]
+  },
+  {
+   "id": "non_if_control_flow",
+   "detector": "non_if_control_flow",
+   "params": {},
+   "official": [
+    "flow_only_if",
+    "flow_guide"
+   ],
+   "description": "while / for / switch: IBM's documentation contradicts itself on these and no probe of this suite uses them",
+   "evidence": []
+  },
+  {
+   "id": "var_in_cone",
+   "detector": "var_in_cone",
+   "params": {},
+   "official": [
+    "err6057"
+   ],
+   "description": "a declared Var feeds this condition: IBM's 6057 text names classical variables, and the only measured Var datum is the 6066 rejection of a literal initialiser",
+   "evidence": [
+    {
+     "probe": "declared Var literal initialiser (6066)",
+     "reference": "earlier-day IBM rejection; raw job not in data/"
+    }
+   ]
+  },
+  {
+   "id": "if_inside_loop",
+   "detector": "inside_loop",
+   "params": {},
+   "official": [
+    "flow_only_if",
+    "flow_guide"
+   ],
+   "description": "control flow inside a for / while / switch body: IBM's documentation contradicts itself on these constructs and lists only flat if/else; this is not an 'if inside an if', so it is not a documented hard rule",
+   "evidence": []
+  }
+ ],
+ "info_notes": [
+  {
+   "id": "arithmetic_conflict",
+   "detector": "arithmetic_in_cone",
+   "official": [
+    "arith_unsupported",
+    "arith_partial"
+   ],
+   "text": "the cone uses add/sub/mul/div. IBM's text says arithmetic is not supported, its feature table says partial; add and compare accepted in the measured probes (POP8, WVOTE27, ...). No verdict is derived from this.",
+   "measured_probes": [
+    "POP8",
+    "WVOTE27"
+   ]
+  },
+  {
+   "id": "broadcast_budget",
+   "detector": "broadcast_budget",
+   "official": [
+    "broadcast"
+   ],
+   "text": "job-level broadcast guidance (approximate, per job not per circuit)",
+   "measured_probes": []
+  }
+ ],
+ "known_unmodeled": [
+  "repetitions K and PUBs per job: only K = 1, 8, 16 and single-circuit jobs were seen on 2026-11-15",
+  "firmware changes: the firmware version is not exposed and was not recorded",
+  "the 6057 mechanism has no validated formula; verdicts come from the empirical dominance envelope and are UNCERTAIN outside the measured points by design",
+  "monotonicity: the verdict assumes that needing no more of every measured resource than an accepted probe cannot get a circuit rejected; the stored probes do not contradict it, but it is unproven",
+  "the verdict is for the transpiled circuit: dccheck transpiles against a bundled fake backend (not the live device); a different transpilation (layout, seed, optimisation level) can change measurement order and liveness"
+ ]
+}

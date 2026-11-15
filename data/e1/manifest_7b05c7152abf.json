@@ -1,0 +1,870 @@
+{
+ "plan_hash": "7b05c7152abf",
+ "tier": "e1",
+ "backend": "ibm_marrakesh",
+ "layout": null,
+ "probe_info": {},
+ "n_z": 12,
+ "n_x": 12,
+ "lat_k": 16,
+ "shots": 0,
+ "ref_D": [
+  0,
+  500,
+  1000,
+  2000,
+  3000
+ ],
+ "est_total_s": 10.0,
+ "quota_remaining_s": 61.0,
+ "submitted_at": "2026-11-15 17:48:38",
+ "predictions": "Envelope validation round e1 (registered before submission; no external timestamp).\nEnvelope data: 58 accepted and 24 rejected (6057) probes on ibm_marrakesh (out/envelope.json); vector = resources.resource_vector on the TRANSPILED circuit (asserted equal to the builder at plan time).\nRule: PASS iff the vector is <= the vector of some ACCEPTED probe in ALL 25 dimensions; FAIL iff it is >= the vector of some REJECTED probe in the failure dimensions ['cone_ops', 'lr_stack', 'peak_live_bitvars', 'peak_live_regs', 'unary_ops']; otherwise UNCERTAIN.\nLeave-one-out over the existing probes: {'accept': {'PASS': 35, 'FAIL': 0, 'UNCERTAIN': 23, 'CONTRADICTION': 0}, 'reject6057': {'PASS': 0, 'FAIL': 19, 'UNCERTAIN': 5, 'CONTRADICTION': 0}}, wrong: [].\n\nprobe          verdict  witness\nE1_wvote7      PASS     r1:WVOTE27 | at the witness value in: peak_live_regs, cone_regs, total_reads, stored_count, stored_bits, max_store_ops, cond_ops, cone_ops, depth, ershov, lr_stack, distinct_leaf_bits, leaf_refs, unique_nodes, max_literal_bits, has_shift, has_compare, has_add, has_mul\n     v = peak_live_regs=2, cone_regs=1, total_reads=2, stored_count=1, stored_bits=8, max_store_ops=27, cond_ops=1, cone_ops=27, depth=9, ershov=3, lr_stack=3, distinct_leaf_bits=2, leaf_refs=8, unique_nodes=28, literal_count=22, max_literal_bits=8, n_ifs=1, has_shift=1, has_compare=1, has_add=1, has_mul=1\nE1_syndrome6   PASS     r4:P1_staged | at the witness value in: ershov, lr_stack, n_ifs\n     v = peak_live_regs=7, cone_regs=3, total_reads=4, stored_count=1, stored_bits=2, max_store_ops=2, cone_ops=2, depth=2, ershov=2, lr_stack=2, distinct_leaf_bits=4, leaf_refs=4, unique_nodes=2, n_ifs=3\nE1_tele14      PASS     r1:XORC15 | at the witness value in: peak_live_regs, peak_live_bitvars, cone_regs, total_reads, stored_count, stored_bits, ershov, lr_stack, distinct_leaf_bits\n     v = peak_live_regs=2, peak_live_bitvars=1, cone_regs=2, total_reads=3, stored_count=1, stored_bits=1, max_store_ops=13, cone_ops=13, depth=13, ershov=2, lr_stack=2, distinct_leaf_bits=3, leaf_refs=15, unique_nodes=13, n_ifs=2\nE1_twoif       PASS     r4:P1_staged | at the witness value in: ershov, lr_stack\n     v = peak_live_regs=7, cone_regs=4, total_reads=5, stored_count=1, stored_bits=2, max_store_ops=3, cone_ops=3, depth=3, ershov=2, lr_stack=2, distinct_leaf_bits=5, leaf_refs=5, unique_nodes=3, n_ifs=2\nE1_decode9     FAIL     r1:R12x8 | at the witness value in: peak_live_regs, stored_bits, max_store_ops, depth, ershov, lr_stack, distinct_leaf_bits\n     v = peak_live_regs=13, cone_regs=9, total_reads=22, stored_count=4, stored_bits=8, max_store_ops=11, cone_ops=17, depth=11, ershov=2, lr_stack=2, distinct_leaf_bits=13, leaf_refs=22, unique_nodes=15, n_ifs=4",
+ "backend_info": {
+  "name": "ibm_marrakesh",
+  "processor_type": {
+   "family": "Heron",
+   "revision": "2"
+  },
+  "backend_version": "1.0.21",
+  "status": "active",
+  "operational": true,
+  "pending_jobs": 1,
+  "properties_last_update": "2026-11-13 19:22:56+02:00",
+  "read_at_utc": "2026-11-15T15:48:39Z"
+ },
+ "jobs": [
+  {
+   "name": "E1_wvote7",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "A": {
+      "expected": [
+       1
+      ],
+      "informative": true
+     },
+     "B": {
+      "expected": [
+       1
+      ],
+      "informative": true
+     },
+     "C": {
+      "expected": [
+       1
+      ],
+      "informative": true
+     },
+     "D": {
+      "expected": [
+       1
+      ],
+      "informative": true
+     },
+     "E": {
+      "expected": [
+       1
+      ],
+      "informative": true
+     },
+     "F": {
+      "expected": [
+       1
+      ],
+      "informative": true
+     },
+     "Z": {
+      "expected": [
+       0
+      ],
+      "informative": false
+     }
+    },
+    "note": "7-bit weighted vote, new weights, Uint(8) shift/and/mul/add + compare (realistic decoder readout)",
+    "kind": "MProg",
+    "vector": {
+     "peak_live_regs": 2,
+     "peak_live_bitvars": 0,
+     "cone_regs": 1,
+     "total_reads": 2,
+     "stored_count": 1,
+     "stored_bits": 8,
+     "max_store_ops": 27,
+     "cond_ops": 1,
+     "cone_ops": 27,
+     "depth": 9,
+     "ershov": 3,
+     "lr_stack": 3,
+     "distinct_leaf_bits": 2,
+     "leaf_refs": 8,
+     "unique_nodes": 28,
+     "unary_ops": 0,
+     "literal_count": 22,
+     "max_literal_bits": 8,
+     "n_ifs": 1,
+     "has_shift": 1,
+     "has_cast": 0,
+     "has_compare": 1,
+     "has_add": 1,
+     "has_mul": 1,
+     "has_index": 0
+    },
+    "vector_builder": {
+     "peak_live_regs": 2,
+     "peak_live_bitvars": 0,
+     "cone_regs": 1,
+     "total_reads": 2,
+     "stored_count": 1,
+     "stored_bits": 8,
+     "max_store_ops": 27,
+     "cond_ops": 1,
+     "cone_ops": 27,
+     "depth": 9,
+     "ershov": 3,
+     "lr_stack": 3,
+     "distinct_leaf_bits": 2,
+     "leaf_refs": 8,
+     "unique_nodes": 28,
+     "unary_ops": 0,
+     "literal_count": 22,
+     "max_literal_bits": 8,
+     "n_ifs": 1,
+     "has_shift": 1,
+     "has_cast": 0,
+     "has_compare": 1,
+     "has_add": 1,
+     "has_mul": 1,
+     "has_index": 0
+    }
+   },
+   "metrics": {
+    "cone_regs": 1,
+    "peak_live": 2,
+    "peak_live_bits": 0,
+    "total_reads": 1,
+    "stores_in_cone": 1,
+    "cone_ops": 27,
+    "max_store_ops": 27,
+    "depth": 9,
+    "unique_nodes": 28,
+    "cond_reads": 1,
+    "temps": 3,
+    "temps_lr": 3
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "E1_wvote7_A",
+    "E1_wvote7_B",
+    "E1_wvote7_C",
+    "E1_wvote7_D",
+    "E1_wvote7_E",
+    "E1_wvote7_F",
+    "E1_wvote7_Z"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_7b05c7152abf/E1_wvote7.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "E1_syndrome6",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "A": {
+      "expected": [
+       1,
+       0,
+       1
+      ],
+      "informative": true
+     },
+     "B": {
+      "expected": [
+       0,
+       1,
+       0
+      ],
+      "informative": true
+     },
+     "C": {
+      "expected": [
+       0,
+       1,
+       0
+      ],
+      "informative": true
+     },
+     "D": {
+      "expected": [
+       1,
+       0,
+       1
+      ],
+      "informative": true
+     },
+     "E": {
+      "expected": [
+       1,
+       0,
+       0
+      ],
+      "informative": true
+     },
+     "F": {
+      "expected": [
+       0,
+       1,
+       1
+      ],
+      "informative": true
+     },
+     "Z": {
+      "expected": [
+       0,
+       0,
+       0
+      ],
+      "informative": false
+     }
+    },
+    "note": "syndrome decode: 6 measured syndrome registers, 3 correction registers (xor of 3 syndromes each, overlapping supports), 3 ifs on different cones",
+    "kind": "MProg",
+    "vector": {
+     "peak_live_regs": 7,
+     "peak_live_bitvars": 0,
+     "cone_regs": 3,
+     "total_reads": 4,
+     "stored_count": 1,
+     "stored_bits": 2,
+     "max_store_ops": 2,
+     "cond_ops": 0,
+     "cone_ops": 2,
+     "depth": 2,
+     "ershov": 2,
+     "lr_stack": 2,
+     "distinct_leaf_bits": 4,
+     "leaf_refs": 4,
+     "unique_nodes": 2,
+     "unary_ops": 0,
+     "literal_count": 0,
+     "max_literal_bits": 0,
+     "n_ifs": 3,
+     "has_shift": 0,
+     "has_cast": 0,
+     "has_compare": 0,
+     "has_add": 0,
+     "has_mul": 0,
+     "has_index": 0
+    },
+    "vector_builder": {
+     "peak_live_regs": 7,
+     "peak_live_bitvars": 0,
+     "cone_regs": 3,
+     "total_reads": 4,
+     "stored_count": 1,
+     "stored_bits": 2,
+     "max_store_ops": 2,
+     "cond_ops": 0,
+     "cone_ops": 2,
+     "depth": 2,
+     "ershov": 2,
+     "lr_stack": 2,
+     "distinct_leaf_bits": 4,
+     "leaf_refs": 4,
+     "unique_nodes": 2,
+     "unary_ops": 0,
+     "literal_count": 0,
+     "max_literal_bits": 0,
+     "n_ifs": 3,
+     "has_shift": 0,
+     "has_cast": 0,
+     "has_compare": 0,
+     "has_add": 0,
+     "has_mul": 0,
+     "has_index": 0
+    }
+   },
+   "metrics": {
+    "cone_regs": 3,
+    "peak_live": 7,
+    "peak_live_bits": 0,
+    "total_reads": 3,
+    "stores_in_cone": 1,
+    "cone_ops": 2,
+    "max_store_ops": 2,
+    "depth": 2,
+    "unique_nodes": 2,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "E1_syndrome6_A",
+    "E1_syndrome6_B",
+    "E1_syndrome6_C",
+    "E1_syndrome6_D",
+    "E1_syndrome6_E",
+    "E1_syndrome6_F",
+    "E1_syndrome6_Z"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_7b05c7152abf/E1_syndrome6.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "E1_tele14",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "A": {
+      "expected": [
+       1,
+       1
+      ],
+      "informative": true
+     },
+     "B": {
+      "expected": [
+       1,
+       1
+      ],
+      "informative": true
+     },
+     "C": {
+      "expected": [
+       0,
+       0
+      ],
+      "informative": false
+     },
+     "D": {
+      "expected": [
+       1,
+       1
+      ],
+      "informative": true
+     },
+     "E": {
+      "expected": [
+       1,
+       1
+      ],
+      "informative": true
+     },
+     "F": {
+      "expected": [
+       1,
+       1
+      ],
+      "informative": true
+     },
+     "Z": {
+      "expected": [
+       0,
+       0
+      ],
+      "informative": false
+     }
+    },
+    "note": "multi-bit teleportation correction: parity of 14 bits of two 8-bit registers, one bit-level store, two ifs applying the correction to two qubits",
+    "kind": "MProg",
+    "vector": {
+     "peak_live_regs": 2,
+     "peak_live_bitvars": 1,
+     "cone_regs": 2,
+     "total_reads": 3,
+     "stored_count": 1,
+     "stored_bits": 1,
+     "max_store_ops": 13,
+     "cond_ops": 0,
+     "cone_ops": 13,
+     "depth": 13,
+     "ershov": 2,
+     "lr_stack": 2,
+     "distinct_leaf_bits": 3,
+     "leaf_refs": 15,
+     "unique_nodes": 13,
+     "unary_ops": 0,
+     "literal_count": 0,
+     "max_literal_bits": 0,
+     "n_ifs": 2,
+     "has_shift": 0,
+     "has_cast": 0,
+     "has_compare": 0,
+     "has_add": 0,
+     "has_mul": 0,
+     "has_index": 0
+    },
+    "vector_builder": {
+     "peak_live_regs": 2,
+     "peak_live_bitvars": 1,
+     "cone_regs": 2,
+     "total_reads": 3,
+     "stored_count": 1,
+     "stored_bits": 1,
+     "max_store_ops": 13,
+     "cond_ops": 0,
+     "cone_ops": 13,
+     "depth": 13,
+     "ershov": 2,
+     "lr_stack": 2,
+     "distinct_leaf_bits": 3,
+     "leaf_refs": 15,
+     "unique_nodes": 13,
+     "unary_ops": 0,
+     "literal_count": 0,
+     "max_literal_bits": 0,
+     "n_ifs": 2,
+     "has_shift": 0,
+     "has_cast": 0,
+     "has_compare": 0,
+     "has_add": 0,
+     "has_mul": 0,
+     "has_index": 0
+    }
+   },
+   "metrics": {
+    "cone_regs": 2,
+    "peak_live": 2,
+    "peak_live_bits": 1,
+    "total_reads": 2,
+    "stores_in_cone": 1,
+    "cone_ops": 13,
+    "max_store_ops": 13,
+    "depth": 13,
+    "unique_nodes": 13,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "E1_tele14_A",
+    "E1_tele14_B",
+    "E1_tele14_C",
+    "E1_tele14_D",
+    "E1_tele14_E",
+    "E1_tele14_F",
+    "E1_tele14_Z"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_7b05c7152abf/E1_tele14.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "E1_twoif",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "A": {
+      "expected": [
+       1,
+       0
+      ],
+      "informative": true
+     },
+     "B": {
+      "expected": [
+       0,
+       1
+      ],
+      "informative": true
+     },
+     "C": {
+      "expected": [
+       0,
+       1
+      ],
+      "informative": true
+     },
+     "D": {
+      "expected": [
+       1,
+       0
+      ],
+      "informative": true
+     },
+     "E": {
+      "expected": [
+       1,
+       1
+      ],
+      "informative": true
+     },
+     "F": {
+      "expected": [
+       1,
+       0
+      ],
+      "informative": true
+     },
+     "Z": {
+      "expected": [
+       0,
+       0
+      ],
+      "informative": false
+     }
+    },
+    "note": "two ifs with different cones of 4 and 3 registers sharing one register, register-valued stores",
+    "kind": "MProg",
+    "vector": {
+     "peak_live_regs": 7,
+     "peak_live_bitvars": 0,
+     "cone_regs": 4,
+     "total_reads": 5,
+     "stored_count": 1,
+     "stored_bits": 2,
+     "max_store_ops": 3,
+     "cond_ops": 0,
+     "cone_ops": 3,
+     "depth": 3,
+     "ershov": 2,
+     "lr_stack": 2,
+     "distinct_leaf_bits": 5,
+     "leaf_refs": 5,
+     "unique_nodes": 3,
+     "unary_ops": 0,
+     "literal_count": 0,
+     "max_literal_bits": 0,
+     "n_ifs": 2,
+     "has_shift": 0,
+     "has_cast": 0,
+     "has_compare": 0,
+     "has_add": 0,
+     "has_mul": 0,
+     "has_index": 0
+    },
+    "vector_builder": {
+     "peak_live_regs": 7,
+     "peak_live_bitvars": 0,
+     "cone_regs": 4,
+     "total_reads": 5,
+     "stored_count": 1,
+     "stored_bits": 2,
+     "max_store_ops": 3,
+     "cond_ops": 0,
+     "cone_ops": 3,
+     "depth": 3,
+     "ershov": 2,
+     "lr_stack": 2,
+     "distinct_leaf_bits": 5,
+     "leaf_refs": 5,
+     "unique_nodes": 3,
+     "unary_ops": 0,
+     "literal_count": 0,
+     "max_literal_bits": 0,
+     "n_ifs": 2,
+     "has_shift": 0,
+     "has_cast": 0,
+     "has_compare": 0,
+     "has_add": 0,
+     "has_mul": 0,
+     "has_index": 0
+    }
+   },
+   "metrics": {
+    "cone_regs": 3,
+    "peak_live": 7,
+    "peak_live_bits": 0,
+    "total_reads": 3,
+    "stores_in_cone": 1,
+    "cone_ops": 2,
+    "max_store_ops": 2,
+    "depth": 2,
+    "unique_nodes": 2,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "E1_twoif_A",
+    "E1_twoif_B",
+    "E1_twoif_C",
+    "E1_twoif_D",
+    "E1_twoif_E",
+    "E1_twoif_F",
+    "E1_twoif_Z"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_7b05c7152abf/E1_twoif.qpy.bin",
+   "job_id": null,
+   "error": null
+  },
+  {
+   "name": "E1_decode9",
+   "kind": "PRG",
+   "layout": [
+    55,
+    120,
+    134,
+    0,
+    6,
+    54,
+    77,
+    78,
+    87,
+    137,
+    10,
+    153,
+    8,
+    97,
+    3,
+    5,
+    146,
+    140,
+    148,
+    65,
+    143,
+    14
+   ],
+   "meta": {
+    "patterns": {
+     "A": {
+      "expected": [
+       1,
+       0,
+       0,
+       0
+      ],
+      "informative": true
+     },
+     "B": {
+      "expected": [
+       0,
+       1,
+       0,
+       0
+      ],
+      "informative": true
+     },
+     "C": {
+      "expected": [
+       0,
+       0,
+       1,
+       0
+      ],
+      "informative": true
+     },
+     "D": {
+      "expected": [
+       1,
+       0,
+       1,
+       0
+      ],
+      "informative": true
+     },
+     "E": {
+      "expected": [
+       0,
+       1,
+       0,
+       0
+      ],
+      "informative": true
+     },
+     "F": {
+      "expected": [
+       1,
+       0,
+       1,
+       0
+      ],
+      "informative": true
+     },
+     "Z": {
+      "expected": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "informative": false
+     }
+    },
+    "note": "larger decode: 9 measured syndrome registers, 4 register-valued corrections (c3 reads all of them): peak 13 live registers, the shape of the rejected R12x2",
+    "kind": "MProg",
+    "vector": {
+     "peak_live_regs": 13,
+     "peak_live_bitvars": 0,
+     "cone_regs": 9,
+     "total_reads": 22,
+     "stored_count": 4,
+     "stored_bits": 8,
+     "max_store_ops": 11,
+     "cond_ops": 0,
+     "cone_ops": 17,
+     "depth": 11,
+     "ershov": 2,
+     "lr_stack": 2,
+     "distinct_leaf_bits": 13,
+     "leaf_refs": 22,
+     "unique_nodes": 15,
+     "unary_ops": 0,
+     "literal_count": 0,
+     "max_literal_bits": 0,
+     "n_ifs": 4,
+     "has_shift": 0,
+     "has_cast": 0,
+     "has_compare": 0,
+     "has_add": 0,
+     "has_mul": 0,
+     "has_index": 0
+    },
+    "vector_builder": {
+     "peak_live_regs": 13,
+     "peak_live_bitvars": 0,
+     "cone_regs": 9,
+     "total_reads": 22,
+     "stored_count": 4,
+     "stored_bits": 8,
+     "max_store_ops": 11,
+     "cond_ops": 0,
+     "cone_ops": 17,
+     "depth": 11,
+     "ershov": 2,
+     "lr_stack": 2,
+     "distinct_leaf_bits": 13,
+     "leaf_refs": 22,
+     "unique_nodes": 15,
+     "unary_ops": 0,
+     "literal_count": 0,
+     "max_literal_bits": 0,
+     "n_ifs": 4,
+     "has_shift": 0,
+     "has_cast": 0,
+     "has_compare": 0,
+     "has_add": 0,
+     "has_mul": 0,
+     "has_index": 0
+    }
+   },
+   "metrics": {
+    "cone_regs": 3,
+    "peak_live": 13,
+    "peak_live_bits": 0,
+    "total_reads": 3,
+    "stores_in_cone": 1,
+    "cone_ops": 2,
+    "max_store_ops": 2,
+    "depth": 2,
+    "unique_nodes": 2,
+    "cond_reads": 1,
+    "temps": 2,
+    "temps_lr": 2
+   },
+   "op_definition": "op = one Binary, Unary or Index node of a store/if expression tree, counted on the TRANSPILED circuit; casts and literal nodes count 0; each use of a sub-expression counts again (tree, not DAG); depth = longest root-to-leaf chain of such nodes.",
+   "store_report": null,
+   "circuit_names": [
+    "E1_decode9_A",
+    "E1_decode9_B",
+    "E1_decode9_C",
+    "E1_decode9_D",
+    "E1_decode9_E",
+    "E1_decode9_F",
+    "E1_decode9_Z"
+   ],
+   "shots": 200,
+   "K": 1,
+   "est_s": 2.0,
+   "expected_p": null,
+   "qpy_file": "plan_7b05c7152abf/E1_decode9.qpy.bin",
+   "job_id": null,
+   "error": null
+  }
+ ],
+ "envelope_data_counts_when_frozen": [
+  58,
+  24
+ ],
+ "envelope_hash_when_frozen": "not recorded at the time (no hash was taken); counts above are from the registered predictions text",
+ "scrubbed": "job ids removed (not published)"
+}

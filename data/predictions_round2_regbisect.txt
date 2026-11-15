@@ -1,0 +1,15 @@
+Pre-registered predictions for regbisect (P pass / F fail / ? threshold unknown; monotone threshold per hypothesis).
+Known facts used: F1_regs150 (150 1-bit regs declared, store reads 1): pass; A96t_n16 (one 16-bit reg): pass; C6x16 (consumer reads 6 1-bit regs): pass; R12x8 round 1 (12 x 8-bit regs read): FAIL
+H_total_bits and H_declared_regs are already contradicted by F1_regs150 (150 declared registers passed) unless 1-bit registers are special;
+kept for completeness. 'read' = registers/bits operated on by the single store; 'declared' = ClassicalRegisters in the circuit (G..., S, L, out).
+probe     read_regs read_bits declared tot_bits | H_read_regs H_read_bits H_meas_regs
+B_R4x8            4        32        7       42 |           P           ?           ?
+B_R6x8            6        48        9       58 |           P           ?           ?
+B_R8x8            8        64       11       74 |           ?           ?           ?
+B_R10x8          10        80       13       90 |           ?           ?           ?
+B_R12x8c         12        96       15      106 |           F           F           F
+B_R6x16           6        96        9      114 |           P           F           ?
+B_R3x32           3        96        6      130 |           P           F           ?
+B_R12x2          12        24       15       28 |           F           ?           F
+B_R12x8u          2        16       15      106 |           P           P           F
+Discriminating outcomes: R12x2 F => count of registers read (not bits); R6x16/R3x32 F => bits read (not count); R12x8u F => declared/measured registers matter even if unread; R4..R10 give the threshold under H_read_regs.

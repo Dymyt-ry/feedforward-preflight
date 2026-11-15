@@ -1,0 +1,27 @@
+{
+ "backend": "ibm_marrakesh",
+ "date": "2026-11-15",
+ "source_note": "Fix-pack v1 QPU verification (plan 03b3cd042826): packed circuits with shift/narrowing-cast reads. Circuits are the QPY files in data/fixpack_candidates_v1/ (pattern 'last'; all three patterns have the same constructs). FP_R12x8 and FP_S24 were rejected with 6066 (Internal Compiler Error), FP_B14x3 (clbit-level reads only) was accepted and computed correctly (all three patterns above chance).",
+ "rounds": {
+  "fixpack_v1": [
+   {
+    "probe": "FP_R12x8",
+    "kind": "FIX",
+    "status": "ERROR",
+    "error_code": 6066
+   },
+   {
+    "probe": "FP_S24",
+    "kind": "FIX",
+    "status": "ERROR",
+    "error_code": 6066
+   },
+   {
+    "probe": "FP_B14x3",
+    "kind": "FIX",
+    "status": "DONE",
+    "error_code": null
+   }
+  ]
+ }
+}

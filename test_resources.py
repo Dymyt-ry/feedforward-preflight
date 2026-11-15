@@ -213,10 +213,17 @@ def test_loops_and_index_lvalue_do_not_crash():
     assert v["unanalysed"] >= 1 and set(v) == set(R.DIMENSIONS)
 
 
+def _docs_text():
+    """README plus every docs/*.md (the documentation is split across these files)."""
+    import glob
+    parts = [os.path.join(HERE, "README.md")] + sorted(glob.glob(os.path.join(HERE, "docs", "*.md")))
+    return "\n".join(open(p).read() for p in parts)
+
+
 def test_readme_numbers_match_shipped_files():
     """Key README numbers must equal the shipped rules/data files (stops documentation drift)."""
     import re
-    readme = open(os.path.join(HERE, "README.md")).read()
+    readme = _docs_text()
     d = json.load(open(os.path.join(HERE, "rules", "envelope_ibm_heron_r2_2026-11-15.json")))
     n = len(R.DIMENSIONS)
     assert len(d["dimensions"]) == n
@@ -245,7 +252,7 @@ def test_readme_numbers_match_shipped_files():
 def test_readme_dates_match_measured_dates():
     """Dates stated in the README must equal the set of measured_date values (rules) plus run dates in run_metadata.json."""
     import re
-    readme = open(os.path.join(HERE, "README.md")).read()
+    readme = _docs_text()
     d = json.load(open(os.path.join(HERE, "rules", "envelope_ibm_heron_r2_2026-11-15.json")))
     meta = json.load(open(os.path.join(HERE, "data", "run_metadata.json")))
     dates = {p["measured_date"] for p in d["probes"].values()} if isinstance(d.get("probes"), dict) else {p["measured_date"] for p in d["probes"]}
@@ -253,13 +260,27 @@ def test_readme_dates_match_measured_dates():
         dates |= set(re.findall(r"\d{4}-\d\d-\d\d", r.get("submitted_local", "")))
         dates |= {m.replace("_", "-") for m in re.findall(r"\d{4}_\d\d_\d\d", k)}
     assert len(dates) == 3, dates
-    m = re.search(r"three dates: ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\))[;.]", readme)
-    assert m, "README status line must say 'three dates: ...'"
+    main_readme = open(os.path.join(HERE, "README.md")).read()          # the front page itself must state the dates
+    m = re.search(r"three dates:\*{0,2} ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\))[;.]", main_readme)
+    assert m, "README must say 'three dates: ...'"
+    assert "ibm_fez" in main_readme and "not affiliated with" in main_readme and "monotonicity" in main_readme.lower() and "UNCERTAIN is common by design" in main_readme
     stated = set(re.findall(r"\d{4}-\d\d-\d\d", " ".join(m.groups())))
     assert stated == dates, (stated, dates)
     assert not re.search(r"\b(one|single) day\b", readme, re.I), "README still claims a single day"
     for c in d["caveats"]:
         assert not re.search(r"\b(one|single) day\b", c, re.I), c
+
+
+def test_figures_shipped_and_clean():
+    """Figures referenced by the README exist (light and dark SVG + PNG) and carry no local paths."""
+    import re
+    main = open(os.path.join(HERE, "README.md")).read()
+    names = set(re.findall(r"docs/img/([a-z0-9]+-(?:light|dark)\.svg)", main))
+    assert len(names) >= 8, names
+    for n in names:
+        svg = open(os.path.join(HERE, "docs", "img", n)).read()
+        assert "/Users/" not in svg and "/home/" not in svg
+        assert os.path.exists(os.path.join(HERE, "docs", "img", n[:-4] + ".png"))
 
 
 def test_frozen_rounds_e1_e2_verdicts_unchanged_under_current_rule():
@@ -287,7 +308,7 @@ def test_frozen_rounds_e1_e2_verdicts_unchanged_under_current_rule():
                 got, _ = R.envelope_verdict(v, acc_o, rej_o, d["pass_dims"], dims)
                 assert got == frozen[rec["name"]], (rnd, rec["name"], got, frozen[rec["name"]], dims)
     assert frozen_dims["e1"] == five and frozen_dims["e2"] == four, frozen_dims
-    readme = open(os.path.join(HERE, "README.md")).read()
+    readme = _docs_text()
     assert "**five** failure dimensions" in readme and "**four** (cone_ops, lr_stack, peak_live_regs, unary_ops)" in readme
 
 

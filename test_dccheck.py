@@ -397,6 +397,12 @@ def test_rules_age_and_backend_warning():
     assert "61 days old" in w and "ibm_other" in w
     rep = D.check(qc, RULES, today=TODAY + dt.timedelta(days=61), max_age_days=90)
     assert not any("days old" in x for x in rep["warnings"])
+    # ibm_kingston: partially covered (5 register-rule probes), must say so and must not say "not covered" nor claim full coverage
+    w = " ".join(D.check(qc, RULES, today=TODAY, backend="ibm_kingston")["warnings"])
+    assert "partially" in w and "5 register-rule probes" in w and "not covered" not in w and "still rests on ibm_marrakesh" in w, w
+    assert not any("partially" in x for x in D.check(qc, RULES, today=TODAY, backend="ibm_marrakesh")["warnings"])
+    w = " ".join(D.check(qc, RULES, today=TODAY, backend="ibm_fez")["warnings"])
+    assert "ibm_fez is not covered" in w
     assert not D.check(qc, RULES, today=TODAY + dt.timedelta(days=60))["warnings"]
 
 

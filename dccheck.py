@@ -653,10 +653,16 @@ def _check_impl(qc, rules=None, backend=None, today=None, max_age_days=60):
                         f"Re-run the suite and regenerate the rules.")
     if age < 0:
         warnings.append("rules measured_date is in the future")
-    if backend and backend not in rules["backends"]:
-        warnings.append(f"rules were measured on {', '.join(rules['backends'])}; target {backend} is not covered (other backends may differ)")
-    emp = "measured empirically on " + ", ".join(rules["backends"]) + " " + rules["measured_date"] + ", not published by IBM"
     env = R.load_envelope(rules)
+    partial = (env or {}).get("backends_partial") or {}
+    if backend and backend not in rules["backends"]:
+        if backend in partial:
+            warnings.append(f"rules were measured on {', '.join(rules['backends'])}; target {backend} is covered only partially: {partial[backend]}. "
+                            f"Every other part of this verdict (all other resource shapes, latency, fix-pack) still rests on {', '.join(rules['backends'])} data, "
+                            f"and other backends or backend versions may differ")
+        else:
+            warnings.append(f"rules were measured on {', '.join(rules['backends'])}; target {backend} is not covered (other backends may differ)")
+    emp = "measured empirically on " + ", ".join(rules["backends"]) + " " + rules["measured_date"] + ", not published by IBM"
     env_res = env_src = None
     if env is not None and an.entries:
         if an.vector_error:
@@ -1029,7 +1035,7 @@ def _fmt_sources(srcs, ind="      "):
 
 MONOTONICITY = ("PASS means: no larger, in every measured resource dimension, than a circuit that an accepted QPU probe ran, ASSUMING monotone resource demand "
                 "(needing no more of every resource than an accepted circuit cannot get a circuit rejected). The assumption is consistent with the stored probes but unproven; "
-                "one backend (ibm_marrakesh), one day; UNCERTAIN is common by design.")
+                "measured on ibm_marrakesh (the 5 register-rule probes were also run on ibm_kingston); UNCERTAIN is common by design.")
 
 
 def format_report(rep, header=True):

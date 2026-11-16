@@ -1450,6 +1450,80 @@
      "qpu_charge_seconds": 3
     }
    ]
+  },
+  "round5_p3_kingston_replication": {
+   "plan_hash": "234a8fad3bff",
+   "backend": "ibm_kingston",
+   "tier": "p3",
+   "submitted_local": "2026-11-16 12:54:05 (local, UTC+2; 10:54:05 UTC)",
+   "n_jobs": 5,
+   "window_utc": [
+    "2026-11-16T10:54:06.065217Z",
+    "2026-11-16T10:54:19.238659Z"
+   ],
+   "charged_qpu_seconds": 11,
+   "status_counts": {
+    "DONE": 3,
+    "ERROR": 2
+   },
+   "note": "cross-backend replication of the five register-rule probes (the p3 plan) on ibm_kingston, backend_version 1.0.0 (ibm_marrakesh: 1.0.21), about 11 h after the ibm_marrakesh repeat; outcomes identical to ibm_marrakesh; charged seconds as reported by the job metrics (read-only API); only these five probes were run on this backend, not the latency, stack-need or fix-pack probes",
+   "jobs": [
+    {
+     "probe": "P3_R10x2",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-16T10:54:06.065217Z",
+     "running_utc": "2026-11-16T10:54:08.010086Z",
+     "finished_utc": "2026-11-16T10:54:12.550965Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P3_R11x2",
+     "circuits": 5,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-16T10:54:06.843849Z",
+     "running_utc": "2026-11-16T10:54:09.215796Z",
+     "finished_utc": "2026-11-16T10:54:13.404587Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P3_R12x2",
+     "circuits": 5,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-16T10:54:07.598456Z",
+     "running_utc": "2026-11-16T10:54:09.917952Z",
+     "finished_utc": "2026-11-16T10:54:11.553775Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P3_split6",
+     "circuits": 5,
+     "shots": 200,
+     "status": "ERROR",
+     "error_code": 6057,
+     "created_utc": "2026-11-16T10:54:08.341666Z",
+     "running_utc": "2026-11-16T10:54:10.848253Z",
+     "finished_utc": "2026-11-16T10:54:12.277764Z",
+     "qpu_charge_seconds": 2
+    },
+    {
+     "probe": "P3_overlapNF",
+     "circuits": 6,
+     "shots": 200,
+     "status": "DONE",
+     "error_code": null,
+     "created_utc": "2026-11-16T10:54:08.981011Z",
+     "running_utc": "2026-11-16T10:54:14.980835Z",
+     "finished_utc": "2026-11-16T10:54:19.238659Z",
+     "qpu_charge_seconds": 3
+    }
+   ]
   }
  },
  "backend": {
@@ -1463,10 +1537,10 @@
   "properties_last_update": "2026-11-13 19:22:56+02:00",
   "firmware": "not exposed by the API"
  },
- "rounds_note": "Every QPU job of the suite's rounds (including the accidental duplicate p1 execution and the p3 jobs still queued on ibm_fez when this was written), with status as read at generation time. Jobs of the 2026-11-06 exploration are not listed (their ids are only partly recorded). Job ids are not published (they are only resolvable by the IBM account that ran them). The ibm_marrakesh replication of the p3 register probes (round5_p3_marrakesh_replication) was added afterwards.",
+ "rounds_note": "Every QPU job of the suite's rounds (including the accidental duplicate p1 execution and the p3 jobs still queued on ibm_fez when this was written), with status as read at generation time. Jobs of the 2026-11-06 exploration are not listed (their ids are only partly recorded). Job ids are not published (they are only resolvable by the IBM account that ran them). The ibm_marrakesh repeat (round5_p3_marrakesh_replication) and the ibm_kingston replication (round5_p3_kingston_replication) of the p3 register probes were added afterwards; the totals include them.",
  "totals": {
-  "jobs": 110,
-  "charged_qpu_seconds_all_plans": 279,
+  "jobs": 115,
+  "charged_qpu_seconds_all_plans": 290,
   "generated_utc": "2026-11-15T23:25:02Z"
  },
  "backend_versions_read_after_the_runs": {
@@ -1595,6 +1669,16 @@
     },
     "read_at_utc": "2026-11-15T23:23:23Z",
     "properties_last_update": "2026-11-13 19:22:56+02:00"
+   },
+   "234a8fad3bff": {
+    "backend": "ibm_kingston",
+    "backend_version": "1.0.0",
+    "processor_type": {
+     "family": "Heron",
+     "revision": "2"
+    },
+    "read_at_utc": "2026-11-16T10:54:05Z",
+    "properties_last_update": "2026-11-13 16:57:10+02:00"
    }
   }
  },

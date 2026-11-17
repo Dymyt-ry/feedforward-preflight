@@ -12,7 +12,7 @@
   "ibm_fez": "5 register-rule probes only (R10x2, R11x2, R12x2, split6, non-foldable overlap), submitted 2026-11-15 and executed 2026-11-16, backend_version 1.3.37; latency, stack-need shapes and fix-pack were not run there"
  },
  "backend_coverage": "ibm_marrakesh (all probes) + ibm_kingston and ibm_fez (5 register-rule probes each)",
- "cross_backend_check": [
+ "replicated_probe_outcome_agreement": [
   {
    "name": "p3k:P3_R10x2",
    "backend": "ibm_kingston",
@@ -94,6 +94,7 @@
    "contradicts": false
   }
  ],
+ "replicated_probe_outcome_agreement_note": "The kingston/fez probes have the same resource vectors as their ibm_marrakesh counterparts (p3m), so the marrakesh-only envelope necessarily judges them as it judges those counterparts; this list therefore only records that the observed OUTCOMES agree across the three backends. It is not an independent test of the envelope on another backend.",
  "vector_definition": "resources.resource_vector(circuit) on the circuit as shipped (executed transpiled circuit where the source says so); see resources.py",
  "dimensions": {
   "peak_live_regs": "registers (measured + register-valued stores) simultaneously live, maximum over the circuit",

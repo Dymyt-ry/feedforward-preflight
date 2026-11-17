@@ -78,7 +78,7 @@ def build():
             seen.add(k)
             uniq.append(r)
     stat_uniq, wrong_uniq = loo(uniq, fail_dims, dims)
-    # cross-backend check: each probe measured on another backend is judged by the envelope of the ibm_marrakesh probes ALONE (nothing left out
+    # replicated-probe outcome agreement (NOT an independent test: the replicate vectors equal their marrakesh counterparts): each probe measured on another backend is judged by the envelope of the ibm_marrakesh probes ALONE (nothing left out
     # needed: no marrakesh probe is the kingston probe) and must come out as its observed outcome, or UNCERTAIN; a PASS/FAIL against the observed outcome is a mismatch
     xb = []
     ma = [(r["name"], r["vector"]) for r in acc]
@@ -102,14 +102,15 @@ def main(write=False):
     print("leave-one-out, UNIQUE (vector, class) pairs [headline]:", b["loo_unique"], "wrong:", b["loo_unique_wrong"])
     print("leave-one-out, all probes incl. identical replicates [secondary]:", b["loo_all"], "wrong:", b["loo_all_wrong"])
     xb = b["cross_backend"]
-    print(f"cross-backend: {len(xb)} probes on other backends; verdict from the ibm_marrakesh envelope alone agrees (PASS for accepted, FAIL for rejected) for {sum(x['agrees'] for x in xb)}, "
+    print(f"replicated probes: {len(xb)} probes on other backends (same vectors as their marrakesh counterparts, so this records outcome agreement only, not an independent test); verdict from the ibm_marrakesh envelope alone agrees (PASS for accepted, FAIL for rejected) for {sum(x['agrees'] for x in xb)}, "
           f"contradicts for {sum(x['contradicts'] for x in xb)}:", [(x["name"], x["verdict_from_marrakesh_only"]) for x in xb])
     if write:
         out = dict(
             id="envelope_ibm_heron_r2_2026-11-15", kind="empirical monotone dominance envelope", error_code=6057, measured_date="2026-11-15 (plus 2026-11-06 historical probes, labelled per probe)",
             backend_family="ibm_heron_r2", backends_covered=["ibm_marrakesh"], backends_partial={"ibm_kingston": "5 register-rule probes only (R10x2, R11x2, R12x2, split6, non-foldable overlap), 2026-11-16, backend_version 1.0.0; latency, stack-need shapes and fix-pack were not run there",
                               "ibm_fez": "5 register-rule probes only (R10x2, R11x2, R12x2, split6, non-foldable overlap), submitted 2026-11-15 and executed 2026-11-16, backend_version 1.3.37; latency, stack-need shapes and fix-pack were not run there"},
-            backend_coverage="ibm_marrakesh (all probes) + ibm_kingston and ibm_fez (5 register-rule probes each)", cross_backend_check=b["cross_backend"],
+            backend_coverage="ibm_marrakesh (all probes) + ibm_kingston and ibm_fez (5 register-rule probes each)", replicated_probe_outcome_agreement=b["cross_backend"],
+            replicated_probe_outcome_agreement_note="The kingston/fez probes have the same resource vectors as their ibm_marrakesh counterparts (p3m), so the marrakesh-only envelope necessarily judges them as it judges those counterparts; this list therefore only records that the observed OUTCOMES agree across the three backends. It is not an independent test of the envelope on another backend.",
             vector_definition="resources.resource_vector(circuit) on the circuit as shipped (executed transpiled circuit where the source says so); see resources.py",
             dimensions=R.DIMENSIONS, flag_dimensions=list(R.FLAG_DIMS),
             verdict_rule=dict(PASS="vector <= the vector of some ACCEPTED probe in every dimension of pass_dims; never PASS if unanalysed > 0 or the circuit has no if (monotonicity is an ASSUMPTION)",

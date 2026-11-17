@@ -2380,7 +2380,7 @@ def analyse_manifest(man, res, outdir=OUTDIR):
     if "WVOTE27" in meas:
         v, s = meas["WVOTE27"]
         L.append(f"- WVOTE27 reproduction of old 1032 +/- 151: {v:.0f} +/- {s:.0f} ns, z = {(v - 1032) / np.hypot(s, 151):+.1f}")
-    contrast("WVOTE27", "POP8", "WVOTE27 - POP8 (8 mul vs none; ops differ by 4)")
+    contrast("WVOTE27", "POP8", "WVOTE27 - POP8 (7 mul vs none; ops differ by 4)")
     # ---- acceptance
     L += ["", "## Acceptance probes (pass/fail; failures are data)", "| probe | result | code | P(out=1) obs vs expected |", "|---|---|---|---|"]
     acc = {}

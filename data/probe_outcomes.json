@@ -663,7 +663,7 @@
   "wvote_minus_pop8": {
    "ns": 179.8,
    "se": 82.4,
-   "note": "WVOTE27 has 4 more ops (8 mul instead of 8 shifts... see structure), expected +4 ops * slope"
+   "note": "WVOTE27 has 4 more ops (7 mul on 7 inputs, against POP8's 8 inputs and no mul; see structure), expected +4 ops * slope [corrected 2026-11-17: an earlier text said '8 mul instead of 8 shifts']"
   }
  }
 }

@@ -266,7 +266,7 @@ def _():
     for i in range(n):
         with qc.if_test(expr.equal(regs[i], 1)): qc.x(q[24])
     return qc
-@case("C13", "R12x2 where S is stored then copied: S2 = S (copy store, 6062 hazard) ", FAILONLY)
+@case("C13", "R12x2 where S is stored then copied: S2 = S (copy store, 6062 hazard; UNCERTAIN, context dependent)", NOT_PASS)
 def _():
     qc = regs_prog(); out = qc.copy_empty_like(); S = [r for r in qc.cregs if r.name == "S"][0]; S2 = [r for r in qc.cregs if r.name == "S2"][0]
     for ins in qc.data:

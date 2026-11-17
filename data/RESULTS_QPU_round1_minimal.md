@@ -50,7 +50,7 @@ Inter-job REF drift (RMS of max cross-offset over 10 pairs): 48 ns (used as job-
 - XORC15 - XORT15 (same 15 xor, depth 15 vs 4; H_ops predicts 0, H_depth +1372): +2 +/- 69 ns (+0.0 sigma stat; job-level 84 ns)
 - SOUP63 vs extrapolation 2155 ns: -52 ns = -0.7 sigma (63 ops, depth 6, 16 inputs)
 - WVOTE27 reproduction of old 1032 +/- 151: 1055 +/- 67 ns, z = +0.1
-- WVOTE27 - POP8 (8 mul vs none; ops differ by 4): +180 +/- 82 ns (+2.2 sigma stat; job-level 95 ns)
+- WVOTE27 - POP8 (8 mul vs none; ops differ by 4) [correction 2026-11-17: WVOTE27 has 7 mul, not 8; the label in the harness now says 7 mul]: +180 +/- 82 ns (+2.2 sigma stat; job-level 95 ns)
 
 ## Acceptance probes (pass/fail; failures are data)
 | probe | result | code | P(out=1) obs vs expected |

@@ -610,9 +610,9 @@ class FixResult:
                     before=self.before, after=self.after)
 
 
-def transpile_check(qc):
+def transpile_check(qc, backend=None):
     """Transpile exactly as dccheck.preflight does (bundled fake Heron r2 + measure_2, level 1, seed 7). Returns (dict, circuit|None)."""
-    t, info = D.isa_circuit(qc)
+    t, info = D.isa_circuit(qc, backend)
     if t is None:
         return dict(ok=False, target=info["target"] or "-", error=info["error"]), None
     return dict(ok=True, target=info["target"], n_ops=len(t.data)), t
@@ -708,6 +708,16 @@ def fix_pack(qc, rules=None, backend=None, today=None, max_age_days=60, group_wi
     res.after = after
     failing = [(i["where"], c["rule"]) for i in after["ifs"] for c in i["checks"] if c["status"] == FAIL] + \
         [(h["message"], h["rule"]) for h in after["hazards"] if h["status"] == FAIL]
+    nb = {}
+    for h in before["hazards"]:
+        nb[h["rule"]] = nb.get(h["rule"], 0) + 1
+    na = {}
+    for h in after["hazards"]:
+        na[h["rule"]] = na.get(h["rule"], 0) + 1
+    introduced = [(r, na[r] - nb.get(r, 0)) for r in na if na[r] > nb.get(r, 0)]
+    if introduced and not failing:      # the rewrite must not create a hazard (of any verdict, e.g. a copy store) that the original did not have
+        res.refused = f"the rewritten circuit would introduce hazard(s) the original does not have ({introduced[:3]}); the circuit was not returned"
+        return res
     if failing:
         res.refused = (f"the rewritten circuit would violate a hard rule ({failing[:3]}), e.g. a packed register wider than 32 bits "
                        f"used directly as an if operand; the circuit was not returned (try a smaller group_width)")
@@ -742,7 +752,7 @@ def fix_pack(qc, rules=None, backend=None, today=None, max_age_days=60, group_wi
     if not eq["equal"]:
         res.refused = f"equivalence check FAILED ({eq['first_mismatch']}); the circuit was not returned"
         return res
-    tc, t = transpile_check(new)
+    tc, t = transpile_check(new, backend)
     res.transpile = tc
     if not tc["ok"]:
         res.refused = f"rewritten circuit does not transpile: {tc.get('error')}"
@@ -769,6 +779,7 @@ def format_fix(res):
     L = []
     b = res.before
     L.append(f"fix-pack for circuit {b['circuit']!r}: before {b['status']}")
+    L += [f"WARNING: {w}" for w in b.get("warnings", [])]
     if res.refused:
         L.append(f"REFUSED: {res.refused}")
         return "\n".join(L)

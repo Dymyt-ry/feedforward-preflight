@@ -241,12 +241,12 @@
    "id": "copy_store",
    "detector": "copy_store",
    "error_code": 6062,
-   "verdict": "FAIL",
+   "verdict": "UNCERTAIN",
    "official": [
     "internal_error"
    ],
-   "description": "a store whose right-hand side is a bare bit, register or Var (a copy)",
-   "reference": "earlier-day IBM rejection (suite.py guards()); raw job not in data/"
+   "description": "a store whose right-hand side is a bare bit, register or Var (a copy). Observed on 2026-11-06: 6062 for copy-like stores inside larger circuits, while the same copies were accepted in isolation (and the accepted probe old:G_true is a single bit copy); the failing circuits are not in data/, so the condition under which it fails is unknown",
+   "reference": "earlier-day IBM observation, context dependent (suite.py guards()); raw jobs not in data/"
   },
   {
    "id": "dynamic_bit_index",
@@ -398,7 +398,7 @@
    ],
    "reason": "independent review 2026-11-15: stated errors were shot noise only; scatter-inflated per-point errors are 90 to 230 ns, the intercept is unresolved (0 to 400 ns covers the Bool/Uint split and the ops+inputs alternative), slope about 25 to 30 ns per op between 15 and 63 ops; not a law"
   },
-  "excludes": "measurement duration (measure_2 is about 1.88 us scheduled) and any wait shared with a bare 1-bit if; ops counted as in the fit points"
+  "excludes": "the measurement duration (measure_2 is about 1.88 us scheduled) and the fixed decision cost that a bare 1-bit if also has (the value is an increment over that if, not an absolute time); ops counted as in the fit points"
  },
  "official_texts": {
   "err6057": {

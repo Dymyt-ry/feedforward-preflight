@@ -1551,10 +1551,11 @@
  "totals": {
   "jobs": 115,
   "charged_qpu_seconds_all_plans": 301,
-  "generated_utc": "2026-11-15T23:25:02Z"
+  "generated_utc": "2026-11-15T23:25:02Z",
+  "generated_utc_note": "time of the first generation of this file; the 2026-11-16 ibm_kingston and ibm_fez rounds were added afterwards and the totals include them"
  },
- "backend_versions_read_after_the_runs": {
-  "note": "read-only API reads at the time of generation (2026-11-15, after all runs); backend_version is the backend's reported version string, processor_type family/revision as reported",
+ "backend_versions_read_2026_11_15_before_the_2026_11_16_rounds": {
+  "note": "read-only API reads on 2026-11-15 (about 17:36 UTC): after the main runs, but BEFORE the ibm_marrakesh p3 replicate (2026-11-15 23:23 UTC) and the 2026-11-16 ibm_kingston and ibm_fez rounds (the backend_version for those rounds is in data/p3_kingston and data/p3_fez manifests); backend_version is the backend's reported version string, processor_type family/revision as reported",
   "backends": {
    "ibm_marrakesh": {
     "name": "ibm_marrakesh",
@@ -1695,7 +1696,7 @@
  "not_recorded": [
   "controller firmware (not exposed by the API)",
   "the calibration snapshot in force when each job ran (only the properties timestamp read at submission for round 4, and at generation otherwise)",
-  "the backend_version at job time for rounds 1-3 and the fix-pack runs (the same-day version read afterwards is shown above)",
+  "the backend_version at job time for rounds 1-3 and the fix-pack runs (the 2026-11-15 version read is shown above; it was taken before the later p3 rounds)",
   "qiskit-ibm-runtime server-side compiler version"
  ]
 }

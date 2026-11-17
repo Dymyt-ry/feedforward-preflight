@@ -152,12 +152,12 @@
    "id": "copy_store",
    "detector": "copy_store",
    "error_code": 6062,
-   "verdict": "FAIL",
+   "verdict": "UNCERTAIN",
    "official": [
     "internal_error"
    ],
-   "description": "a store whose right-hand side is a bare bit, register or Var (a copy)",
-   "reference": "earlier-day IBM rejection (suite.py guards()); raw job not in data/"
+   "description": "a store whose right-hand side is a bare bit, register or Var (a copy). Observed on 2026-11-06: 6062 for copy-like stores inside larger circuits, while the same copies were accepted in isolation (and the accepted probe old:G_true is a single bit copy); the failing circuits are not in data/, so the condition under which it fails is unknown",
+   "reference": "earlier-day IBM observation, context dependent (suite.py guards()); raw jobs not in data/"
   },
   {
    "id": "dynamic_bit_index",

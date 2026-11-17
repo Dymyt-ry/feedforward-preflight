@@ -134,7 +134,7 @@ def age_days(rules, today=None):
 
 # ------------------------------------------------------------------ evaluation
 def latency_estimate(lat, ops, z=2.0):
-    """Estimate (ns after measurement end) with a deliberately WIDE interval.
+    """Estimate (ns, an INCREMENT over a bare 1-bit `if`, not an absolute time) with a deliberately WIDE interval.
     If the latency block has `ranges` (curated): lo = intercept_lo + slope_lo*ops - err_lo, hi = intercept_hi + slope_hi*ops + err_hi.
     Otherwise (a freshly fitted block without curation): +-z*sqrt(var(fit) + scatter^2). The central value is the fit; it is not a law."""
     a, b = lat["intercept_ns"], lat["slope_ns_per_op"]

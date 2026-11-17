@@ -215,6 +215,29 @@ def test_every_probe_predicts_observed_outcome():
     assert not mism, mism
 
 
+def test_every_shipped_probe_circuit_through_full_check():
+    """Run the FULL dccheck.check path (envelope + hazards + transpile) on every circuit shipped in data/envelope_probes/ (all QPY files, including the
+    29 rebuilt 2026-11-06 circuits). No accepted probe may be FAIL, no rejected probe may be PASS."""
+    idx = json.load(open(os.path.join(HERE, "data", "envelope_probes", "index.json")))["probes"]
+    assert len(idx) == len(ENV["probes"]) == len(os.listdir(os.path.join(HERE, "data", "envelope_probes"))) - 1
+    cm = {(o, v): 0 for o in ("accepted", "rejected") for v in ("PASS", "FAIL", "UNCERTAIN")}
+    bad = []
+    for x in idx:
+        with open(os.path.join(HERE, "data", "envelope_probes", x["qpy"]), "rb") as f:
+            circs = qpy.load(f)
+        assert len(circs) == 1, x["name"]
+        st = D.check(circs[0], RULES, today=TODAY)["status"]
+        o = "accepted" if x["class_"] == "accept" else "rejected"
+        cm[(o, st)] += 1
+        if (o == "accepted" and st == "FAIL") or (o == "rejected" and st == "PASS"):
+            bad.append((x["name"], o, st))
+    say(f"full check() on all {len(idx)} shipped probe circuits (rows observed on QPU incl. 2 rejected with 6066, columns dccheck):")
+    say("                 PASS  FAIL  UNCERTAIN")
+    for o in ("accepted", "rejected"):
+        say(f"obs {o:9s}   {cm[(o, 'PASS')]:4d}  {cm[(o, 'FAIL')]:4d}  {cm[(o, 'UNCERTAIN')]:9d}")
+    assert not bad, bad
+
+
 def _split_env(env, drop=()):
     acc = [(x["name"], x["vector"]) for x in env["probes"] if x["class_"] == "accept" and x["name"] not in drop]
     rej = [(x["name"], x["vector"]) for x in env["probes"] if x["class_"] == "reject6057" and x["name"] not in drop]
@@ -388,6 +411,7 @@ def test_static_hazards():
         qc.x(q[1])
     rep = D.check(qc, RULES, today=TODAY)
     assert any(h["error_code"] == 6062 for h in rep["hazards"])
+    assert all(h["status"] == "UNCERTAIN" for h in rep["hazards"] if h["error_code"] == 6062) and rep["status"] != "PASS"    # context dependent: not FAIL
 
 
 def test_rules_age_and_backend_warning():
@@ -407,6 +431,33 @@ def test_rules_age_and_backend_warning():
     w = " ".join(D.check(qc, RULES, today=TODAY, backend="ibm_aachen")["warnings"])
     assert "ibm_aachen is not covered" in w and "partially" not in w
     assert not D.check(qc, RULES, today=TODAY + dt.timedelta(days=60))["warnings"]
+    # backend names are normalised (case, surrounding whitespace) before the coverage lookup
+    for spelled in ("IBM_FEZ", " ibm_fez ", "ibm_fez\n", "Ibm_Fez"):
+        w = " ".join(D.check(qc, RULES, today=TODAY, backend=spelled)["warnings"])
+        assert "partially" in w and "not covered" not in w and "1.3.37" in w, (spelled, w)
+    assert not any("partially" in x or "not covered" in x for x in D.check(qc, RULES, today=TODAY, backend=" IBM_Marrakesh ")["warnings"])
+    assert D.norm_backend(" IBM_Kingston\t") == "ibm_kingston" and D.norm_backend(None) is None
+
+
+def test_fixpack_uses_the_backend_and_shows_the_coverage_warning():
+    qc = regs_circuit(12, 8, name="fpbackend")
+    res = F.fix_pack(qc, RULES, backend="ibm_fez", today=TODAY)
+    assert res.changed, res.refused or res.notes
+    assert "FakeFez" in res.transpile["target"], res.transpile
+    assert any("partially" in w and "ibm_fez" in w for w in res.before["warnings"])
+    txt = F.format_fix(res)
+    assert "WARNING" in txt and "partially" in txt and "FakeFez" in txt, txt
+    res2 = F.fix_pack(qc, RULES, backend=" IBM_KINGSTON ", today=TODAY)
+    assert "FakeKingston" in res2.transpile["target"] and "partially" in F.format_fix(res2)
+    res3 = F.fix_pack(qc, RULES, backend="ibm_nowhere", today=TODAY)
+    assert "FakeMarrakesh" in res3.transpile["target"] and "not covered" in F.format_fix(res3)
+    # the CLI text path shows it too
+    p = tempfile.mkdtemp()
+    qp = os.path.join(p, "c.qpy")
+    with open(qp, "wb") as fh:
+        qpy.dump(qc, fh)
+    out = subprocess.run([PY, os.path.join(HERE, "dccheck.py"), qp, "--fix-pack", "--backend", "ibm_fez", "--today", TODAY.isoformat()], capture_output=True, text=True).stdout
+    assert "WARNING" in out and "partially" in out and "FakeFez" in out, out
 
 
 def test_envelope_semantics_and_explanations():

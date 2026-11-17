@@ -3,7 +3,7 @@
 
 Predicts, BEFORE submission, from empirical rules measured on a real backend (rules/*.json, data not code):
   * whether the backend will reject the circuit (error 6057, plus a few documented rejection patterns);
-  * the observed decision latency after measurement end.
+  * the estimated extra decision latency of the classical expression, as an increment over a bare 1-bit `if` (not an absolute time).
 Optionally rewrites the circuit (--fix-pack) so measurements into many small registers go into few wide registers.
 
 CLI    python dccheck.py CIRCUIT [--transpiled ISA_CIRCUIT | --no-transpile] [--rules FILE] [--backend NAME] [--json] [--max-age-days 60] [--fix-pack [-o OUT.qpy]]
@@ -12,7 +12,7 @@ API    from dccheck import preflight, check, load_rules, fix_pack
        rep = preflight(circuit, load_rules());  rep["status"] (worst of as-passed and transpiled; check() returns the same status); check(circuit) = the same verdict with the as-passed report; check_logical(circuit) = as passed only, no verdict; print(format_report(rep))
 
 Exit status: 0 PASS, 1 FAIL, 2 UNCERTAIN (no FAIL), 3 internal error (no verdict), 4 NOT APPLICABLE (no classical feedforward), 64 usage / loading error.
-The rules are empirical observations of one backend on one date. They are NOT a model of the controller firmware.
+The rules are empirical observations (mostly on ibm_marrakesh, a few probes on ibm_kingston and ibm_fez, on several dates; see the rules file). They are NOT a model of the controller firmware.
 """
 from __future__ import annotations
 
@@ -643,7 +643,21 @@ def broadcast_info(rules, n, total_bits):
     return out
 
 
+def norm_backend(backend):
+    """Backend names are matched case-insensitively and without surrounding whitespace (non-strings are left as they are)."""
+    return backend.strip().lower() if isinstance(backend, str) else backend
+
+
+def _env_counts(env):
+    """'115 probes: 105 on ibm_marrakesh, 5 on ibm_kingston, 5 on ibm_fez', computed from the envelope's probe list."""
+    c = {}
+    for p in env["probes"]:
+        c[p.get("backend", "?")] = c.get(p.get("backend", "?"), 0) + 1
+    return f"{len(env['probes'])} probes: " + ", ".join(f"{n} on {b}" for b, n in sorted(c.items(), key=lambda kv: (-kv[1], kv[0])))
+
+
 def _check_impl(qc, rules=None, backend=None, today=None, max_age_days=60):
+    backend = norm_backend(backend)
     rules = rules or load_rules()
     an = analyze(qc)
     warnings = []
@@ -675,7 +689,7 @@ def _check_impl(qc, rules=None, backend=None, today=None, max_age_days=60):
                 env_res = dict(status=UNCERTAIN, witness=[], dims=[],
                                reason=f"the resource vector undercounts the cone that the dataflow analysis finds at {', '.join(bad[:3])} (it cannot follow this construct, "
                                       f"or a store is overwritten along the program order); no verdict is possible")
-        env_src = src_measured(f"{R.witness_provenance(env, env_res['witness'])}; empirical monotone dominance envelope over {len(env['probes'])} probes, not published by IBM",
+        env_src = src_measured(f"{R.witness_provenance(env, env_res['witness'])}; empirical monotone dominance envelope over {_env_counts(env)}, not published by IBM",
                                [w.split(":", 1)[-1] for w in env_res["witness"]])
     covered = {c["signature"]: c["evidence"] for c in rules.get("accepted_constructs", [])}
     cons_msg, cons_ev = "", []
@@ -855,7 +869,7 @@ VEC_DIMS_COMPARED = ("peak_live_regs", "lr_stack", "cone_ops", "max_store_ops", 
 def _target(backend):
     import stopwatch_core as SW
     from qiskit_ibm_runtime import fake_provider as FP
-    name = _FAKES.get(backend or "", DEFAULT_FAKE)
+    name = _FAKES.get(norm_backend(backend) or "", DEFAULT_FAKE)
     be = getattr(FP, name)()
     SW.target_with_measure2(be, 1.884e-6)
     return name, be
@@ -941,6 +955,7 @@ def isa_circuit(qc, backend=None):
     import stopwatch_core as SW
     from qiskit import transpile
     from qiskit_ibm_runtime import fake_provider as FP
+    backend = norm_backend(backend)
     info = dict(already_isa=False, target=None, error=None)
     if isa_problem(qc, backend) is None:
         info.update(already_isa=True, target="as passed (the circuit is already ISA for the bundled target: layout, width and basis checked)")
@@ -966,6 +981,7 @@ def preflight(qc, rules=None, backend=None, today=None, max_age_days=60, transpi
     a supplied circuit then only adds a note (whether it corresponds in counts, and whether dcfix.classical_equivalent found the same classical decisions on
     random outcomes - a sampling check, NOT a proof). transpile=False checks the circuit as passed only."""
     rules = rules or load_rules()
+    backend = norm_backend(backend)
     kw = dict(backend=backend, today=today, max_age_days=max_age_days)
     logical = check_logical(qc, rules, **kw)
     out = dict(kind="preflight", logical=logical, transpiled=None, differences=[], isa=None, notes=[], supplied=None)
@@ -1107,8 +1123,8 @@ def format_report(rep, header=True):
             L.append(f"  - NOTE      {n['id']}: {n['text']}")
             L += _fmt_sources(n["sources"])
         lat = i["latency"]
-        L.append(f"  latency: central ~{lat['estimate_ns']:.0f} ns after measurement end, WIDE {lat['lo_ns']:.0f} to {lat['hi_ns']:.0f} ns for {lat['ops']} ops "
-                 f"({lat['level']})" + ("; EXTRAPOLATION outside the 15-63 op range actually measured" if lat["extrapolated"] else "")
+        L.append(f"  estimated extra decision latency over a bare 1-bit if: ~{lat['estimate_ns']:.0f} ns (WIDE range {lat['lo_ns']:.0f} to {lat['hi_ns']:.0f} ns, {lat['ops']} ops; "
+                 f"{lat['level']})" + ("; EXTRAPOLATION outside the 15-63 op range actually measured" if lat["extrapolated"] else "")
                  + f". About 25-30 ns/op, intercept unresolved; {lat['excludes']}")
         L += _fmt_sources(lat["sources"], "      ")
     L.append(_fmt_broadcast(rep["broadcast"], "circuit"))

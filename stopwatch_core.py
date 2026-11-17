@@ -198,7 +198,7 @@ def analyse_data(prs, n_z, K, ref_D=REF_D, cases=CASES, B=300, seed=0, verbose=T
             for c in cases:
                 if c != "NOIF":
                     v, s = res[c]
-                    print(f"  ==> {c}: decision after measurement end = {ff + v:7.1f} ns +- {np.hypot(sff, s):.1f}"
+                    print(f"  ==> {c}: decision latency relative to the no-if reference = {ff + v:7.1f} ns +- {np.hypot(sff, s):.1f}"
                           f"  (of which expression: {v:+.1f} ns)")
     return res
 

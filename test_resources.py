@@ -4,7 +4,7 @@ import json
 import os
 import sys
 
-from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, qpy
 from qiskit.circuit.classical import expr, types
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -177,6 +177,65 @@ def test_every_condition_form_follows_the_cone_for_rejected_probes():
             assert verdict != "PASS", (name, fname, verdict)
 
 
+def _with_conds(qc, fn, which):
+    """copy of qc where the condition of the if_else ops listed in `which` (indices among the if_else ops) is replaced by fn(old_condition)."""
+    from qiskit.circuit import IfElseOp
+    out = qc.copy_empty_like()
+    k = -1
+    for ins in qc.data:
+        op = ins.operation
+        if op.name == "if_else":
+            k += 1
+            if k in which:
+                op = IfElseOp(fn(op.condition), op.blocks[0], op.blocks[1] if len(op.blocks) > 1 else None)
+        out.append(op, ins.qubits, ins.clbits)
+    return out
+
+
+def _as_expr(c):
+    from qiskit.circuit import Clbit
+    if isinstance(c, tuple):
+        t, val = c
+        t = expr.lift(t)
+        return expr.equal(t, expr.lift(val, t.type)) if t.type.kind is not types.Bool else (t if val else expr.logic_not(t))
+    return expr.lift(c) if isinstance(c, (Clbit, ClassicalRegister)) else c
+
+
+def test_condition_forms_for_rejected_probes_with_several_ifs():
+    """The rejected probes that have more than one `if` (P1_old_LUT85K8, P1_old_CONE, old:T3m_materialized, E1_decode9) were skipped by the single-if form test:
+    rewrite the condition of each `if` (one at a time, and all together) into equivalent forms; no variant may ever be PASS."""
+    d = json.load(open(os.path.join(HERE, "rules", "envelope_ibm_heron_r2_2026-11-15.json")))
+    acc = [(r["name"], r["vector"]) for r in d["probes"] if r["class_"] == "accept" and r["backend"] == "ibm_marrakesh"]
+    rej = [(r["name"], r["vector"]) for r in d["probes"] if r["class_"] == "reject6057" and r["backend"] == "ibm_marrakesh"]
+    idx = json.load(open(os.path.join(HERE, "data", "envelope_probes", "index.json")))["probes"]
+    wraps = {"as built (as expr)": _as_expr,
+             "not-not": lambda c: expr.logic_not(expr.logic_not(_as_expr(c))),
+             "and True": lambda c: expr.logic_and(_as_expr(c), True),
+             "or False": lambda c: expr.logic_or(_as_expr(c), False)}
+    n_multi = n_cases = 0
+    for x in idx:
+        if x["class_"] != "reject6057":
+            continue
+        with open(os.path.join(HERE, "data", "envelope_probes", x["qpy"]), "rb") as f:
+            qc = qpy.load(f)[0]
+        k = sum(1 for i in qc.data if i.operation.name == "if_else")
+        if k < 2:
+            continue
+        n_multi += 1
+        for wname, fn in wraps.items():
+            for which in [{j} for j in range(k)] + [set(range(k))]:
+                try:
+                    q2 = _with_conds(qc, fn, which)
+                except Exception:       # a form qiskit cannot build for this condition type
+                    continue
+                v = R.resource_vector(q2)
+                verdict, _ = R.envelope_verdict(v, acc, rej, d["pass_dims"], d["fail_dims"])
+                assert verdict != "PASS", (x["name"], wname, sorted(which), verdict)
+                n_cases += 1
+    assert n_multi == 4, n_multi
+    assert n_cases >= 4 * 4, n_cases
+
+
 def test_register_read_of_bitwise_stores_and_unknown_forms():
     q = QuantumRegister(14, "q")
     g = [ClassicalRegister(1, f"g{i}") for i in range(12)]
@@ -276,7 +335,7 @@ def test_probe_counts_and_cross_backend_replications_match_files():
     assert d["backends_covered"] == ["ibm_marrakesh"] and sorted(d["backends_partial"]) == ["ibm_fez", "ibm_kingston"]
     assert d["backend_coverage"] == "ibm_marrakesh (all probes) + ibm_kingston and ibm_fez (5 register-rule probes each)"
     assert "1.3.37" in d["backends_partial"]["ibm_fez"] and "1.0.0" in d["backends_partial"]["ibm_kingston"]
-    assert len(d["cross_backend_check"]) == 10 and all(x["agrees"] and not x["contradicts"] for x in d["cross_backend_check"])
+    assert len(d["replicated_probe_outcome_agreement"]) == 10 and all(x["agrees"] and not x["contradicts"] for x in d["replicated_probe_outcome_agreement"])
     assert d["unique_counts"] == {"accepted": 65, "rejected": 21}                         # headline counts are over ibm_marrakesh and did not move
     # data folder: no job ids, scrubbed manifest, backend version as stated in the docs
     kd = os.path.join(HERE, "data", "p3_kingston")

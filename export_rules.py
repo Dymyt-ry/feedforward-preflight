@@ -167,7 +167,7 @@ def build_rules(paths, curation_path, circuits=probe_circuits, log=print):
             hi = lr["intercept_ns"][1] + lr["slope_ns_per_op"][1] * pt["ops"] + lr["point_error_ns"][1]
             if not lo <= pt["latency_ns"] <= hi:
                 log(f"warning: latency point {pt['probe']} ({pt['latency_ns']} ns at {pt['ops']} ops) lies outside the curated range [{lo:.0f}, {hi:.0f}]")
-    lat["excludes"] = "measurement duration (measure_2 is about 1.88 us scheduled) and any wait shared with a bare 1-bit if; ops counted as in the fit points"
+    lat["excludes"] = "the measurement duration (measure_2 is about 1.88 us scheduled) and the fixed decision cost that a bare 1-bit if also has (the value is an increment over that if, not an absolute time); ops counted as in the fit points"
     out = dict(
         schema_version=1, rules_id=cur["rules_id"], backend_family=cur.get("backend_family", ""), backends=backends, measured_date=date,
         provenance=prov, software=cur.get("software", {}), envelope_file=cur["envelope_file"],

@@ -28,7 +28,7 @@ out["marginal_ns_per_op"] = {f"{a}->{b}": round(float((out["points"][b]["huber"]
 d = out["points"]["XORC15"]["huber"] - out["points"]["XORT15"]["huber"]; sd = float(np.hypot(out["points"]["XORC15"]["se"], out["points"]["XORT15"]["se"]))
 out["chain_minus_tree"] = dict(ns=round(d, 1), se=round(sd, 1))
 w = out["points"]["WVOTE27"]["huber"] - out["points"]["POP8"]["huber"]; sw = float(np.hypot(out["points"]["WVOTE27"]["se"], out["points"]["POP8"]["se"]))
-out["wvote_minus_pop8"] = dict(ns=round(w, 1), se=round(sw, 1), note="WVOTE27 has 4 more ops (8 mul instead of 8 shifts... see structure), expected +4 ops * slope")
+out["wvote_minus_pop8"] = dict(ns=round(w, 1), se=round(sw, 1), note="WVOTE27 has 4 more ops (7 mul on 7 inputs, against POP8's 8 inputs and no mul; see structure), expected +4 ops * slope [corrected 2026-11-17: an earlier text said '8 mul instead of 8 shifts']")
 if "--write" in sys.argv:          # default: print only (the shipped data/latency_fit.json is not overwritten)
     json.dump(out, open(os.path.join(HERE, "..", "latency_fit.json"), "w"), indent=1)
 print(json.dumps(out, indent=1))

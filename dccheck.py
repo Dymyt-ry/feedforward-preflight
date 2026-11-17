@@ -1035,7 +1035,7 @@ def _fmt_sources(srcs, ind="      "):
 
 MONOTONICITY = ("PASS means: no larger, in every measured resource dimension, than a circuit that an accepted QPU probe ran, ASSUMING monotone resource demand "
                 "(needing no more of every resource than an accepted circuit cannot get a circuit rejected). The assumption is consistent with the stored probes but unproven; "
-                "measured on ibm_marrakesh (the 5 register-rule probes were also run on ibm_kingston); UNCERTAIN is common by design.")
+                "measured on ibm_marrakesh (the 5 register-rule probes were also run on ibm_kingston and ibm_fez); UNCERTAIN is common by design.")
 
 
 def format_report(rep, header=True):

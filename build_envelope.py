@@ -107,8 +107,9 @@ def main(write=False):
     if write:
         out = dict(
             id="envelope_ibm_heron_r2_2026-11-15", kind="empirical monotone dominance envelope", error_code=6057, measured_date="2026-11-15 (plus 2026-11-06 historical probes, labelled per probe)",
-            backend_family="ibm_heron_r2", backends_covered=["ibm_marrakesh"], backends_partial={"ibm_kingston": "5 register-rule probes only (R10x2, R11x2, R12x2, split6, non-foldable overlap), 2026-11-16, backend_version 1.0.0; latency, stack-need shapes and fix-pack were not run there"},
-            backend_coverage="ibm_marrakesh (all probes) + ibm_kingston (5 register-rule probes)", cross_backend_check=b["cross_backend"],
+            backend_family="ibm_heron_r2", backends_covered=["ibm_marrakesh"], backends_partial={"ibm_kingston": "5 register-rule probes only (R10x2, R11x2, R12x2, split6, non-foldable overlap), 2026-11-16, backend_version 1.0.0; latency, stack-need shapes and fix-pack were not run there",
+                              "ibm_fez": "5 register-rule probes only (R10x2, R11x2, R12x2, split6, non-foldable overlap), submitted 2026-11-15 and executed 2026-11-16, backend_version 1.3.37; latency, stack-need shapes and fix-pack were not run there"},
+            backend_coverage="ibm_marrakesh (all probes) + ibm_kingston and ibm_fez (5 register-rule probes each)", cross_backend_check=b["cross_backend"],
             vector_definition="resources.resource_vector(circuit) on the circuit as shipped (executed transpiled circuit where the source says so); see resources.py",
             dimensions=R.DIMENSIONS, flag_dimensions=list(R.FLAG_DIMS),
             verdict_rule=dict(PASS="vector <= the vector of some ACCEPTED probe in every dimension of pass_dims; never PASS if unanalysed > 0 or the circuit has no if (monotonicity is an ASSUMPTION)",
@@ -118,8 +119,8 @@ def main(write=False):
             leave_one_out_basis="UNIQUE (vector, class) pairs (identical replicates removed); computed on all data, so descriptive, not out-of-sample",
             leave_one_out_all_probes=b["loo_all"], leave_one_out_all_probes_wrong=[list(x) for x in b["loo_all_wrong"]],
             unique_counts=dict(accepted=b["n_unique"][0], rejected=b["n_unique"][1]),
-            caveats=["measured on ibm_marrakesh; only the 5 register-rule probes were replicated on ibm_kingston (identical outcomes, different backend version, 2026-11-16); ibm_fez is still queued. Dates in the project: four (2026-11-16: the kingston replication; 2026-11-06: the 29 'old' probes, 25 accepted and 4 rejected, run once and never repeated; 2026-11-09: the legacy latency ladder, not part of this envelope; 2026-11-15: everything else)",
-                     "the headline counts (accepted, rejected, unique, leave-one-out) are over the ibm_marrakesh probes; the kingston probes are shipped in the envelope as replicates (their vectors equal those of the marrakesh p3 probes) and do not change a verdict",
+            caveats=["measured on ibm_marrakesh; only the 5 register-rule probes were replicated on ibm_kingston and ibm_fez (identical outcomes, three backend versions 1.0.21 / 1.0.0 / 1.3.37; both executed 2026-11-16); latency, stack-need shapes and fix-pack were measured only on ibm_marrakesh. Dates in the project: four (2026-11-16: the kingston and fez replications; 2026-11-06: the 29 'old' probes, 25 accepted and 4 rejected, run once and never repeated; 2026-11-09: the legacy latency ladder, not part of this envelope; 2026-11-15: everything else)",
+                     "the headline counts (accepted, rejected, unique, leave-one-out) are over the ibm_marrakesh probes; the kingston and fez probes are shipped in the envelope as replicates (their vectors equal those of the marrakesh p3 probes) and do not change a verdict",
                      "monotonicity is an assumption: the stored probes do not contradict it but %d rejected probes cannot prove it" % b["n_rej"],
                      "the failure dimensions and the leave-one-out were chosen/computed on ALL the data (descriptive, not out-of-sample); only data/v1, data/e1, data/e2 are frozen out-of-sample rounds",
                      "probes rejected with another code (6066, fix-pack) are excluded from this envelope",

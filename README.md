@@ -6,8 +6,8 @@
 ![python](https://img.shields.io/badge/python-3.12-blue)
 ![qiskit](https://img.shields.io/badge/qiskit-2.6-6929c4)
 ![qiskit-ibm-runtime](https://img.shields.io/badge/qiskit--ibm--runtime-0.51-6929c4)
-![measured on](https://img.shields.io/badge/measured%20on-ibm__marrakesh%20%2B%20ibm__kingston%20(5%20probes)-lightgrey)
-![QPU probes](https://img.shields.io/badge/QPU%20probes-110-lightgrey)
+![measured on](https://img.shields.io/badge/measured%20on-ibm__marrakesh%20(%2B%20kingston%2C%20fez%3A%205%20probes%20each)-lightgrey)
+![QPU probes](https://img.shields.io/badge/QPU%20probes-115-lightgrey)
 ![status](https://img.shields.io/badge/status-empirical%20%2F%20research-orange)
 
 <p align="center"><picture>
@@ -21,13 +21,13 @@
 > **Unofficial.** This project is not affiliated with, endorsed by, or supported by IBM. IBM, IBM Quantum and Qiskit are trademarks of International Business Machines Corporation; they are used here only to name the platform the measurements were taken on.
 
 > [!IMPORTANT]
-> **Scope: measured on `ibm_marrakesh`, four dates:** 2026-11-06 (29 envelope probes, historical, run once), 2026-11-09 (legacy latency ladder), 2026-11-15 (everything else), 2026-11-16 (cross-backend replication on `ibm_kingston`). The 5 register-rule probes were replicated on `ibm_kingston` (a different backend version, 1.0.0 vs 1.0.21) with identical outcomes; the latency, the stack-need shapes and the fix-pack were not run there. The `ibm_fez` replication is still queued. The same five probes also reproduced on `ibm_marrakesh` about 8 h after the first runs (see [FINDINGS](docs/FINDINGS.md#cross-backend-replication-on-ibm_kingston)). Results are dated observations, not guarantees. Every threshold and latency here was measured empirically by us and is **not published by IBM**.
+> **Scope: measured on `ibm_marrakesh`, four dates:** 2026-11-06 (29 envelope probes, historical, run once), 2026-11-09 (legacy latency ladder), 2026-11-15 (everything else), 2026-11-16 (cross-backend replication on `ibm_kingston` and `ibm_fez`; the `ibm_fez` jobs were submitted 2026-11-15 while the device was in maintenance and executed 2026-11-16 14:00 to 14:03 UTC). The 5 register-rule probes were replicated on `ibm_kingston` and `ibm_fez` (three backends, backend versions 1.0.21 / 1.0.0 / 1.3.37) with identical outcomes; latency, stack-need shapes and fix-pack were measured only on `ibm_marrakesh`. The same five probes also reproduced on `ibm_marrakesh` about 8 h after the first runs (see [FINDINGS](docs/FINDINGS.md#cross-backend-replication-on-ibm_kingston-and-ibm_fez)). Results are dated observations, not guarantees. Every threshold and latency here was measured empirically by us and is **not published by IBM**.
 
 > [!WARNING]
 > **Monotonicity is an assumption:** a PASS means "no more demanding than a probe that was accepted", which assumes that needing less of every measured resource cannot get a circuit rejected. The stored probes do not contradict it; it is unproven. **UNCERTAIN is common by design:** PASS needs the circuit to be dominated by an accepted probe in every dimension, so many circuits are UNCERTAIN rather than PASS or FAIL.
 
 ## What it does
-* **Explains error 6057.** IBM's error 6057 says the job "requires more classical registers than the control hardware provides" and gives no numbers, so you learn about it after queueing and a failed job. This repository measures where that limit sits for real programs on `ibm_marrakesh` (110 probe circuits, 105 of them on that backend and 5 repeats on `ibm_kingston`; each submitted to the QPU; several are repeats of the same program), and the observed decision latency of a classical expression, both as seen through the public job API (job acceptance and measured timing); nothing here inspects hardware.
+* **Explains error 6057.** IBM's error 6057 says the job "requires more classical registers than the control hardware provides" and gives no numbers, so you learn about it after queueing and a failed job. This repository measures where that limit sits for real programs on `ibm_marrakesh` (115 probe circuits, 105 of them on that backend and 5 repeats each on `ibm_kingston` and `ibm_fez`; each submitted to the QPU; several are repeats of the same program), and the observed decision latency of a classical expression, both as seen through the public job API (job acceptance and measured timing); nothing here inspects hardware.
 * **Predicts before you submit.** `dccheck.py` turns those measurements into a pre-flight verdict (PASS / FAIL / UNCERTAIN) that names the probe it rests on.
 * **Repacks a common failing pattern.** `--fix-pack` can rewrite many small measured registers into an equivalent packed circuit.
 
@@ -54,7 +54,7 @@ if_else at if_else[140]   FAIL   cond: S[0]
   resources: peak live registers 13; left-to-right stack need 2 (Ershov 2); 12 measured register(s) in the cone ...
   - FAIL      envelope: at least as demanding as rejected probe R12x8 (ibm_marrakesh, measured 2026-11-15) in every
               failure-relevant dimension (cone_ops=11>=11, lr_stack=2>=2, peak_live_regs=13>=13, unary_ops=0>=0): error 6057 ...
-      Ours: R12x8: measured empirically on ibm_marrakesh 2026-11-15; empirical monotone dominance envelope over 110 probes, not published by IBM.
+      Ours: R12x8: measured empirically on ibm_marrakesh 2026-11-15; empirical monotone dominance envelope over 115 probes, not published by IBM.
   latency: central ~604 ns after measurement end, WIDE 185 to 960 ns for 11 ops (range, not a statistical interval) ...
 OVERALL: FAIL
 
@@ -80,7 +80,7 @@ The PASS after packing is again a prediction from the envelope; three fix-pack v
 </picture></p>
 <p align="center"><picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/map6057-dark.svg">
-  <img alt="Scatter of 110 probes: peak live registers versus left-to-right stack need, accepted and rejected" src="docs/img/map6057-light.svg">
+  <img alt="Scatter of 115 probes: peak live registers versus left-to-right stack need, accepted and rejected" src="docs/img/map6057-light.svg">
 </picture></p>
 
 *Results created using IBM Quantum.* The real envelope has 26 dimensions; the second plot shows two of them. Details, evidence and caveats per finding:
@@ -89,12 +89,12 @@ The PASS after packing is again a prediction from the envelope; three fix-pack v
 |---|---|---|
 | Observed decision latency of a classical expression grows roughly 25 to 30 ns per op; examples: 15 xor ops 743 +/- 59 ns, 27-op weighted vote 1055 +/- 67 ns, 63 random ops 2103 +/- 75 ns (increment over an `if` on one bit) | [Findings 1](docs/FINDINGS.md#1-latency-of-a-classical-expression-stopwatch-method), `data/rederive/`, `data/latency_reanalysis.json` | Descriptive range, not a law; fixed part (intercept 0 to 400 ns) not established; per-probe scatter far above shot noise; estimator choice changes the point estimate |
 | Error 6057 rejections track peak live registers and stack need (the envelope's failure dimensions); for example 12 read registers of 8 bits (`B_R12x8c`) is rejected while up to 10 read registers were accepted | [Findings 2](docs/FINDINGS.md#2-error-6057-more-classical-registers-than-the-control-hardware-provides), `data/probe_outcomes*.json` | No closed-form model survived out-of-sample; why jobs are rejected is not explained; a shared-budget model is a hypothesis about acceptance behaviour, not a finding |
-| An empirical monotone dominance envelope over 110 probes (105 on `ibm_marrakesh`, of which 2 rejected with 6066 and so outside the PASS/FAIL sets; 5 replicated on `ibm_kingston`) predicts PASS/FAIL with no wrong prediction in leave-one-out (unique vectors: 34 of 65 accepted PASS, 31 UNCERTAIN; 16 of 21 rejected FAIL, 5 UNCERTAIN) and in 6 of 6 frozen out-of-sample predictions | [Findings 2b](docs/FINDINGS.md#2b-empirical-envelope-instead-of-a-formula), `rules/envelope_ibm_heron_r2_2026-11-15.json`, `build_envelope.py` | Rests on monotonicity (assumed); sparse, so UNCERTAIN is common; `ibm_marrakesh` (kingston only for the 5 register-rule probes) |
+| An empirical monotone dominance envelope over 115 probes (105 on `ibm_marrakesh`, of which 2 rejected with 6066 and so outside the PASS/FAIL sets; 5 replicated on each of `ibm_kingston` and `ibm_fez`) predicts PASS/FAIL with no wrong prediction in leave-one-out (unique vectors: 34 of 65 accepted PASS, 31 UNCERTAIN; 16 of 21 rejected FAIL, 5 UNCERTAIN) and in 6 of 6 frozen out-of-sample predictions | [Findings 2b](docs/FINDINGS.md#2b-empirical-envelope-instead-of-a-formula), `rules/envelope_ibm_heron_r2_2026-11-15.json`, `build_envelope.py` | Rests on monotonicity (assumed); sparse, so UNCERTAIN is common; `ibm_marrakesh` (kingston and fez only for the 5 register-rule probes) |
 | Packing many small measured registers into few wide ones (`--fix-pack` v2) was accepted by the QPU 3 of 3 circuits; fix-pack v1 (narrowing cast of a shifted register) was rejected with 6066 | [`--fix-pack`](docs/METHOD.md#--fix-pack-v2-remap-only), `data/fixpack_v2_executed/`, `data/RESULTS_QPU_fixpack_v*.md` | Three circuits only; the trigger of 6066 is not isolated |
 | Accepted probes were checked by prepared-input readback (output responds to operands) | [Findings 3](docs/FINDINGS.md#3-acceptance-readback-what-accepted-was-checked-with) | Sampling check, not an exhaustive truth table |
 
 ## What we don't know (summary)
-* **Cross-backend and firmware:** everything is measured on `ibm_marrakesh` on three dates; only the 5 register-rule probes were replicated on `ibm_kingston` (2026-11-16, identical outcomes, different backend version; latency, stack-need shapes and fix-pack not run there); the `ibm_fez` run is queued; controller firmware is not exposed, and limits and latencies can change with an update (the four 2026-11-06 failures reproduced nine days later, the only stability evidence).
+* **Cross-backend and firmware:** everything is measured on `ibm_marrakesh` on three dates; the 5 register-rule probes were replicated on `ibm_kingston` and `ibm_fez` (three backends, backend versions 1.0.21 / 1.0.0 / 1.3.37, executed 2026-11-16) with identical outcomes; latency, stack-need shapes and fix-pack were measured only on `ibm_marrakesh`; controller firmware is not exposed, and limits and latencies can change with an update (the four 2026-11-06 failures reproduced nine days later, the only stability evidence).
 * **Why 6057 happens:** no closed-form model survived; the envelope predicts, it does not explain.
 * **Monotonicity:** assumed, not proven; 29 rejections cannot prove it.
 * **Latency intercept and 6066 trigger:** the fixed latency part and the cause of 6066 are unresolved.

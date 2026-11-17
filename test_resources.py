@@ -249,8 +249,8 @@ def test_readme_numbers_match_shipped_files():
     assert f"{sec['accept']['PASS']} of {acc} and {sec['reject6057']['FAIL']} of {rej}" in readme
 
 
-def test_probe_counts_and_kingston_replication_match_files():
-    """Probe-count badge / '<N> probes' statements equal the envelope; the kingston replication data, outcomes, coverage and run_metadata agree with the README."""
+def test_probe_counts_and_cross_backend_replications_match_files():
+    """Probe-count badge / '<N> probes' statements equal the envelope; the kingston and fez replication data, outcomes, coverage and run_metadata agree with the README."""
     import glob
     import re
     docs = _docs_text()
@@ -268,9 +268,15 @@ def test_probe_counts_and_kingston_replication_match_files():
     for p in king:                                           # identical outcome and vector as the marrakesh repeat
         q = mar[p["name"].split(":", 1)[1]]
         assert p["class_"] == q["class_"] and p["vector"] == q["vector"], p["name"]
-    assert d["backends_covered"] == ["ibm_marrakesh"] and list(d["backends_partial"]) == ["ibm_kingston"]
-    assert d["backend_coverage"] == "ibm_marrakesh (all probes) + ibm_kingston (5 register-rule probes)"
-    assert len(d["cross_backend_check"]) == 5 and all(x["agrees"] and not x["contradicts"] for x in d["cross_backend_check"])
+    fez = [p for p in d["probes"] if p["backend"] == "ibm_fez"]
+    assert sorted(p["name"] for p in fez) == sorted(f"p3f:P3_{x}" for x in ("R10x2", "R11x2", "R12x2", "split6", "overlapNF")) and all(p["measured_date"] == "2026-11-16" for p in fez)
+    for p in fez:                                            # identical outcome and vector as the marrakesh repeat and the kingston probe
+        q = mar[p["name"].split(":", 1)[1]]
+        assert p["class_"] == q["class_"] and p["vector"] == q["vector"], p["name"]
+    assert d["backends_covered"] == ["ibm_marrakesh"] and sorted(d["backends_partial"]) == ["ibm_fez", "ibm_kingston"]
+    assert d["backend_coverage"] == "ibm_marrakesh (all probes) + ibm_kingston and ibm_fez (5 register-rule probes each)"
+    assert "1.3.37" in d["backends_partial"]["ibm_fez"] and "1.0.0" in d["backends_partial"]["ibm_kingston"]
+    assert len(d["cross_backend_check"]) == 10 and all(x["agrees"] and not x["contradicts"] for x in d["cross_backend_check"])
     assert d["unique_counts"] == {"accepted": 65, "rejected": 21}                         # headline counts are over ibm_marrakesh and did not move
     # data folder: no job ids, scrubbed manifest, backend version as stated in the docs
     kd = os.path.join(HERE, "data", "p3_kingston")
@@ -287,6 +293,25 @@ def test_probe_counts_and_kingston_replication_match_files():
     assert res.count("| ACCEPTED |") == 3 and res.count("| ERROR | 6057 |") == 2
     for t in ("ibm_kingston", "1.0.0", "1.0.21", "identical", "not** run there", "11 QPU seconds"):
         assert t in docs, t
+    # ibm_fez: scrubbed data folder, identical outcomes, run_metadata (submission vs execution window, charge, version), README wording
+    fd = os.path.join(HERE, "data", "p3_fez")
+    fman = json.load(open(os.path.join(fd, "manifest_faf87bdc3fa6.json")))
+    assert fman["backend"] == "ibm_fez" and all(j["job_id"] is None for j in fman["jobs"]) and fman["backend_info"]["backend_version"] == "1.3.37"
+    for f in glob.glob(os.path.join(fd, "**", "*"), recursive=True):
+        if os.path.isfile(f):                                 # binaries included
+            assert not re.search(rb"\bd[a-z0-9]{19}\b", open(f, "rb").read()), f
+    fres = open(os.path.join(fd, "RESULTS_QPU_p3_fez.md")).read()
+    assert fres.count("| ACCEPTED |") == 3 and fres.count("| ERROR | 6057 |") == 2
+    z = meta["rounds"]["round4_p3_ibm_fez"]
+    assert z["backend"] == "ibm_fez" and z["status_counts"] == {"DONE": 3, "ERROR": 2} and z["charged_qpu_seconds"] == sum(j["qpu_charge_seconds"] for j in z["jobs"]) == 11
+    assert z["submission_window_utc"][1] < "2026-11-16" <= z["execution_window_utc"][0] and z["execution_window_utc"][1] < "2026-11-17"
+    assert all(j["status"] in ("DONE", "ERROR") and j["running_utc"] and j["finished_utc"] for j in z["jobs"])
+    assert meta["backend_versions_recorded_at_submission"]["plans"]["faf87bdc3fa6"]["backend_version"] == "1.3.37"
+    assert meta["totals"]["charged_qpu_seconds_all_plans"] == sum(r.get("charged_qpu_seconds") or 0 for r in meta["rounds"].values())
+    assert "1.0.21 / 1.0.0 / 1.3.37" in main and "identical outcomes" in main and "measured only on `ibm_marrakesh`" in main
+    assert "still queued" not in docs and "replication pending" not in docs and "is queued" not in main
+    for t in ("ibm_fez", "1.3.37", "22.5 h", "14:00:50 to 14:03:30 UTC"):
+        assert t in docs, t
 
 
 def test_readme_dates_match_measured_dates():
@@ -300,12 +325,12 @@ def test_readme_dates_match_measured_dates():
         for ts in (r.get("window_utc") or []):                       # UTC dates (submitted_local can fall on the next local day)
             dates |= set(re.findall(r"\d{4}-\d\d-\d\d", ts or ""))
         dates |= {m.replace("_", "-") for m in re.findall(r"\d{4}_\d\d_\d\d", k)}
-    assert len(dates) == 4, dates                                   # 2026-11-06, -09, -15 (ibm_marrakesh) and 2026-11-16 (ibm_kingston replication)
+    assert len(dates) == 4, dates                                   # 2026-11-06, -09, -15 (ibm_marrakesh) and 2026-11-16 (ibm_kingston and ibm_fez replications)
     main_readme = open(os.path.join(HERE, "README.md")).read()          # the front page itself must state the dates
     m = re.search(r"four dates:\*{0,2} ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\))[;.]", main_readme)
     assert m, "README must say 'four dates: ...'"
-    assert "2026-11-16" in m.group(4) and "ibm_kingston" in m.group(4), m.group(4)
-    assert re.search(r"measured on `ibm_marrakesh`", main_readme) and "5 register-rule probes were replicated on `ibm_kingston`" in main_readme
+    assert "2026-11-16" in m.group(4) and "ibm_kingston" in m.group(4) and "ibm_fez" in m.group(4), m.group(4)
+    assert re.search(r"measured on `ibm_marrakesh`", main_readme) and "5 register-rule probes were replicated on `ibm_kingston` and `ibm_fez`" in main_readme
     assert "ibm_fez" in main_readme and "not affiliated with" in main_readme and "monotonicity" in main_readme.lower() and "UNCERTAIN is common by design" in main_readme
     stated = set(re.findall(r"\d{4}-\d\d-\d\d", " ".join(m.groups())))
     assert stated == dates, (stated, dates)

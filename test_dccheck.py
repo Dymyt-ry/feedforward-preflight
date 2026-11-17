@@ -401,8 +401,11 @@ def test_rules_age_and_backend_warning():
     w = " ".join(D.check(qc, RULES, today=TODAY, backend="ibm_kingston")["warnings"])
     assert "partially" in w and "5 register-rule probes" in w and "not covered" not in w and "still rests on ibm_marrakesh" in w, w
     assert not any("partially" in x for x in D.check(qc, RULES, today=TODAY, backend="ibm_marrakesh")["warnings"])
+    # ibm_fez: same partial coverage (5 register-rule probes), executed 2026-11-16, backend_version 1.3.37
     w = " ".join(D.check(qc, RULES, today=TODAY, backend="ibm_fez")["warnings"])
-    assert "ibm_fez is not covered" in w
+    assert "partially" in w and "5 register-rule probes" in w and "not covered" not in w and "still rests on ibm_marrakesh" in w and "1.3.37" in w, w
+    w = " ".join(D.check(qc, RULES, today=TODAY, backend="ibm_aachen")["warnings"])
+    assert "ibm_aachen is not covered" in w and "partially" not in w
     assert not D.check(qc, RULES, today=TODAY + dt.timedelta(days=60))["warnings"]
 
 

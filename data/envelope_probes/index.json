@@ -1100,6 +1100,56 @@
    "qpy": "p3k__P3_overlapNF.qpy",
    "circuit_source": "executed-transpiled (cross-backend replication of the p3 register probes on ibm_kingston, backend_version 1.0.0)",
    "rerun_since": null
+  },
+  {
+   "name": "p3f:P3_R10x2",
+   "class_": "accept",
+   "backend": "ibm_fez",
+   "round": "p3f",
+   "measured_date": "2026-11-16",
+   "qpy": "p3f__P3_R10x2.qpy",
+   "circuit_source": "executed-transpiled (cross-backend replication of the p3 register probes on ibm_fez, backend_version 1.3.37; submitted 2026-11-15 while the device was in maintenance, executed 2026-11-16)",
+   "rerun_since": null
+  },
+  {
+   "name": "p3f:P3_R11x2",
+   "class_": "accept",
+   "backend": "ibm_fez",
+   "round": "p3f",
+   "measured_date": "2026-11-16",
+   "qpy": "p3f__P3_R11x2.qpy",
+   "circuit_source": "executed-transpiled (cross-backend replication of the p3 register probes on ibm_fez, backend_version 1.3.37; submitted 2026-11-15 while the device was in maintenance, executed 2026-11-16)",
+   "rerun_since": null
+  },
+  {
+   "name": "p3f:P3_R12x2",
+   "class_": "reject6057",
+   "backend": "ibm_fez",
+   "round": "p3f",
+   "measured_date": "2026-11-16",
+   "qpy": "p3f__P3_R12x2.qpy",
+   "circuit_source": "executed-transpiled (cross-backend replication of the p3 register probes on ibm_fez, backend_version 1.3.37; submitted 2026-11-15 while the device was in maintenance, executed 2026-11-16)",
+   "rerun_since": null
+  },
+  {
+   "name": "p3f:P3_split6",
+   "class_": "reject6057",
+   "backend": "ibm_fez",
+   "round": "p3f",
+   "measured_date": "2026-11-16",
+   "qpy": "p3f__P3_split6.qpy",
+   "circuit_source": "executed-transpiled (cross-backend replication of the p3 register probes on ibm_fez, backend_version 1.3.37; submitted 2026-11-15 while the device was in maintenance, executed 2026-11-16)",
+   "rerun_since": null
+  },
+  {
+   "name": "p3f:P3_overlapNF",
+   "class_": "accept",
+   "backend": "ibm_fez",
+   "round": "p3f",
+   "measured_date": "2026-11-16",
+   "qpy": "p3f__P3_overlapNF.qpy",
+   "circuit_source": "executed-transpiled (cross-backend replication of the p3 register probes on ibm_fez, backend_version 1.3.37; submitted 2026-11-15 while the device was in maintenance, executed 2026-11-16)",
+   "rerun_since": null
   }
  ]
 }

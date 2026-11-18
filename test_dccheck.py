@@ -35,7 +35,7 @@ CURATION = os.path.join(HERE, "rules", "curation_ibm_heron_r2.json")
 RULES = R.load_rules(os.path.join(HERE, "rules", "ibm_heron_r2_2026-11-15.json"))
 ENV = R.load_envelope(RULES)
 import resources as RES  # noqa: E402
-TODAY = dt.date.fromisoformat(RULES["measured_date"])
+TODAY = dt.date.fromisoformat(R.data_provenance(RULES, R.load_envelope(RULES))["newest"])   # age counts from the NEWEST measurement
 LOG = []
 
 
@@ -412,6 +412,40 @@ def test_static_hazards():
     rep = D.check(qc, RULES, today=TODAY)
     assert any(h["error_code"] == 6062 for h in rep["hazards"])
     assert all(h["status"] == "UNCERTAIN" for h in rep["hazards"] if h["error_code"] == 6062) and rep["status"] != "PASS"    # context dependent: not FAIL
+
+
+def test_header_provenance_computed_from_envelope():
+    qc = regs_circuit(3, 2)
+    rep = D.check(qc, RULES, today=TODAY + dt.timedelta(days=2), backend="ibm_fez")
+    txt = D.format_report(rep)
+    hdr = [l for l in txt.splitlines() if l.startswith("rules:")][0]
+    env = R.load_envelope(RULES)
+    assert f"{len(env['probes'])} probes" in hdr and "ibm_marrakesh 2026-11-06..2026-11-15" in hdr
+    assert "replications on ibm_kingston and ibm_fez 2026-11-16" in hdr and "newest data 2 days old" in hdr
+    assert "3 days old" not in hdr and "measured 2026-11-15" not in hdr
+    # age (and the --max-age-days warning) follow the newest measurement date (2026-11-16), not the rules file date
+    assert rep["rules"]["age_days"] == 2
+    assert not any("days old" in w for w in D.check(qc, RULES, today=TODAY + dt.timedelta(days=60))["warnings"])
+    assert any("61 days old" in w for w in D.check(qc, RULES, today=TODAY + dt.timedelta(days=61))["warnings"])
+
+
+def _latency_circuit():
+    q = QuantumCircuit(2, 2, name="lat")
+    q.measure(0, 0)
+    with q.if_test((q.clbits[0], 1)):
+        q.x(1)
+    return q
+
+
+def test_latency_line_carries_its_own_provenance():
+    for be, tail in (("ibm_fez", "(latency measured on ibm_marrakesh only; not measured on ibm_fez)"),
+                     ("ibm_marrakesh", "(latency measured on ibm_marrakesh)"), (None, "(latency measured on ibm_marrakesh)")):
+        rep = D.check(regs_circuit(3, 2), RULES, today=TODAY, backend=be)
+        lines = [l for l in D.format_report(rep).splitlines() if "extra decision latency" in l]
+        assert lines and all(l.endswith(tail) for l in lines), (be, lines)
+        lats = [i["latency"] for i in rep["ifs"]] + [i["latency"] for c in rep.get("circuits", []) for i in c["ifs"]]
+        assert lats and all(l["latency_measured_on"] == ["ibm_marrakesh"] for l in lats)
+        assert all(l["not_measured_on"] == (be if be == "ibm_fez" else None) for l in lats)
 
 
 def test_rules_age_and_backend_warning():

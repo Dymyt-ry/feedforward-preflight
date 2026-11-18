@@ -661,13 +661,14 @@ def _check_impl(qc, rules=None, backend=None, today=None, max_age_days=60):
     rules = rules or load_rules()
     an = analyze(qc)
     warnings = []
-    age = R.age_days(rules, today)
+    env = R.load_envelope(rules)
+    prov = R.data_provenance(rules, env)
+    age = R.age_days(rules, today, env)
     if age > max_age_days:
         warnings.append(f"rules file is {age} days old (limit {max_age_days}); firmware or backend changes can invalidate it. "
                         f"Re-run the suite and regenerate the rules.")
     if age < 0:
-        warnings.append("rules measured_date is in the future")
-    env = R.load_envelope(rules)
+        warnings.append("newest measurement date behind the rules is in the future")
     partial = (env or {}).get("backends_partial") or {}
     if backend and backend not in rules["backends"]:
         if backend in partial:
@@ -736,6 +737,8 @@ def _check_impl(qc, rules=None, backend=None, today=None, max_age_days=60):
         lat = R.latency_estimate(rules["latency"], e["latency_ops"])
         lat["sources"] = [src_measured(f"{rules['latency']['provenance']}; not published by IBM", [p["probe"] for p in rules["latency"]["points"]])]
         lat["excludes"] = rules["latency"].get("excludes", "")
+        lat["latency_measured_on"] = list(rules["backends"])
+        lat["not_measured_on"] = backend if (backend and backend not in rules["backends"]) else None
         ifs.append(dict(e, checks=checks, notes=notes, status=R.worst(c["status"] for c in checks), latency=lat))
     hazards = []
     for h in rules.get("static_hazards", []):
@@ -770,6 +773,7 @@ def _check_impl(qc, rules=None, backend=None, today=None, max_age_days=60):
                 n_vars=len(_declared_vars(qc)), n_control_flow=len(ifs),
                 rules=dict(id=rules["rules_id"], file=rules.get("_path"), backends=rules["backends"],
                            measured_date=rules["measured_date"], age_days=age, provenance=rules["provenance"],
+                           data=prov, provenance_text=R.provenance_text(prov, age),
                            known_unmodeled=rules.get("known_unmodeled", [])),
                 status=status, ifs=ifs, hazards=hazards, warnings=warnings, broadcast=bc,
                 note=("NOT APPLICABLE: no if_else / while / for / switch, so the circuit has no classical feedforward and the limits measured here (which concern "
@@ -1093,7 +1097,7 @@ def format_report(rep, header=True):
     r = rep["rules"]
     L = [f"circuit {rep['circuit']!r}: {rep['n_qubits']} qubits, {rep['n_clbits']} clbits in {rep['n_registers']} registers, "
          f"{rep['n_control_flow']} control-flow op(s)  ->  {rep['status'].replace('_', ' ')}",
-         f"rules: {r['id']} ({', '.join(r['backends'])}, measured {r['measured_date']}, {r['age_days']} days old). Thresholds marked 'Ours' are "
+         f"rules: {r['id']} ({r.get('provenance_text') or ', '.join(r['backends']) + ', measured ' + r['measured_date'] + ', ' + str(r['age_days']) + ' days old'}). Thresholds marked 'Ours' are "
          f"measured empirically, not published by IBM."]
     for w in rep["warnings"]:
         L.append(f"WARNING: {w}")
@@ -1126,7 +1130,9 @@ def format_report(rep, header=True):
         lat = i["latency"]
         L.append(f"  estimated extra decision latency over a bare 1-bit if: ~{lat['estimate_ns']:.0f} ns (WIDE range {lat['lo_ns']:.0f} to {lat['hi_ns']:.0f} ns, {lat['ops']} ops; "
                  f"{lat['level']})" + ("; EXTRAPOLATION outside the 15-63 op range actually measured" if lat["extrapolated"] else "")
-                 + f". About 25-30 ns/op, intercept unresolved; {lat['excludes']}")
+                 + f". About 25-30 ns/op, intercept unresolved; {lat['excludes']}"
+                 + (f" (latency measured on {', '.join(lat['latency_measured_on'])} only; not measured on {lat['not_measured_on']})" if lat.get("not_measured_on")
+                    else f" (latency measured on {', '.join(lat['latency_measured_on'])})" if lat.get("latency_measured_on") else ""))
         L += _fmt_sources(lat["sources"], "      ")
     L.append(_fmt_broadcast(rep["broadcast"], "circuit"))
     return "\n".join(L)

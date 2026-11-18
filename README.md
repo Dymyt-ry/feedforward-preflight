@@ -55,7 +55,7 @@ if_else at if_else[140]   FAIL   cond: S[0]
   - FAIL      envelope: at least as demanding as rejected probe R12x8 (ibm_marrakesh, measured 2026-11-15) in every
               failure-relevant dimension (cone_ops=11>=11, lr_stack=2>=2, peak_live_regs=13>=13, unary_ops=0>=0): error 6057 ...
       Ours: R12x8: measured empirically on ibm_marrakesh 2026-11-15; empirical monotone dominance envelope over 115 probes: 105 on ibm_marrakesh, 5 on ibm_kingston, 5 on ibm_fez, not published by IBM.
-  estimated extra decision latency over a bare 1-bit if: ~604 ns (WIDE range 185 to 960 ns, 11 ops; range: slope 25-30 ns/op, ... not a statistical interval) ...
+  estimated extra decision latency over a bare 1-bit if: ~604 ns (WIDE range 185 to 960 ns, 11 ops; range: slope 25-30 ns/op, ... not a statistical interval) ... (latency measured on ibm_marrakesh)
 OVERALL: FAIL
 
 $ python dccheck.py data/envelope_probes/r2__B_R12x8c.qpy --fix-pack -o packed.qpy

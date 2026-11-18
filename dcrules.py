@@ -127,9 +127,41 @@ def load_rules(path=None):
     return obj
 
 
-def age_days(rules, today=None):
+def data_provenance(rules, env=None):
+    """Provenance of the data behind the rules, computed from the envelope probe list (not hard-coded):
+    dict(n_probes, backends={name: dict(n, first, last)}, primary, newest). Falls back to the rules file's own backends/measured_date."""
+    per = {}
+    for p in (env or {}).get("probes", []):
+        d = str(p.get("measured_date") or rules["measured_date"])[:10]
+        e = per.setdefault(p.get("backend", "?"), dict(n=0, first=d, last=d))
+        e["n"] += 1
+        e["first"], e["last"] = min(e["first"], d), max(e["last"], d)
+    if not per:
+        return dict(n_probes=0, backends={b: dict(n=0, first=rules["measured_date"], last=rules["measured_date"]) for b in rules["backends"]},
+                    primary=(rules["backends"] or ["?"])[0], newest=rules["measured_date"])
+    primary = max(per, key=lambda b: (per[b]["n"], b))
+    newest = max(max(e["last"] for e in per.values()), rules["measured_date"])
+    return dict(n_probes=sum(e["n"] for e in per.values()), backends=per, primary=primary, newest=newest)
+
+
+def provenance_text(prov, age):
+    """'115 probes; ibm_marrakesh 2026-11-06..2026-11-15, replications on ibm_kingston and ibm_fez 2026-11-16; newest data 2 days old'"""
+    rng = lambda e: e["first"] if e["first"] == e["last"] else f"{e['first']}..{e['last']}"  # noqa: E731
+    pb = prov["backends"]
+    parts = [f"{prov['primary']} {rng(pb[prov['primary']])}"]
+    others = [b for b in pb if b != prov["primary"]]
+    if others:
+        dates = {rng(pb[b]) for b in others}
+        names = " and ".join(others) if len(others) <= 2 else ", ".join(others)
+        parts.append(f"replications on {names} " + (dates.pop() if len(dates) == 1 else "; ".join(f"{b} {rng(pb[b])}" for b in others)))
+    head = f"{prov['n_probes']} probes; " if prov["n_probes"] else ""
+    return f"{head}{', '.join(parts)}; newest data {age} days old"
+
+
+def age_days(rules, today=None, env=None):
+    """Age of the NEWEST measurement behind the rules (envelope probes included), not of the rules file's own date."""
     today = today or _dt.date.today()
-    return (today - _dt.date.fromisoformat(rules["measured_date"])).days
+    return (today - _dt.date.fromisoformat(data_provenance(rules, env)["newest"])).days
 
 
 # ------------------------------------------------------------------ evaluation

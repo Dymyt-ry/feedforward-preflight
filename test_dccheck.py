@@ -439,6 +439,19 @@ def test_rules_age_and_backend_warning():
     assert D.norm_backend(" IBM_Kingston\t") == "ibm_kingston" and D.norm_backend(None) is None
 
 
+def test_fixpack_too_wide_for_bundled_fake_gives_a_clear_refusal():
+    """a circuit that needs more qubits than the bundled fake of the requested backend (here: 156 qubits vs FakeTorino's 133) is refused with a readable text, never PASS."""
+    qc = regs_circuit(12, 8, name="wide")
+    qc.add_register(QuantumRegister(156 - qc.num_qubits, "pad"))
+    assert qc.num_qubits == 156
+    res = F.fix_pack(qc, RULES, backend="ibm_torino", today=TODAY)
+    txt = F.format_fix(res)
+    assert res.refused and not res.changed and "RuntimeError" not in txt, txt
+    assert "cannot transpile against the bundled fake" in txt and "156 qubits" in txt and "133" in txt and "no PASS can be given" in txt and "--transpiled" in txt, txt
+    rep = D.preflight(qc, RULES, backend="ibm_torino", today=TODAY)
+    assert rep["status"] != "PASS"
+
+
 def test_fixpack_uses_the_backend_and_shows_the_coverage_warning():
     qc = regs_circuit(12, 8, name="fpbackend")
     res = F.fix_pack(qc, RULES, backend="ibm_fez", today=TODAY)

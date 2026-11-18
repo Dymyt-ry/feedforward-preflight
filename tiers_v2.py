@@ -1070,12 +1070,12 @@ def analyse_acc(man, res, outdir):
         L.append(f"- irreducible op-count bisection (distinct leaves, 4 measured registers): {ir}")
         if "P1_dag104" in ir and "P1_ir104" in ir:
             L.append("- DAG vs tree at 104 expanded ops: " + ("same outcome -> the count is not on unique nodes" if ir["P1_dag104"] == ir["P1_ir104"] else
-                     "DIFFERENT outcomes -> the controller counts " + ("unique (shared) nodes" if ir["P1_dag104"] and not ir["P1_ir104"] else "something else; inspect")))
+                     "DIFFERENT outcomes -> acceptance tracks " + ("unique (shared) nodes" if ir["P1_dag104"] and not ir["P1_ir104"] else "something else; inspect")))
         if all(ir.get(k, True) for k in ("P1_ir96", "P1_ir104", "P1_ir126")):
             L.append("- irreducible expressions accepted up to 126 ops: NOT reproduced as an op-count limit for this construction; the old 103-op failure is not explained by op count alone.")
     for nm in P1_LEGACY:
         if nm in o:
-            L.append(f"- {nm} (old shape, replicated today): {'ACCEPTED -> the old failure did NOT reproduce (controller/compiler change or nondeterminism)' if o[nm] else 'FAILED again -> still present today'}")
+            L.append(f"- {nm} (old shape, replicated today): {'ACCEPTED -> the old failure did NOT reproduce (a backend or software change, or nondeterminism)' if o[nm] else 'FAILED again -> still present today'}")
     cb, cc, c8b, c8c = (o.get(k) for k in ("P1_bal104", "P1_chain104", "P1_C8bal", "P1_C8chain"))
     if cb is not None and cc is not None:
         L.append(f"- 104 ops, balanced tree vs left chain (4 registers): bal {'accepted' if cb else 'FAILED'}, chain {'accepted' if cc else 'FAILED'} -> "

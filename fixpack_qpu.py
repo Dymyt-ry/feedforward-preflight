@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""QPU verification of `dccheck --fix-pack` (v2, bit-level remap): do PACKED circuits run on the controller, and do they compute the right answer?
+"""QPU verification of `dccheck --fix-pack` (v2, bit-level remap): are PACKED circuits accepted by the backend, and do they compute the right answer?
 v1 (shift + narrowing-cast reads) was rejected by the QPU with 6066 for the 8-bit and 2-bit whole-register cases; see data/fixpack_candidates_v1.
 
 For each source circuit (many small measured registers, XOR into a store, `if S[0]`, X on an out qubit) the original is rejected (6057)
@@ -8,7 +8,7 @@ expected output is known. Three readback patterns per probe, chosen so that EVER
   last  only the last register's lane-0 bit is 1   -> out = 1   (a packed register read at the highest offset)
   mid   only a middle register's bit is 1           -> out = 1
   all   every register's bit is 1                   -> out = parity of the register count (0 for the even counts used here)
-A controller that ignored, mis-addressed or mis-sliced any packed lane would flip at least one of the three. One job per probe,
+If any packed lane were mis-addressed or mis-sliced in the executed circuit, at least one of the three outputs would flip. One job per probe,
 3 circuits (PUBs) of 200 shots each.
 
     python fixpack_qpu.py --local                       # offline: build, prove packing (dcfix), expected outputs, sensitivity, write QPY candidates

@@ -93,7 +93,7 @@ def to_np(n, bits, regs, widths):
 
 
 def count(n, acc=None):
-    """ops by class (what the controller sees)."""
+    """ops by class (the classes used in the latency and acceptance analysis)."""
     acc = acc if acc is not None else dict.fromkeys(("xor", "andor", "extract", "add", "mul", "cmp", "regbit"), 0)
     k = n[0]
     if k == "op":
@@ -240,7 +240,7 @@ def catalogue():
         P("XORT15", bool_tree(15, 16, r, bx), "bool", 1, note="same 15 xor, balanced tree depth 4"),
         P("AOC15", bool_chain(15, 16, r, ("and", "or")), "bool", 1, tier=("ideal",), note="and/or chain: gate type vs xor"),
         P("XORFOLD", bool_chain(15, 4, r, bx), "bool", 1, tier=("ideal",),
-          note="x0^x1^x2^x3 repeated 4x == const 0; latency ~TRIV would mean the controller compiler folds"),
+          note="x0^x1^x2^x3 repeated 4x == const 0; a latency near TRIV would mean the expression's cost does not depend on how it is written"),
         P("SOUP63", bool_soup(63, 16, random.Random(7), "tree"), "bool", 1,
           note="63-op random and/or/xor soup: extrapolation 2.3x beyond old range, below 83-op pass"),
         P("POP8", pop(8, 8), "uint", 8, T=3, note="8 extract pairs + 7 add (23 ops +1 cmp), no mul"),
@@ -1724,7 +1724,7 @@ def size_predictions_text(tier):
 def xrep_predictions_text():
     return ("Cross-backend replication (second backend; compare with ibm_marrakesh round 2/3 and round 1 latency):\n"
             "X_R10x2 P, X_R12x2 F(6057), S_12split6 F(6057), S_10overlap P; latency pair XORC15/XORT15: depth contrast chain-tree = 0 +/- ~75 ns "
-            "(marrakesh: -5 +/- 61); absolute values need not match (different controller): replicate means the SIGN/ZERO of the contrast and the same op-linear scale.")
+            "(marrakesh: -5 +/- 61); absolute values need not match (different device): replicate means the SIGN/ZERO of the contrast and the same op-linear scale.")
 
 
 # ------------------------------------------------------------------ guarded submit / fetch / analysis

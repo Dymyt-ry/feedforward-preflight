@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Stopwatch core (vendored subset of the qubit-stopwatch analysis; no IBM access needed).
 
-Method: idle "probe" qubits decohere while the controller resolves a branch; each probe's score-vs-dead-time curve is
+Method: idle "probe" qubits decohere while the branch decision is pending; each probe's score-vs-dead-time curve is
 calibrated inside the same job with reference circuits that add a known delay per repetition, then inverted to turn a case's
 score into extra dead time per decision. Probes are inverse-variance combined; sigma is a bootstrap over shots.
 """

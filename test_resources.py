@@ -386,8 +386,8 @@ def test_readme_dates_match_measured_dates():
         dates |= {m.replace("_", "-") for m in re.findall(r"\d{4}_\d\d_\d\d", k)}
     assert len(dates) == 4, dates                                   # 2026-11-06, -09, -15 (ibm_marrakesh) and 2026-11-16 (ibm_kingston and ibm_fez replications)
     main_readme = open(os.path.join(HERE, "README.md")).read()          # the front page itself must state the dates
-    m = re.search(r"four dates:\*{0,2} ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\))[;.]", main_readme)
-    assert m, "README must say 'four dates: ...'"
+    m = re.search(r"measured on `ibm_marrakesh`: ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\)), ([^;.]*?\(.*?\)); replications on `ibm_kingston` and `ibm_fez`: ([^;.]*?\(.*?\))[;.]", main_readme)
+    assert m, "README must attribute the dates: marrakesh 3, kingston/fez replications 1"
     assert "2026-11-16" in m.group(4) and "ibm_kingston" in m.group(4) and "ibm_fez" in m.group(4), m.group(4)
     assert re.search(r"measured on `ibm_marrakesh`", main_readme) and "5 register-rule probes were replicated on `ibm_kingston` and `ibm_fez`" in main_readme
     assert "ibm_fez" in main_readme and "not affiliated with" in main_readme and "monotonicity" in main_readme.lower() and "UNCERTAIN is common by design" in main_readme

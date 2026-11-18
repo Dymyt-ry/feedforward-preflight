@@ -255,7 +255,7 @@ class Analyzer:
         return "var:" + (getattr(t, "name", None) or str(v)[:8])
 
     def cond_bits(self, cond, cmap):
-        """Bits (or Var keys) the condition reads directly; what the controller has to broadcast to evaluate it."""
+        """Bits (or Var keys) the condition reads directly; the bits the `if` condition depends on (counted for the per-job broadcast figure)."""
         out = []
         if isinstance(cond, tuple):
             tgt = cond[0]
@@ -697,7 +697,7 @@ def _check_impl(qc, rules=None, backend=None, today=None, max_age_days=60):
         unc = sorted(construct_signatures(qc) - set(covered))
         if unc:
             cons_msg = (f"{len(unc)} expression construct(s) never used by any accepted probe: {', '.join(unc[:6])}" + (" ..." if len(unc) > 6 else "")
-                        + "; an uncovered construct can be rejected by the controller (fix-pack v1 circuits using shifts and narrowing casts were, error 6066)")
+                        + "; an uncovered construct can be rejected at job submission (fix-pack v1 circuits using shifts and narrowing casts were, error 6066)")
             cons_ev = sorted({p for c in covered.values() for p in c[:1]})[:6]
     ifs = []
     for e in an.entries:
@@ -967,10 +967,11 @@ def isa_circuit(qc, backend=None):
         info["target"] = f"{name} (bundled fake, +measure_2), optimization_level=1, seed_transpiler=7" + \
             ("" if backend in (None, "") or name != DEFAULT_FAKE or backend == "ibm_marrakesh" else f"; {backend} has no bundled fake, {DEFAULT_FAKE} used")
         if qc.num_qubits > be.num_qubits:
-            raise RuntimeError(f"circuit has {qc.num_qubits} qubits, the target {be.num_qubits}")
+            raise RuntimeError(f"cannot transpile against the bundled fake for {backend or name} ({name}): the circuit needs {qc.num_qubits} qubits, the fake has {be.num_qubits}; "
+                               f"no PASS can be given; use --transpiled with your own ISA circuit or a supported backend")
         return transpile(qc, be, optimization_level=1, seed_transpiler=7), info
     except Exception as ex:  # noqa: BLE001
-        info["error"] = f"{type(ex).__name__}: {str(ex)[:160]}"
+        info["error"] = str(ex)[:400] if isinstance(ex, RuntimeError) and "cannot transpile" in str(ex) else f"{type(ex).__name__}: {str(ex)[:160]}"
         return None, info
 
 
